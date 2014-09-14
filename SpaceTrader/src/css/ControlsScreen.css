@@ -1,0 +1,20 @@
+/*
+ * Empty Stylesheet file.
+ */
+#title {
+    -fx-font-size: 30pt;
+    -fx-text-alignment: center;
+    -fx-text-fill: #ffffff;
+}
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+#backBtn {
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+}
+#backBtn:hover {
+    -fx-background-color: #0099CC;
+}
