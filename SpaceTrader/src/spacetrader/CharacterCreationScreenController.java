@@ -28,34 +28,15 @@ import model.SceneNavigatorController;
  * @author Raoul
  */
 public class CharacterCreationScreenController extends SceneNavigatorController {
-    @FXML
-    private Button cancelBtn;
+    
     @FXML
     private TextField nameField;
     @FXML
-    private Button posPilotBtn;
-    @FXML
-    private Button negFighterBtn;
-    @FXML
     private Label fighterLabel;
-    @FXML
-    private Button posFighterBtn;
     @FXML
     private Label spRemainingLabel;
     @FXML
     private Label pilotLabel;
-    @FXML
-    private Button negTraderBtn;
-    @FXML
-    private Button posTraderBtn;
-    @FXML
-    private Button negEngineerBtn;
-    @FXML
-    private Button posEngineerBtn;
-    @FXML
-    private Button negInvestorBtn;
-    @FXML
-    private Button posInvestorBtn;
     @FXML
     private Label traderLabel;
     @FXML
@@ -76,12 +57,10 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
     String traderSPText;
     String engineerSPText;
     String investorSPText;
-    /**
-     * Initializes the controller class.
-     */
+    
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    public void initialize(URL url, ResourceBundle rb) {
         spLeftText = spRemainingLabel.getText();
         pilotSPText = pilotLabel.getText();
         fighterSPText = fighterLabel.getText();
