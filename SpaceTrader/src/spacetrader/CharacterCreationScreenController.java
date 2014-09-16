@@ -12,10 +12,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
@@ -186,19 +184,19 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
 
     @FXML
     private void onAcceptAction(ActionEvent event) {
-        if(nameField.getText().isEmpty())
+        if( nameField.getText().isEmpty() )
         {
             JOptionPane.showMessageDialog(null, "Name cannot be blank.");
             nameField.requestFocus();
         }
-        else if(spLeft > 0)
+        else if( spLeft > 0 )
         {
             JOptionPane.showMessageDialog(null, "Allocate All Stats.");
         }
         else
         {
             Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP);
-            JOptionPane.showMessageDialog(null, "Created Player: " + player.toString());
+            JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
             
             try {
                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "WelcomeScreen.fxml" ));
@@ -206,8 +204,8 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
                 WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 
                 Scene scene = getScene();
-                scene.setRoot(root);
-                controller.setScene(scene);
+                scene.setRoot( root );
+                controller.setScene( scene );
             }
             catch( Exception e )
             {
@@ -215,5 +213,4 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
             }
         }
     }
-    
 }

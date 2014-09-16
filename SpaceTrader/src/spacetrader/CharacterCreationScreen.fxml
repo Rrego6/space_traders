@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,32 +8,104 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="spacetrader.CharacterCreationScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.CharacterCreationScreenController">
     <stylesheets>
         <URL value="@/css/CharacterCreationScreen.css" />
     </stylesheets>
    <children>
       <Button fx:id="cancelBtn" layoutY="374.0" mnemonicParsing="false" onAction="#onCancelAction" text="Cancel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
       <Button layoutX="548.0" layoutY="374.0" mnemonicParsing="false" onAction="#onAcceptAction" text="Accept" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label alignment="CENTER" layoutX="286.0" layoutY="6.0" text="Create Character" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label layoutX="223.0" layoutY="54.0" text="Name" />
-      <TextField fx:id="nameField" layoutX="271.0" layoutY="50.0" />
-      <Label layoutX="301.0" layoutY="118.0" text="Stats" />
-      <Button layoutX="239.0" layoutY="182.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecPilotSkill" prefHeight="15.0" prefWidth="15.0" text="-" />
-      <Button fx:id="posPilotBtn" layoutX="360.0" layoutY="182.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncPilotSkill" prefHeight="0.0" prefWidth="0.0" text="+" />
-      <Button fx:id="negFighterBtn" layoutX="239.0" layoutY="207.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecFighterSkill" text="-" />
-      <Label fx:id="fighterLabel" layoutX="296.0" layoutY="211.0" text="Fighter: " />
-      <Button fx:id="posFighterBtn" layoutX="360.0" layoutY="207.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncFighterSkill" text="+" />
-      <Label fx:id="spRemainingLabel" layoutX="268.0" layoutY="151.0" text="Points Remaining: " />
-      <Label fx:id="pilotLabel" layoutX="300.0" layoutY="186.0" text="Pilot:" />
-      <Button fx:id="negTraderBtn" layoutX="239.0" layoutY="232.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecTraderSkill" text="-" />
-      <Button fx:id="posTraderBtn" layoutX="360.0" layoutY="232.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncTraderSkill" text="+" />
-      <Button fx:id="negEngineerBtn" layoutX="239.0" layoutY="257.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecEngineerSkill" text="-" />
-      <Button fx:id="posEngineerBtn" layoutX="360.0" layoutY="257.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncEngineerSkill" text="+" />
-      <Button fx:id="negInvestorBtn" layoutX="239.0" layoutY="282.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecInvestorSkill" text="-" />
-      <Button fx:id="posInvestorBtn" layoutX="360.0" layoutY="282.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncInvestorSkill" text="+" />
-      <Label fx:id="traderLabel" layoutX="296.0" layoutY="236.0" text="Trader:" />
-      <Label fx:id="engineerLabel" layoutX="296.0" layoutY="261.0" text="Engineer:" />
-      <Label fx:id="investorLabel" layoutX="293.0" layoutY="286.0" text="Investor:" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="6.0" text="Create Character" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label alignment="CENTER" layoutY="106.0" text="Stats" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="spRemainingLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="268.0" layoutY="151.0" text="Points Remaining: " AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <StackPane layoutY="37.0" prefHeight="50.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxHeight="38.0" maxWidth="190.0" prefHeight="38.0" prefWidth="185.0">
+               <children>
+                  <Label text="Name">
+                     <FlowPane.margin>
+                        <Insets right="8.0" />
+                     </FlowPane.margin>
+                  </Label>
+                  <TextField fx:id="nameField" />
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
+      <StackPane layoutX="14.0" layoutY="166.0" prefHeight="25.0" prefWidth="139.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxHeight="25.0" maxWidth="135.0">
+               <children>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecPilotSkill" prefHeight="15.0" prefWidth="15.0" text="-">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Button>
+                  <Label fx:id="pilotLabel" alignment="CENTER" minHeight="17.0" minWidth="80.0" text="Pilot:">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
+                  <Button fx:id="posPilotBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncPilotSkill" prefHeight="0.0" prefWidth="0.0" text="+" />
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
+      <StackPane layoutX="194.0" layoutY="191.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxHeight="25.0" maxWidth="135.0">
+               <children>
+                  <Button fx:id="negFighterBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecFighterSkill" text="-">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Button>
+                  <Label fx:id="fighterLabel" alignment="CENTER" minWidth="80.0" text="Fighter:">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
+                  <Button fx:id="posFighterBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncFighterSkill" text="+">
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Button>
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
+      <StackPane layoutY="216.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxWidth="135.0">
+               <children>
+                  <Button fx:id="negTraderBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecTraderSkill" text="-" />
+                  <Label fx:id="traderLabel" alignment="CENTER" minWidth="80.0" text="Trader:" />
+                  <Button fx:id="posTraderBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncTraderSkill" text="+" />
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
+      <StackPane layoutY="241.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxWidth="135.0">
+               <children>
+                  <Button fx:id="negEngineerBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecEngineerSkill" text="-" />
+                  <Label fx:id="engineerLabel" alignment="CENTER" minWidth="80.0" text="Engineer:" />
+                  <Button fx:id="posEngineerBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncEngineerSkill" text="+" />
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
+      <StackPane layoutY="266.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FlowPane maxWidth="135.0">
+               <children>
+                  <Button fx:id="negInvestorBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecInvestorSkill" text="-" />
+                  <Label fx:id="investorLabel" alignment="CENTER" minWidth="80.0" text="Investor:" />
+                  <Button fx:id="posInvestorBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncInvestorSkill" text="+" />
+               </children>
+            </FlowPane>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
