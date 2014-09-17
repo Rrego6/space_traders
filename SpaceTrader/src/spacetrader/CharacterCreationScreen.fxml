@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spacetrader.CharacterCreationScreenController">
     <stylesheets>
-        <URL value="@/css/CharacterCreationScreen.css" />
+        <URL value="@/res/css/CharacterCreationScreen.css" />
     </stylesheets>
    <children>
       <StackPane layoutX="100.0" layoutY="80.0" prefHeight="38.0" prefWidth="500.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0">
@@ -41,12 +41,7 @@
             <Font name="System Bold" size="18.0" />
          </font></Button>
       <Label id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="6.0" text="Create Character" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <StackPane layoutX="100.0" layoutY="113.0">
-         <children>
-            <Label id="statsLabel" layoutX="100.0" layoutY="113.0" prefHeight="38.0" prefWidth="500.0" text="Stats" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" />
-         </children>
-      </StackPane>
-      <Label id="pointsRemainingLabel" fx:id="spRemainingLabel" contentDisplay="CENTER" layoutX="214.0" layoutY="151.0" prefHeight="38.0" prefWidth="173.0" text="Points Remaining: " AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="213.0">
+      <Label id="pointsRemainingLabel" fx:id="spRemainingLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="151.0" prefHeight="38.0" prefWidth="173.0" text="Points Remaining: " AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
