@@ -4,7 +4,7 @@
 #title {
     -fx-font-size: 30pt;
     -fx-text-alignment: center;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: rgb(230,230,255);
 }
 .background {
     //-fx-background-color: #1d1d1d;
@@ -13,10 +13,14 @@
 }
 
 #backBtn {
-    -fx-background-color: #1d1d1d;
+    //-fx-background-color: #1d1d1d;
+    //-fx-font-size: 20pt;
     -fx-text-fill: #ffffff;
-    -fx-font-size: 20pt;
+    //-fx-font-weight: bold;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: linear-gradient(rgb(10,54,90), rgb(3,19,34));
 }
 #backBtn:hover {
-    -fx-background-color: #0099CC;
+    //-fx-background-color: #0099CC;
+    -fx-background-color: linear-gradient(rgb(10,52,88),rgb(18,97,160));
 }

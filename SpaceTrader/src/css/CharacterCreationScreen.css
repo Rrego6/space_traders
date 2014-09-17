@@ -11,7 +11,7 @@
     -fx-font-size: 40pt;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: rgb(230,230,255);
     //-fx-border-color: whitesmoke;
    // -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 2 );
     
@@ -20,7 +20,7 @@
     -fx-font-size: 15pt;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
-    -fx-text-fill: white;
+    -fx-text-fill: rgb(220,220,255);
   //  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 2 );
     
 }
@@ -28,7 +28,7 @@
  //   -fx-font-size: 10pt;
    // -fx-font-weight: bold;
     //-fx-text-alignment: center;
-    -fx-text-fill: white;
+    -fx-text-fill: rgb(220,220,255);
 //    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 2 );
     
 }
@@ -37,15 +37,18 @@
    // -fx-background-color: rgb(220,220,220);
     -fx-text-weight: bold;
  //   -fx-text-size: 30pt;
-    -fx-text-fill: white;
+    -fx-text-fill: rgb(220,220,255);
 }
 #nameField{
    // -fx-background-color: rgb(200,200,200);
     -fx-text-weight: bold;
+    -fx-text-fill: black;
     -fx-border-color: white;
 }
 #nameField:hover{
-    -fx-background-color: whitesmoke;
+    -fx-background-color: rgb(220,220,255) ;
+    -fx-border-color: white;
+    -fx-cursor: url("http://upload.wikimedia.org/wikipedia/commons/d/d0/Wolf_Lambert_cursor.png");
 }
 .background {
    // -fx-background-color: #1d1d1d;
@@ -54,19 +57,20 @@
     -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
 
-.statBtn {
+.statBtn, #cancelBtn,#acceptBtn {
     //-fx-padding: 5 22 5 22;   
    // -fx-border-color: #0000cc;
    // -fx-border-width: 0 0 1 0;
    // -fx-background-color: #ff0000;
    // -fx-text-fill: #000000;
-   // -fx-font-size: 10pt;
+   // -fx-font-size: 15pt;
     -fx-text-fill: #ffffff;
+    //-fx-font-weight: bold;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-background-color: linear-gradient(rgb(10,54,90), rgb(3,19,34));
 }
 
-.statBtn:hover {
+.statBtn:hover ,#acceptBtn:hover, #cancelBtn:hover{
     -fx-background-color: linear-gradient(rgb(10,52,88),rgb(18,97,160));
 }
 
