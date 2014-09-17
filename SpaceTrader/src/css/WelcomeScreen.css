@@ -3,28 +3,38 @@
     Author     : Raoul
 */
 #title {
-    -fx-font-size: 30pt;
+    -fx-font-size: 60pt;
+    -fx-font-weight: bold;
     -fx-text-alignment: center;
     -fx-text-fill: #ffffff;
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.8) , 8, 0.0 , 0 , 2 );
+    
+    
 }
 .background {
-    -fx-background-color: #1d1d1d;
-    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    //-fx-background-color: #1d1d1d;
+    -fx-background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg");
+    -fx-background-size: cover;
+    //-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
 
 .button {
     -fx-padding: 5 22 5 22;   
-    -fx-border-color: #e2e2e2;
-    -fx-border-width: 0 0 1 0;
-    -fx-background-color: #1d1d1d;
+    //-fx-border-color: #e2e2e2;
+   // -fx-border-width: 0 0 1 0;
+   // -fx-background-color: #1d1d1d;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: linear-gradient(rgb(10,54,90), rgb(3,19,34));
     -fx-text-fill: #ffffff;
     -fx-font-size: 20pt;
 }
 .button:hover {
-     -fx-background-color: #0099CC;
+     //-fx-background-color: #0099CC;
+     -fx-background-color: linear-gradient(rgb(10,52,88),rgb(18,97,160));
 }
-#topButton {
-    -fx-border-width: 1 0 1 0;
-}
+//#topButton {
+  //  -fx-border-width: 1 0 1 0;
+//}
 
 

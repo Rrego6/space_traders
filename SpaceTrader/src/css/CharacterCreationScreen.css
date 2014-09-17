@@ -5,3 +5,68 @@
 .mainFxmlClass {
 
 }
+
+
+#title {
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-text-fill: #ffffff;
+    //-fx-border-color: whitesmoke;
+   // -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 2 );
+    
+}
+#nameLabel, #statsLabel {
+    -fx-font-size: 15pt;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+  //  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 2 );
+    
+}
+#pointsRemainingLabel{
+ //   -fx-font-size: 10pt;
+   // -fx-font-weight: bold;
+    //-fx-text-alignment: center;
+    -fx-text-fill: white;
+//    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.5) , 5, 0.0 , 0 , 2 );
+    
+}
+
+#pilotLabel, #fighterLabel, #traderLabel,#engineerLabel, #investorLabel{
+   // -fx-background-color: rgb(220,220,220);
+    -fx-text-weight: bold;
+ //   -fx-text-size: 30pt;
+    -fx-text-fill: white;
+}
+#nameField{
+   // -fx-background-color: rgb(200,200,200);
+    -fx-text-weight: bold;
+    -fx-border-color: white;
+}
+#nameField:hover{
+    -fx-background-color: whitesmoke;
+}
+.background {
+   // -fx-background-color: #1d1d1d;
+    -fx-background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg");
+    -fx-background-size: cover;
+    -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+.statBtn {
+    //-fx-padding: 5 22 5 22;   
+   // -fx-border-color: #0000cc;
+   // -fx-border-width: 0 0 1 0;
+   // -fx-background-color: #ff0000;
+   // -fx-text-fill: #000000;
+   // -fx-font-size: 10pt;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: linear-gradient(rgb(10,54,90), rgb(3,19,34));
+}
+
+.statBtn:hover {
+    -fx-background-color: linear-gradient(rgb(10,52,88),rgb(18,97,160));
+}
+
