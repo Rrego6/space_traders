@@ -15,9 +15,9 @@
         <URL value="@/res/css/CharacterCreationScreen.css" />
     </stylesheets>
    <children>
-      <StackPane layoutX="100.0" layoutY="80.0" prefHeight="38.0" prefWidth="500.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutX="100.0" layoutY="80.0" prefHeight="38.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane alignment="CENTER_LEFT" maxHeight="42.0" maxWidth="505.0" prefHeight="38.0" prefWidth="505.0">
+            <FlowPane alignment="CENTER_LEFT" maxHeight="42.0" maxWidth="330.0" prefHeight="38.0" prefWidth="505.0">
                <children>
                   <Label id="nameLabel" prefHeight="17.0" prefWidth="83.0" text="Name">
                      <FlowPane.margin>
@@ -48,8 +48,16 @@
       </Label>
       <StackPane layoutY="189.0" prefHeight="42.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxHeight="25.0" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane alignment="CENTER" maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
                <children>
+                  <Label id="pilotLabel" fx:id="pilotLabel" minHeight="17.0" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" styleClass="statLabels" text="Pilot:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecPilotSkill" prefHeight="15.0" prefWidth="15.0" styleClass="statBtn" text="-">
                      <FlowPane.margin>
                         <Insets />
@@ -58,26 +66,29 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Label id="pilotLabel" fx:id="pilotLabel" alignment="CENTER" minHeight="17.0" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Pilot:">
-                     <FlowPane.margin>
-                        <Insets />
-                     </FlowPane.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncPilotSkill" prefHeight="0.0" prefWidth="0.0" styleClass="statBtn" text="+">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Button>
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
          </children>
       </StackPane>
       <StackPane layoutY="224.0" prefHeight="42.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxHeight="25.0" maxWidth="150.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
                <children>
+                  <Label id="fighterLabel" fx:id="fighterLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" styleClass="statLabels" text="Fighter:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecFighterSkill" styleClass="statBtn" text="-">
                      <FlowPane.margin>
                         <Insets />
@@ -86,17 +97,9 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Label id="fighterLabel" fx:id="fighterLabel" alignment="CENTER" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Fighter:">
-                     <FlowPane.margin>
-                        <Insets />
-                     </FlowPane.margin>
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncFighterSkill" styleClass="statBtn" text="+">
                      <FlowPane.margin>
-                        <Insets />
+                        <Insets left="10.0" />
                      </FlowPane.margin>
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -108,61 +111,70 @@
       </StackPane>
       <StackPane layoutY="266.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="150.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
                <children>
-                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecTraderSkill" styleClass="statBtn" text="-">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Button>
-                  <Label id="traderLabel" fx:id="traderLabel" alignment="CENTER" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Trader:">
+                  <Label id="traderLabel" fx:id="traderLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Trader:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncTraderSkill" styleClass="statBtn" text="+">
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecTraderSkill" styleClass="statBtn" text="-">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
+                  <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncTraderSkill" styleClass="statBtn" text="+">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
          </children>
       </StackPane>
       <StackPane layoutY="301.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="150.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
                <children>
+                  <Label id="engineerLabel" fx:id="engineerLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Engineer:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecEngineerSkill" styleClass="statBtn" text="-">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Label id="engineerLabel" fx:id="engineerLabel" alignment="CENTER" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Engineer:">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncEngineerSkill" styleClass="statBtn" text="+">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Button>
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
          </children>
       </StackPane>
       <StackPane layoutY="335.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="150.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
                <children>
+                  <Label id="investorLabel" fx:id="investorLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Investor:">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onDecInvestorSkill" styleClass="statBtn" text="-">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Label id="investorLabel" fx:id="investorLabel" alignment="CENTER" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Investor:">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font></Label>
                   <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#onIncInvestorSkill" styleClass="statBtn" text="+">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Button>
+                     </font>
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin></Button>
                </children>
             </FlowPane>
          </children>
