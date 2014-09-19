@@ -8,10 +8,14 @@
 }
 .background {
     //-fx-background-color: #1d1d1d;
-    -fx-background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg");
+    -fx-background-image: url("spaceTraderBackground.png");
     -fx-background-size: cover;
 }
 
+.slider{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: linear-gradient(rgb(10,54,90), rgb(3,19,34));
+}
 #backBtn {
     //-fx-background-color: #1d1d1d;
     //-fx-font-size: 20pt;

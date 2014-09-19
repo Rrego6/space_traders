@@ -11,9 +11,10 @@
     
     
 }
+
 .background {
     //-fx-background-color: #1d1d1d;
-    -fx-background-image: url("http://www.wallpaperup.com/uploads/wallpapers/2014/04/12/330551/185c99304364bba58fe8bfe3765fcf64.jpg");
+    -fx-background-image: url("spaceTraderBackground.png");
     -fx-background-size: cover;
     //-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
