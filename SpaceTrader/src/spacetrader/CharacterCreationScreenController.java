@@ -195,7 +195,7 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
         }
         else
         {
-            Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP);
+            Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP );
             JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
             
             try {
