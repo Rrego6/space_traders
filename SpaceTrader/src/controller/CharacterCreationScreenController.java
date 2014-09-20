@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package spacetrader;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -168,7 +168,7 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
     @FXML
     private void onCancelAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "WelcomeScreen.fxml" ));
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
             Parent root = fxmlLoader.load();
             WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 
@@ -199,7 +199,7 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
             JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
             
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "WelcomeScreen.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
                 Parent root = fxmlLoader.load();
                 WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 

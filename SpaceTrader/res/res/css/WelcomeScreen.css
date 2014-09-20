@@ -14,7 +14,7 @@
 
 .background {
     //-fx-background-color: #1d1d1d;
-    -fx-background-image: url("spaceTraderBackground.png");
+    -fx-background-image: url("/res/img/spaceTraderBackground.png");
     -fx-background-size: cover;
     //-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;

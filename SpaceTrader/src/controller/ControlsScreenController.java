@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package spacetrader;
+package controller;
 
 import model.SceneNavigatorController;
 import interfaces.SceneNavigator;
@@ -29,7 +29,7 @@ public class ControlsScreenController extends SceneNavigatorController {
     private void handleBackButtonAction(ActionEvent event )
     {
         try {
-        FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "WelcomeScreen.fxml" ));
+        FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
         Parent root = fxmlLoader.load();
         WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 

@@ -6,6 +6,7 @@
 
 package spacetrader;
 
+import controller.WelcomeScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +22,7 @@ public class SpaceTrader extends Application {
     @Override
     public void start(Stage stage) throws Exception
     {
-        FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "WelcomeScreen.fxml" ));
+        FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
         Parent root = fxmlLoader.load();
         WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 

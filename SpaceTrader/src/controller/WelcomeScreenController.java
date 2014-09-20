@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package spacetrader;
+package controller;
 
+import controller.ControlsScreenController;
+import controller.CharacterCreationScreenController;
 import model.SceneNavigatorController;
 import interfaces.SceneNavigator;
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class WelcomeScreenController extends SceneNavigatorController {
     {
         try
         {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("ControlsScreen.fxml"));
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/ControlsScreen.fxml"));
             Parent root = fxmlLoader.load();
             ControlsScreenController controller = (ControlsScreenController) fxmlLoader.getController();
             Scene scene = getScene();
@@ -48,7 +50,7 @@ public class WelcomeScreenController extends SceneNavigatorController {
     {
         try
         {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("CharacterCreationScreen.fxml"));
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/CharacterCreationScreen.fxml"));
             Parent root = fxmlLoader.load();
             CharacterCreationScreenController controller = (CharacterCreationScreenController) fxmlLoader.getController();
             Scene scene = getScene();
