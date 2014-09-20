@@ -53,7 +53,7 @@
     -fx-border-color: white;
 }
 .background {
-    -fx-background-image: url("/res/img/spaceTraderBackground.png");
+    -fx-background-image: url("/img/spaceTraderBackground.png");
     -fx-background-size: cover;
     -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }

@@ -7,7 +7,7 @@
     -fx-text-fill: rgb(230,230,255);
 }
 .background {
-    -fx-background-image: url("/res/img/spaceTraderBackground.png");
+    -fx-background-image: url("/img/spaceTraderBackground.png");
     -fx-background-size: cover;
 }
 
