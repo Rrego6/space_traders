@@ -17,4 +17,12 @@ public class Planet {
     public Planet(String name) {
         this.name = name;
     }
+    
+    public void setName(String name) { //setter mathod. 
+        this.name = name;
+    }
+    
+    public String getName() {  //getter method.
+        return name;
+    }
 }

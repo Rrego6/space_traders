@@ -67,4 +67,16 @@ public class SolarSystem {
     public void removePlanet(Planet a) {
         planets.remove(a);
     }
+    
+    public String getName() {  //getter method
+        return name;
+    }
+    
+    public String getTechLevel() { //getter method
+        return techLevel;
+    }
+    
+    public String getResource() { //getter method
+        return resource;
+    }
 }

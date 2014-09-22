@@ -28,4 +28,16 @@ public class Universe {
     public void removeSolarSystem(SolarSystem a) {
         solarsystems.remove(a);
     }
+    
+    public void setName(String name) { //setter mathod. 
+        this.name = name;
+    }
+    
+    public String getName() {  //getter method.
+        return name;
+    }
+    
+    public ArrayList<SolarSystem> getList() {  //getter method.
+        return solarsystems;
+    }
 }
