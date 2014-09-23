@@ -7,6 +7,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,20 +15,29 @@ import java.util.ArrayList;
  */
 public class SolarSystem {
     
+    private Random numGen = new Random();
     private String name;
     private int x;
     private int y;
-    private String techLevel;
-    private String resource;
+    private int techLevel;
+    private int resource;
     
     private ArrayList<Planet> planets;
     
-    public SolarSystem(String name, int x, int y, String techLevel, String resource) {
+    public SolarSystem(String name, int x, int y, int techLevel, int resource) {
         this.name = name;
         this.x = x;
         this.y = y;
         this.techLevel = techLevel;
         this.resource = resource;
+    }
+    
+    public SolarSystem(String name) {
+        this.name = name;
+        x = numGen.nextInt(150);
+        y = numGen.nextInt(100);
+        techLevel = numGen.nextInt(8);
+        resource = numGen.nextInt(13);
     }
     
     //public String getName()
@@ -50,13 +60,13 @@ public class SolarSystem {
     
     //public String getTechLevel()
     
-    public void setTechLevel(String techLevel) {
+    public void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
     }
     
     //public String getResource()
     
-    public void setResource(String resource) {
+    public void setResource(int resource) {
         this.resource = resource;
     }
     
@@ -72,11 +82,11 @@ public class SolarSystem {
         return name;
     }
     
-    public String getTechLevel() { //getter method
+    public int getTechLevel() { //getter method
         return techLevel;
     }
     
-    public String getResource() { //getter method
+    public int getResource() { //getter method
         return resource;
     }
 }
