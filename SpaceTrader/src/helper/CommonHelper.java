@@ -15,8 +15,8 @@ import java.io.*;
 import java.util.*;
 public class CommonHelper {
 
-    public static List scanner() throws IOException {
-      FileReader fr = new FileReader("planets.txt");
+    public static List<String> getPlanetStrings() throws IOException {
+      FileReader fr = new FileReader( "res/txt/planets.txt" );
       Scanner sc = new Scanner(fr);
       List<String> planetsList = new ArrayList<>();
       while (sc.hasNextLine()){
