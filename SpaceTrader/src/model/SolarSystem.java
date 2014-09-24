@@ -36,8 +36,8 @@ public class SolarSystem {
     public SolarSystem(String name) {
         this(
                 name,
-                CommonHelper.randInt(150),
-                CommonHelper.randInt(100),
+                CommonHelper.randInt(300),
+                CommonHelper.randInt(300),
                 CommonHelper.randInt(8),
                 CommonHelper.randInt(13)
         );
@@ -84,6 +84,21 @@ public class SolarSystem {
     
     public int getResource() { //getter method
         return resource;
+    }
+    
+    public int getX() { //getter method
+        return x;
+    }
+    
+    public int getY(){ //getter method
+        return y;
+    }
+    
+    public boolean isHit(double px, double py) {
+        if (px >= x && px <= x + 5)
+            if (py >= y && py <= y + 5)
+                return true;
+        return false;
     }
     
     @Override

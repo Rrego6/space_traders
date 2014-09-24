@@ -18,6 +18,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import model.Player;
 import model.SceneNavigatorController;
 import model.Universe;
@@ -199,18 +203,21 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
         {
             Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP );
             JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
-            Universe universe = new Universe("Trader Universe");
-            universe.addSolarSystem(CommonHelper.getPlanets());
-            System.out.println( universe.toString());
+           // Universe universe = new Universe("Trader Universe");
+           // universe.addSolarSystem(CommonHelper.getPlanets());
+          
+           // System.out.println( universe.toString());
             
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
-                Parent root = fxmlLoader.load();
-                WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
-
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                Parent root = fxmlLoader.load(); 
+           
+                PlanetDrawScreenController controller = (PlanetDrawScreenController) fxmlLoader.getController();
+                //System.out.println("controller worked");
                 Scene scene = getScene();
                 scene.setRoot( root );
                 controller.setScene( scene );
+               // System.out.println("set scene worked");
             }
             catch( Exception e )
             {
