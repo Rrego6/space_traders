@@ -23,7 +23,9 @@ import model.SolarSystem;
 public class CommonHelper {
 
     public static Random rand;
-    
+    /*@param:none.
+    @return: list of the name of the planets from the text file, String.
+    */ 
     public static List<SolarSystem> getPlanets()
     {
         List<SolarSystem> planetsList = new ArrayList<>();

@@ -23,6 +23,9 @@ public abstract class SceneNavigatorController implements Initializable, SceneNa
     }
     
     @Override
+    /*@param:none.
+    @return: scene variable value.
+    */
     public Scene getScene() {
         return scene;
     }

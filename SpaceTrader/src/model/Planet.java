@@ -17,11 +17,15 @@ public class Planet {
     public Planet(String name) {
         this.name = name;
     }
-    
+    /*@param:name of the planet, String.
+    @return: none,sets the name variable.
+    */
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
-    
+    /*@param:none.
+    @return: name of the planet, String.
+    */
     public String getName() {  //getter method.
         return name;
     }

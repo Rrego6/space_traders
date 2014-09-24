@@ -45,55 +45,81 @@ public class SolarSystem {
         planets.add( new Planet( name ) );
     }
     
-    
+    /*@param:name of the soalrsystem, String.
+    @return: none,sets the name variable.
+    */
     public void setName(String name) {
         this.name = name;
     }
-        
+    /*@param:x value, int.
+    @return: none,sets the x variable.
+    */    
     public void setX(int x) {
         this.x = x;
     }
-        
+    /*@param:y value, int.
+    @return: none,sets the y variable.
+    */     
     public void setY(int y) {
         this.y = y;
     }
-        
+    /*@param:techLevel value, int.
+    @return: none,sets the techLevel variable.
+    */     
     public void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
     }
-    
+    /*@param:resource value, int.
+    @return: none,sets the resource variable.
+    */ 
     public void setResource(int resource) {
         this.resource = resource;
     }
-    
+    /*@param:planet object.
+    @return: none,adds the planet object to the planets list.
+    */ 
     public void addPlanet(Planet a) {
         planets.add(a);
     }
-    
+    /*@param:planet object.
+    @return: none,removes the planet object from the planets list.
+    */ 
     public void removePlanet(Planet a) {
         planets.remove(a);
     }
-    
+    /*@param:none.
+    @return: name variable value.
+    */ 
     public String getName() {  //getter method
         return name;
     }
-    
+    /*@param:none.
+    @return: techLevel variable value.
+    */ 
     public int getTechLevel() { //getter method
         return techLevel;
     }
-    
+    /*@param:none.
+    @return: resource variable value.
+    */ 
     public int getResource() { //getter method
         return resource;
     }
-    
+    /*@param:none.
+    @return: x variable value.
+    */ 
     public int getX() { //getter method
         return x;
     }
-    
+    /*@param:none.
+    @return: y variable value.
+    */ 
     public int getY(){ //getter method
         return y;
     }
-    
+    /*@param:double of px and py.
+    @return: boolean,if the planet is hited.
+    */ 
     public boolean isHit(double px, double py) {
         if (px >= x && px <= x + 5)
             if (py >= y && py <= y + 5)

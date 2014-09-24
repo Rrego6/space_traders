@@ -22,27 +22,41 @@ public class Universe {
         this.name = name;
         solarsystems = new ArrayList<>();
     }
-    
+    /*@param:List of solarSystems.
+    @return: none. add the list of solarSystems to the universe.
+    */ 
     public void addSolarSystem( List<SolarSystem> list )
     {
         solarsystems.addAll( list );
+        
+    /*@param:solarSystem object.
+    @return: none. add a solarSystems to the list of solarSystem.
+    */     
     }
     public void addSolarSystem(SolarSystem a) {
         solarsystems.add(a);
     }
-    
+    /*@param: solarSystem object.
+    @return: none. remove the solarSystem object from the solarSystem list.
+    */ 
     public void removeSolarSystem(SolarSystem a) {
         solarsystems.remove(a);
     }
-    
+    /*@param:name of the universe, String.
+    @return: none. set the name variable.
+    */ 
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
-    
+    /*@param:none.
+    @return: name variable value.
+    */ 
     public String getName() {  //getter method.
         return name;
     }
-    
+    /*@param:none.
+    @return: solarSystem valriable value.
+    */ 
     public ArrayList<SolarSystem> getList() {  //getter method.
         return solarsystems;
     }
