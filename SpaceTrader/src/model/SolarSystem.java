@@ -6,7 +6,9 @@
 
 package model;
 
+import helper.CommonHelper;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -14,15 +16,16 @@ import java.util.ArrayList;
  */
 public class SolarSystem {
     
+    private Random numGen = new Random();
     private String name;
     private int x;
     private int y;
-    private String techLevel;
-    private String resource;
+    private int techLevel;
+    private int resource;
     
     private ArrayList<Planet> planets;
     
-    public SolarSystem(String name, int x, int y, String techLevel, String resource) {
+    public SolarSystem(String name, int x, int y, int techLevel, int resource) {
         this.name = name;
         this.x = x;
         this.y = y;
@@ -30,33 +33,36 @@ public class SolarSystem {
         this.resource = resource;
     }
     
-    //public String getName()
+    public SolarSystem(String name) {
+        this(
+                name,
+                CommonHelper.randInt(150),
+                CommonHelper.randInt(100),
+                CommonHelper.randInt(8),
+                CommonHelper.randInt(13)
+        );
+        planets = new ArrayList<>();
+        planets.add( new Planet( name ) );
+    }
+    
     
     public void setName(String name) {
         this.name = name;
     }
-    
-    //public int getX()
-    
+        
     public void setX(int x) {
         this.x = x;
     }
-    
-    //public int getY()
-    
+        
     public void setY(int y) {
         this.y = y;
     }
-    
-    //public String getTechLevel()
-    
-    public void setTechLevel(String techLevel) {
+        
+    public void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
     }
     
-    //public String getResource()
-    
-    public void setResource(String resource) {
+    public void setResource(int resource) {
         this.resource = resource;
     }
     
@@ -66,5 +72,24 @@ public class SolarSystem {
     
     public void removePlanet(Planet a) {
         planets.remove(a);
+    }
+    
+    public String getName() {  //getter method
+        return name;
+    }
+    
+    public int getTechLevel() { //getter method
+        return techLevel;
+    }
+    
+    public int getResource() { //getter method
+        return resource;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "{ Name: " + name + ", Location: (" + x + "," + y +
+                "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }

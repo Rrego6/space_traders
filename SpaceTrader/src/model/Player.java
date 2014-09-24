@@ -34,4 +34,51 @@ public class Player {
         return "{name: " + name + ", pilotSP: " + pilotSP + ", fighterSP: " + fighterSP + ", traderSP: " + traderSP + ", engineerSP: " + engineerSP + ", investorSP: " + investorSP + "}";
     }
     
+    public void setName(String name) { //getter method.
+        this.name = name;
+    }
+    
+    public String getName() {  //getter method.
+        return name;
+    }
+    
+    public int getPilotSP() {  //getter method.
+        return pilotSP;
+    }
+    
+    public int getFighterSP() {  //getter method.
+        return fighterSP;
+    }
+        
+    public int getTraderSP() {  //getter method.
+        return traderSP;
+    }  
+    
+    public int getEngineerSP() {  //getter method.
+        return engineerSP;
+    } 
+    
+    public int getInvestorSP() {  //getter method.
+        return investorSP;
+    }
+    
+    public void setPilotSP(int no) {  //Setter method.
+        this.pilotSP = no;
+    }
+    
+    public void setFighterSP(int no) {  //Setter method.
+        this.fighterSP = no;
+    }
+        
+    public void getTraderSP(int no) {  //Setter method.
+        this.traderSP = no;
+    }  
+    
+    public void setEngineerSP(int no) {  //Setter method.
+        this.engineerSP = no;
+    } 
+    
+    public void setInvestorSP(int no) {  //Setter method.
+        this.investorSP = no;
+    }
 }

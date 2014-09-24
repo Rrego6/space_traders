@@ -7,6 +7,7 @@
 package spacetrader;
 
 import controller.WelcomeScreenController;
+import helper.CommonHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
