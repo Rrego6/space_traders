@@ -6,6 +6,7 @@
 
 package model;
 
+import helper.CommonHelper;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -33,38 +34,33 @@ public class SolarSystem {
     }
     
     public SolarSystem(String name) {
-        this.name = name;
-        x = numGen.nextInt(150);
-        y = numGen.nextInt(100);
-        techLevel = numGen.nextInt(8);
-        resource = numGen.nextInt(13);
+        this(
+                name,
+                CommonHelper.randInt(150),
+                CommonHelper.randInt(100),
+                CommonHelper.randInt(8),
+                CommonHelper.randInt(13)
+        );
+        planets = new ArrayList<>();
+        planets.add( new Planet( name ) );
     }
     
-    //public String getName()
     
     public void setName(String name) {
         this.name = name;
     }
-    
-    //public int getX()
-    
+        
     public void setX(int x) {
         this.x = x;
     }
-    
-    //public int getY()
-    
+        
     public void setY(int y) {
         this.y = y;
     }
-    
-    //public String getTechLevel()
-    
+        
     public void setTechLevel(int techLevel) {
         this.techLevel = techLevel;
     }
-    
-    //public String getResource()
     
     public void setResource(int resource) {
         this.resource = resource;
@@ -88,5 +84,12 @@ public class SolarSystem {
     
     public int getResource() { //getter method
         return resource;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "{ Name: " + name + ", Location: (" + x + "," + y +
+                "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }

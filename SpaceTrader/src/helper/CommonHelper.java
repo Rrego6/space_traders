@@ -6,26 +6,48 @@
 
 package helper;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+import model.Planet;
+import model.SolarSystem;
+
 
 /**
  *
  * @author Raoul & Noora
  */
-import java.io.*;
-import java.util.*;
 public class CommonHelper {
 
-    public static List<String> getPlanetStrings() throws IOException {
-      FileReader fr = new FileReader( "res/txt/planets.txt" );
-      Scanner sc = new Scanner(fr);
-      List<String> planetsList = new ArrayList<>();
-      while (sc.hasNextLine()){
-         String line = sc.nextLine();
-         String[] tokens = line.split("\"");
-         planetsList.add(tokens[1]);
-      }
-      sc.close();
+    public static Random rand;
+    
+    public static List<SolarSystem> getPlanets()
+    {
+        List<SolarSystem> planetsList = new ArrayList<>();
+        try {
+            FileReader fr = new FileReader( "res/txt/planets.txt" );
+            Scanner sc = new Scanner(fr);
+            while (sc.hasNextLine()){
+                String line = sc.nextLine();
+                String[] tokens = line.split("\"");
+                planetsList.add(new SolarSystem( tokens[1]) );
+            }
+            sc.close();
+        }
+        catch( FileNotFoundException e )
+        {
+            e.printStackTrace();
+        }
       return planetsList;
    }
-
+    
+    public static int randInt( int maxInt )
+    {
+        if( rand == null ) { rand = new Random(); }
+        return rand.nextInt( maxInt );
+    }
+    
 }

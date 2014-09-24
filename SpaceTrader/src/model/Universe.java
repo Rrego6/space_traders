@@ -7,6 +7,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,8 +20,13 @@ public class Universe {
     
     public Universe(String name) {
         this.name = name;
+        solarsystems = new ArrayList<>();
     }
     
+    public void addSolarSystem( List<SolarSystem> list )
+    {
+        solarsystems.addAll( list );
+    }
     public void addSolarSystem(SolarSystem a) {
         solarsystems.add(a);
     }
@@ -39,5 +45,16 @@ public class Universe {
     
     public ArrayList<SolarSystem> getList() {  //getter method.
         return solarsystems;
+    }
+    
+    @Override
+    public String toString()
+    {
+        String string = new String();
+        for( SolarSystem solarSystem : solarsystems )
+        {
+            string += (solarSystem + "," );
+        }
+        return "Universe: " + name + " " +string;
     }
 }

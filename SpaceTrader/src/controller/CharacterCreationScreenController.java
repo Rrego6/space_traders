@@ -6,6 +6,7 @@
 
 package controller;
 
+import helper.CommonHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import model.Player;
 import model.SceneNavigatorController;
+import model.Universe;
 
 /**
  * FXML Controller class
@@ -197,6 +199,9 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
         {
             Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP );
             JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
+            Universe universe = new Universe("Trader Universe");
+            universe.addSolarSystem(CommonHelper.getPlanets());
+            System.out.println( universe.toString());
             
             try {
                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
