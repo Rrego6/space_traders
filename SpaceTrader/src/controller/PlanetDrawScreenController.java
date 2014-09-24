@@ -32,6 +32,9 @@ import model.SceneNavigatorController;
 import model.SolarSystem;
 import model.Universe;
 import model.Planet;
+import model.GoodsList;
+import model.TradeGood;
+
 
 
 /**
@@ -44,6 +47,7 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     private Canvas canvas;
     
     private Universe universe;
+    private GoodsList goodslist;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -73,6 +77,12 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.getPlanets());
         System.out.println( universe.toString() );
+        goodslist = new GoodsList("First list");
+        System.out.println("new list created");
+        goodslist.addTradeGood(CommonHelper.readAllGoods());
+        System.out.println(goodslist.toString());
+        
+      //  System.out.println(CommonHelper.readAllGoods());
     }    
     
 }
