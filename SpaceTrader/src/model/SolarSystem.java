@@ -36,8 +36,8 @@ public class SolarSystem {
     public SolarSystem(String name) {
         this(
                 name,
-                CommonHelper.randInt(300),
-                CommonHelper.randInt(300),
+                CommonHelper.randInt(30)*10,
+                CommonHelper.randInt(30)*10,
                 CommonHelper.randInt(8),
                 CommonHelper.randInt(13)
         );
