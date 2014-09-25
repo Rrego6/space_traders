@@ -28,6 +28,8 @@ public class TradeGood {
     private int MTL;
     private int MTH;
     
+    private int quantity;
+    
     public TradeGood(String name, int MTLP, int MTLU, int TTP, int basePrice, int IPL, int VAR, String IE, String CR, String ER, int MTL, int MTH){
         this.name = name;
         this.MTLP = MTLP;
@@ -40,13 +42,32 @@ public class TradeGood {
         this.CR = CR;
         this.ER = ER;
         this.MTL = MTL;
-        this.MTH = MTH;
-        
+        this.MTH = MTH;   
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public int getQuantity() {
+        return this.quantity;
+    }
+    
+    public void add(int a) {
+        this.quantity += a;
+    }
+    
+    public void remove(int a) {
+        this.quantity -= a;
     }
     
     @Override
     public String toString()
     {
-        return "name: " + name + " MTLP: " + MTLP + " MTLU: " + MTLU + " TTP: " + TTP + " basePrice: " + basePrice + " IPL: " + IPL + " VAR: " + VAR + " IE: " + IE + " CR: " + CR +  " ER: "+ ER + " MTL: " + MTL +  " MTH: " + MTH;
+        return "{ Name: " + name + " MTLP: " + MTLP + " MTLU: " + MTLU + " TTP: " + TTP + " basePrice: " + basePrice + " IPL: " + IPL + " VAR: " + VAR + " IE: " + IE + " CR: " + CR +  " ER: "+ ER + " MTL: " + MTL +  " MTH: " + MTH + " }";
     }
 }

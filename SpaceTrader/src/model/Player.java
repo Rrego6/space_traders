@@ -11,12 +11,12 @@ package model;
  * @author Raoul
  */
 public class Player {
-    String name;
-    int pilotSP;
-    int fighterSP;
-    int traderSP;
-    int engineerSP;
-    int investorSP;
+    private String name;
+    private int pilotSP;
+    private int fighterSP;
+    private int traderSP;
+    private int engineerSP;
+    private int investorSP;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -114,4 +114,5 @@ public class Player {
     public void setInvestorSP(int no) {  //Setter method.
         this.investorSP = no;
     }
+    
 }
