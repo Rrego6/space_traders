@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.scene.Scene;
 import model.Planet;
 import model.Player;
 import model.SolarSystem;
@@ -25,7 +26,6 @@ import model.TradeGood;
 public class CommonHelper {
 
     private static Random rand;
-    private static Player player;
 
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
@@ -109,5 +109,7 @@ public class CommonHelper {
         if( rand == null ) { rand = new Random(); }
         return rand.nextInt( maxInt );
     }
+    
+    
     
 }
