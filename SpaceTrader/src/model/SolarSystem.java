@@ -117,6 +117,10 @@ public class SolarSystem {
     public int getY(){ //getter method
         return y;
     }
+    
+    public String getLocation(){
+        return "(" + x + ", " + y + ")";
+    }
     /*@param:double of px and py.
     @return: boolean,if the planet is hited.
     */ 

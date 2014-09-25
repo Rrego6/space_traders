@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
@@ -9,22 +10,63 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/WelcomeScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlanetDrawScreenController">
-   <children>
+
+    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <center>
-            <Canvas fx:id="canvas" height="320.0" onMouseClicked="#handleMouseClick" rotate="-9.5" width="320.0" BorderPane.alignment="CENTER" />
+            <Canvas fx:id="canvas" height="320.0" onMouseClicked="#handleMouseClick" width="320.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin></Canvas>
          </center>
          <left>
             <VBox prefHeight="400.0" prefWidth="221.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="192.0" text="View Map">
+                  <Label id="planetInfoLabel" fx:id="planetInfoLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="221.0" text="Planet Information" />
+                  <Label id="nameLabel" fx:id="nameLabel" styleClass="planetInfoLabel" text="Name: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
                      <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </VBox.margin>
-                  </Button>
+                        <Insets left="15.0" />
+                     </VBox.margin></Label>
+                  <Label id="locationLabel" fx:id="locationLabel" styleClass="planetInfoLabel" text="Location: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin></Label>
+                  <Label id="techLabel" fx:id="techLabel" styleClass="planetInfoLabel" text="Tech Level: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin></Label>
+                  <Label id="resourcesLabel" fx:id="resourcesLabel" styleClass="planetInfoLabel" text="Resources: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
          </left>
+         <top>
+            <Label id="titleUMap" alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="780.0" text="Universe Map" BorderPane.alignment="CENTER" />
+         </top>
       </BorderPane>
+      <Button id="cancelBtn" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#onCancelAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button id="acceptBtn" layoutX="488.0" layoutY="444.0" mnemonicParsing="false" onAction="#onAcceptAction" prefHeight="42.0" prefWidth="115.0" text="Accept" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

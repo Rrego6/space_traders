@@ -45,7 +45,17 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     
     @FXML
     private Canvas canvas;
-    
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private Label locationLabel;
+    @FXML
+    private Label techLabel;
+    @FXML
+    private Label resourcesLabel;
+    @FXML
+    private Label planetInfoLabel;
+         
     private Universe universe;
     private GoodsList goodslist;
     
@@ -61,13 +71,55 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     }
     
     @FXML
+    private void onAcceptAction(ActionEvent event) {
+        JOptionPane.showMessageDialog( null, "Planet Selected" );
+    }
+    
+    @FXML
+    private void onCancelAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/CharacterCreationScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+            CharacterCreationScreenController controller = (CharacterCreationScreenController) fxmlLoader.getController();
+
+            Scene scene = getScene();
+            scene.setRoot(root);
+            controller.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
     private void handleMouseClick(MouseEvent event) {
         System.out.print(event.getX());
         System.out.println( " " + event.getY());
+        
+        nameLabel.setText("Name: ");
+        locationLabel.setText("Location: ");
+        techLabel.setText("Tech Level: ");
+        resourcesLabel.setText("Resources: ");
+        planetInfoLabel.setText("Planet Information");
         for( SolarSystem s : universe.getList() ) {
             if (s.isHit(event.getX(), event.getY())) {
-                System.out.println("Planet clicked: " + s.getName());
-                JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
+                nameLabel.setText("Name: " + s.getName());
+                locationLabel.setText("Location: " + s.getLocation());
+                techLabel.setText("Tech Level: " + s.getTechLevel());
+                resourcesLabel.setText("Resources: " + s.getResource());
+                planetInfoLabel.setText("Planet Information");
+                GraphicsContext g2d = canvas.getGraphicsContext2D();
+                g2d.setFill(Color.RED);
+                g2d.fillOval(s.getX(),s.getY(), 7,7);
+               // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
+            }
+            else {
+                GraphicsContext g2d = canvas.getGraphicsContext2D();
+                g2d.setFill(Color.WHITE);
+                g2d.fillOval(s.getX(),s.getY(), 7,7);
+               
             }
         }
     }
@@ -82,7 +134,12 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
         goodslist.addTradeGood(CommonHelper.readAllGoods());
         System.out.println(goodslist.toString());
         
-      //  System.out.println(CommonHelper.readAllGoods());
+        GraphicsContext g2d = canvas.getGraphicsContext2D();
+        g2d.setFill(Color.WHITE);
+        for( SolarSystem s : universe.getList() )
+        {
+            g2d.fillOval(s.getX(),s.getY(), 7,7);
+        }
     }    
     
 }
