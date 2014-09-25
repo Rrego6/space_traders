@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import model.Planet;
+import model.Player;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -23,7 +24,9 @@ import model.TradeGood;
  */
 public class CommonHelper {
 
-    public static Random rand;
+    private static Random rand;
+    private static Player player;
+
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
     */ 

@@ -210,7 +210,7 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
                 Scene scene = getScene();
                 scene.setRoot( root );
                 controller.setScene( scene );
-               
+                               
             }
             catch( Exception e )
             {
