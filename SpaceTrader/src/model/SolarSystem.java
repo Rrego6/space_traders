@@ -7,28 +7,32 @@
 package model;
 
 import helper.CommonHelper;
+import helper.GameData;
+import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Random;
+
+
+/*FIXME: FIX X AND Y COORDINATES*/
 
 /**
- *
+ * The X and Y coordinates of this class correspond to the top left corner.
+ * 
  * @author Ivan
  */
 public class SolarSystem {
     
-    private Random numGen = new Random();
+    private static ArrayList<Point> points = new ArrayList<>();
+    
     private String name;
-    private int x;
-    private int y;
+    private Point coord;
     private int techLevel;
     private int resource;
     
     private ArrayList<Planet> planets;
     
-    public SolarSystem(String name, int x, int y, int techLevel, int resource) {
+    public SolarSystem(String name, Point coord, int techLevel, int resource) {
         this.name = name;
-        this.x = x;
-        this.y = y;
+        this.coord = coord;
         this.techLevel = techLevel;
         this.resource = resource;
     }
@@ -36,13 +40,44 @@ public class SolarSystem {
     public SolarSystem(String name) {
         this(
                 name,
-                CommonHelper.randInt(30)*10,
-                CommonHelper.randInt(30)*10,
+                genPoint(),
                 CommonHelper.randInt(8),
                 CommonHelper.randInt(13)
         );
         planets = new ArrayList<>();
         planets.add( new Planet( name ) );
+    }
+    
+    
+    /**
+     * Generate unique point
+     * @return a unique Point
+     */
+    private static Point genPoint() {
+        Point genPoint = new Point( CommonHelper.randInt( GameData.GAME_WIDTH ),
+                CommonHelper.randInt( GameData.GAME_HEIGHT ));
+
+        while( isNearOtherPoints( genPoint ) ){
+            genPoint = new Point( CommonHelper.randInt( GameData.GAME_WIDTH ),
+                CommonHelper.randInt( GameData.GAME_HEIGHT ));
+        }
+
+        return genPoint;
+    }
+    
+    /**
+     * Checks if currentPoint is near any other planets
+     * @param genPoint
+     * @return 
+     */
+    private static boolean isNearOtherPoints(Point genPoint)
+    {
+        for(Point p : points) {
+            if( p.distance(genPoint) < GameData.PLANET_SIZE + 2 ) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /*@param:name of the soalrsystem, String.
@@ -51,18 +86,15 @@ public class SolarSystem {
     public void setName(String name) {
         this.name = name;
     }
-    /*@param:x value, int.
-    @return: none,sets the x variable.
-    */    
-    public void setX(int x) {
-        this.x = x;
-    }
-    /*@param:y value, int.
-    @return: none,sets the y variable.
-    */     
-    public void setY(int y) {
-        this.y = y;
-    }
+
+    public void setPoint(Point p) { this.coord = p; }   
+    public Point getPoint() { return coord; }
+    public int getX() { return coord.x; }
+    public int getY() { return coord.y; };
+    public Point getCenterPoint() {
+        return new Point( (int) (coord.x + GameData.PLANET_SIZE / Math.sqrt(2)),
+            (int) (coord.y + GameData.PLANET_SIZE / Math.sqrt(2)) ); }
+            
     /*@param:techLevel value, int.
     @return: none,sets the techLevel variable.
     */     
@@ -105,36 +137,21 @@ public class SolarSystem {
     public int getResource() { //getter method
         return resource;
     }
-    /*@param:none.
-    @return: x variable value.
-    */ 
-    public int getX() { //getter method
-        return x;
-    }
-    /*@param:none.
-    @return: y variable value.
-    */ 
-    public int getY(){ //getter method
-        return y;
-    }
     
     public String getLocation(){
-        return "(" + x + ", " + y + ")";
+        return "(" + coord.x + ", " + coord.y + ")";
     }
     /*@param:double of px and py.
     @return: boolean,if the planet is hited.
     */ 
     public boolean isHit(double px, double py) {
-        if (px >= x && px <= x + 5)
-            if (py >= y && py <= y + 5)
-                return true;
-        return false;
+        return coord.distance(new Point((int)px, (int)py)) < GameData.PLANET_SIZE;
     }
     
     @Override
     public String toString()
     {
-        return "{ Name: " + name + ", Location: (" + x + "," + y +
+        return "{ Name: " + name + ", Location: (" + coord.x + "," + coord.y +
                 "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }

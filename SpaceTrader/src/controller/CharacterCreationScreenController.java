@@ -6,20 +6,20 @@
 
 package controller;
 
-import helper.CommonHelper;
+import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import model.Player;
-import model.SceneNavigatorController;
 import model.Universe;
 
 /**
@@ -27,7 +27,7 @@ import model.Universe;
  *
  * @author Raoul
  */
-public class CharacterCreationScreenController extends SceneNavigatorController {
+public class CharacterCreationScreenController implements Initializable {
     
     @FXML
     private TextField nameField;
@@ -172,11 +172,9 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
         try {
             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
             Parent root = fxmlLoader.load();
-            WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
-
-            Scene scene = getScene();
+            Scene scene = GameData.getScene();
             scene.setRoot(root);
-            controller.setScene(scene);
+            GameData.setScene(scene);
         }
         catch( IOException e)
         {
@@ -204,12 +202,10 @@ public class CharacterCreationScreenController extends SceneNavigatorController 
             try {
                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
                 Parent root = fxmlLoader.load(); 
-           
-                PlanetDrawScreenController controller = (PlanetDrawScreenController) fxmlLoader.getController();
-                
-                Scene scene = getScene();
+                           
+                Scene scene = GameData.getScene();
                 scene.setRoot( root );
-                controller.setScene( scene );
+                GameData.setScene( scene );
                                
             }
             catch( Exception e )

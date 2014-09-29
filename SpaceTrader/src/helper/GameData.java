@@ -16,6 +16,11 @@ import model.Universe;
  * @author Raoul
  */
 public class GameData {
+    public static final int GAME_WIDTH = 300;
+    public static final int GAME_HEIGHT = 300;
+    
+    public static final int PLANET_SIZE = 8;
+    
     private static Player player;
     private static Scene scene;
     private static Universe universe;

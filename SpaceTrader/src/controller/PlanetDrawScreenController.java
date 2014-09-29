@@ -5,35 +5,28 @@
  */
 package controller;
 
+import helper.CommonHelper;
+import helper.GameData;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.scene.*;
-import javafx.scene.paint.*;
-import javafx.scene.canvas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import helper.CommonHelper;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.paint.*;
 import javax.swing.JOptionPane;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import model.Player;
-import model.SceneNavigatorController;
-import model.SolarSystem;
-import model.Universe;
-import model.Planet;
 import model.Inventory;
+import model.Planet;
+import model.SolarSystem;
 import model.TradeGood;
+import model.Universe;
 
 
 
@@ -41,7 +34,7 @@ import model.TradeGood;
  *
  * @author sarah
  */
-public class PlanetDrawScreenController extends SceneNavigatorController {
+public class PlanetDrawScreenController implements Initializable {
     
     @FXML
     private Canvas canvas;
@@ -66,7 +59,7 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
         g2d.setFill(Color.WHITE);
         for( SolarSystem s : universe.getList() )
         {
-            g2d.fillOval(s.getX(),s.getY(), 7,7);
+            g2d.fillOval(s.getX(),s.getY(), GameData.GAME_WIDTH, GameData.GAME_HEIGHT );
         }
     }
     
@@ -80,11 +73,10 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
         try {
             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/CharacterCreationScreen.fxml" ));
             Parent root = fxmlLoader.load();
-            CharacterCreationScreenController controller = (CharacterCreationScreenController) fxmlLoader.getController();
-
-            Scene scene = getScene();
+            
+            Scene scene = GameData.getScene();
             scene.setRoot(root);
-            controller.setScene(scene);
+            GameData.setScene(scene);
         }
         
         catch( IOException e)
@@ -127,7 +119,7 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         universe = new Universe("Trader Universe");
-        universe.addSolarSystem(CommonHelper.getPlanets());
+        universe.addSolarSystem(CommonHelper.generatePlanets());
         System.out.println( universe.toString() );
         inventory = new Inventory("First list");
         System.out.println("new list created");
