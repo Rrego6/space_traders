@@ -44,7 +44,10 @@ public class TradeGood {
         this.MTL = MTL;
         this.MTH = MTH;   
     }
-    
+    public int getCost() {
+        int cost = (basePrice + (IPL * (TTP - MTLP)) + VAR); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        return cost;
+    }
     public String getName() {
         return this.name;
     }
