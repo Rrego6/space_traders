@@ -53,17 +53,6 @@ public class PlanetDrawScreenController implements Initializable {
     private Inventory inventory;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-    
-        GraphicsContext g2d = canvas.getGraphicsContext2D();
-        g2d.setFill(Color.WHITE);
-        for( SolarSystem s : universe.getList() )
-        {
-            g2d.fillOval(s.getX(),s.getY(), GameData.GAME_WIDTH, GameData.GAME_HEIGHT );
-        }
-    }
-    
-    @FXML
     private void onAcceptAction(ActionEvent event) {
         JOptionPane.showMessageDialog( null, "Planet Selected" );
     }
@@ -104,13 +93,13 @@ public class PlanetDrawScreenController implements Initializable {
                 planetInfoLabel.setText("Planet Information");
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);
-                g2d.fillOval(s.getX(),s.getY(), 7,7);
+                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
                // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
             }
             else {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.WHITE);
-                g2d.fillOval(s.getX(),s.getY(), 7,7);
+                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
                
             }
         }
@@ -121,6 +110,7 @@ public class PlanetDrawScreenController implements Initializable {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.generatePlanets());
         System.out.println( universe.toString() );
+
         inventory = new Inventory("First list");
         System.out.println("new list created");
         inventory.addTradeGood(CommonHelper.readAllGoods());
@@ -130,7 +120,7 @@ public class PlanetDrawScreenController implements Initializable {
         g2d.setFill(Color.WHITE);
         for( SolarSystem s : universe.getList() )
         {
-            g2d.fillOval(s.getX(),s.getY(), 7,7);
+            g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
         }
     }    
     
