@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 import model.Inventory;
 import model.Planet;
 import model.SolarSystem;
-import model.TradeGood;
+import model.OriginalTradeGood;
 import model.Universe;
 
 

@@ -6,71 +6,41 @@
 
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
- * @author Sarah
+ * @author tonyrafi
  */
-
-public class TradeGood {
-    private String name;
-    private int MTLP;
-    private int MTLU;
-    private int TTP;
-    private int basePrice;
-    private int IPL;
-    private int VAR;
-    private String IE;
-    private String CR;
-    private String ER;
-    private int MTL;
-    private int MTH;
+public enum TradeGood {
+    WATER(0,0,2,30,3,4),
+    FURS(0,0,0,250,10,10),
+    FOOD(1,0,1,100,5,5),
+    ORE(2,2,3,350,20,10),
+    GAMES(3,1,6,250,-10,5),
+    FIREARMS(3,1,5,1250,-75,100),
+    MEDICINE(4,1,6,650,-20,10),
+    MACHINES(4,3,5,900,-30,5),
+    NARCOTICS(5,0,5,3500,-12,150),
+    ROBOTS(6,4,7,5000,-150,100);
     
-    private int quantity;
+    private int mtlp;
+    private int mtlu;
+    private int ttp;
+    private int baseprice;
+    private int ipl;
+    private int var;
+   
     
-    public TradeGood(String name, int MTLP, int MTLU, int TTP, int basePrice, int IPL, int VAR, String IE, String CR, String ER, int MTL, int MTH){
-        this.name = name;
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
-        this.basePrice = basePrice;
-        this.IPL = IPL;
-        this.VAR = VAR;
-        this.IE = IE;
-        this.CR = CR;
-        this.ER = ER;
-        this.MTL = MTL;
-        this.MTH = MTH;   
+    private TradeGood (int mtlp, int mtlu, int ttp, int basePrice, int ipl, int var) {
+        this.mtlp = mtlp;
+        this.mtlu = mtlu;
+        this.ttp = ttp;
+        this.baseprice = basePrice;
+        this.ipl = ipl;
+        this.var = var;
     }
+    
     public int getCost() {
-        int cost = (basePrice + (IPL * (TTP - MTLP)) + VAR); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
-    }
-    public String getName() {
-        return this.name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public int getQuantity() {
-        return this.quantity;
-    }
-    
-    public void add(int a) {
-        this.quantity += a;
-    }
-    
-    public void remove(int a) {
-        this.quantity -= a;
-    }
-    
-    @Override
-    public String toString()
-    {
-        return "{ Name: " + name + " MTLP: " + MTLP + " MTLU: " + MTLU + " TTP: " + TTP + " basePrice: " + basePrice + " IPL: " + IPL + " VAR: " + VAR + " IE: " + IE + " CR: " + CR +  " ER: "+ ER + " MTL: " + MTL +  " MTH: " + MTH + " }";
     }
 }
