@@ -24,7 +24,9 @@ public class SolarSystem {
     private static ArrayList<Point> points = new ArrayList<>();
     
     private String name;
-    private Point coord;
+    private Point coordTopLeft;
+    private Point coordCenter;
+
     private int techLevel;
     private int resource;
     
@@ -32,9 +34,13 @@ public class SolarSystem {
     
     public SolarSystem(String name, Point coord, int techLevel, int resource) {
         this.name = name;
-        this.coord = coord;
+        this.coordTopLeft = coord;
         this.techLevel = techLevel;
         this.resource = resource;
+        this.coordCenter = new Point(
+                (int)(coord.getX() + (.5) * GameData.PLANET_DIAMETER),
+                (int)(coord.getY() + (.5) * GameData.PLANET_DIAMETER)
+        );
     }
     
     public SolarSystem(String name) {
@@ -62,6 +68,7 @@ public class SolarSystem {
                 CommonHelper.randInt( GameData.GAME_HEIGHT ));
         }
 
+        points.add(genPoint);
         return genPoint;
     }
     
@@ -73,27 +80,27 @@ public class SolarSystem {
     private static boolean isNearOtherPoints(Point genPoint)
     {
         for(Point p : points) {
-            if( p.distance(genPoint) < GameData.PLANET_SIZE + 2 ) {
+            if( p.distance(genPoint) < GameData.PLANET_DIAMETER + 2 ) {
                 return true;
             }
         }
         return false;
     }
-    
-    /*@param:name of the soalrsystem, String.
-    @return: none,sets the name variable.
+
+    /**
+     * @param name of the soalarsystem, String.
     */
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPoint(Point p) { this.coord = p; }   
-    public Point getPoint() { return coord; }
-    public int getX() { return coord.x; }
-    public int getY() { return coord.y; };
+    public void setPoint(Point p) { this.coordTopLeft = p; }   
+    public Point getPoint() { return coordTopLeft; }
+    public int getX() { return coordTopLeft.x; }
+    public int getY() { return coordTopLeft.y; };
     public Point getCenterPoint() {
-        return new Point( (int) (coord.x + GameData.PLANET_SIZE / Math.sqrt(2)),
-            (int) (coord.y + GameData.PLANET_SIZE / Math.sqrt(2)) ); }
+        return new Point( (int) (coordTopLeft.x + GameData.PLANET_DIAMETER / Math.sqrt(2)),
+            (int) (coordTopLeft.y + GameData.PLANET_DIAMETER / Math.sqrt(2)) ); }
             
     /*@param:techLevel value, int.
     @return: none,sets the techLevel variable.
@@ -139,19 +146,20 @@ public class SolarSystem {
     }
     
     public String getLocation(){
-        return "(" + coord.x + ", " + coord.y + ")";
+        return "(" + coordTopLeft.x + ", " + coordTopLeft.y + ")";
     }
-    /*@param:double of px and py.
-    @return: boolean,if the planet is hited.
+    /**
+     * @param:double of px and py.
+     * @return: boolean,if the planet is hit.
     */ 
     public boolean isHit(double px, double py) {
-        return coord.distance(new Point((int)px, (int)py)) < GameData.PLANET_SIZE;
+        return coordCenter.distance(new Point((int)px, (int)py)) < GameData.PLANET_DIAMETER/2;
     }
     
     @Override
     public String toString()
     {
-        return "{ Name: " + name + ", Location: (" + coord.x + "," + coord.y +
+        return "{ Name: " + name + ", Location: (" + coordTopLeft.x + "," + coordTopLeft.y +
                 "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }
