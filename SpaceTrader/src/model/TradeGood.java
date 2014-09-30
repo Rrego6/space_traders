@@ -39,6 +39,10 @@ public enum TradeGood {
         this.var = var;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public int getCost() {
         int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
