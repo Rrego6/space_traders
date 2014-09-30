@@ -44,7 +44,10 @@ public class TradeGood {
         this.MTL = MTL;
         this.MTH = MTH;   
     }
-    
+    public int getCost() {
+        int cost = (basePrice * quantity * MTL);
+        return cost;
+    }
     public String getName() {
         return this.name;
     }
