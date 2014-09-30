@@ -49,12 +49,30 @@ public class PlanetDrawScreenController implements Initializable {
     @FXML
     private Label planetInfoLabel;
          
+    private SolarSystem solarSystem;
     private Universe universe;
     private Inventory inventory;
     
     @FXML
     private void onAcceptAction(ActionEvent event) {
-        JOptionPane.showMessageDialog( null, "Planet Selected" );
+        GameData.getPlayer().setCurrentLocation(solarSystem);
+        if (GameData.getPlayer().getCurrentLocation() == null) {
+            JOptionPane.showMessageDialog(null, "Select a starting planet first.");
+        } else {
+            try {
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Sample_Layout.fxml" ));
+                Parent root = fxmlLoader.load();
+            
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+        
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
     
     @FXML
@@ -94,6 +112,7 @@ public class PlanetDrawScreenController implements Initializable {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
+                solarSystem = s;
                // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
             }
             else {
