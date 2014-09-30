@@ -23,9 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.*;
 import javax.swing.JOptionPane;
 import model.Inventory;
-import model.Planet;
 import model.SolarSystem;
-import model.TradeGood;
 import model.Universe;
 
 
