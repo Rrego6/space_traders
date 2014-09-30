@@ -17,6 +17,8 @@ public class Player {
     private int traderSP;
     private int engineerSP;
     private int investorSP;
+    private int credits;
+    private Ship ship;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -34,6 +36,7 @@ public class Player {
         this.traderSP = traderSP;
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
+        credits = 1000;
     }
     
     @Override
@@ -115,4 +118,19 @@ public class Player {
         this.investorSP = no;
     }
     
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+    
+    public int getCredits() {
+        return credits;
+    }
+    
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
+    
+    public Ship getShip() {
+        return ship;
+    }
 }
