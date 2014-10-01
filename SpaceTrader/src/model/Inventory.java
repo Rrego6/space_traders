@@ -30,7 +30,7 @@ public class Inventory{
     private int numRobots;
     
     public Inventory(int totalSpace) {
-        numWater = 20;
+        numWater = 0;
         numFurs = 0;
         numFood = 0;
         numOre = 0;
@@ -43,19 +43,6 @@ public class Inventory{
         this.totalSpace = totalSpace;
     }
     
-    public Inventory(String name) {
-        this.name = name;
-        this.numGoods = 0;
-        tradeGoods = new ArrayList<TradeGood>();
-    }
-    
-    public Inventory(String name, int totalSpace) {
-        this.name = name;
-        this.numGoods = 0;
-        this.totalSpace = totalSpace;
-        tradeGoods = new ArrayList<TradeGood>();
-    }
-    
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
@@ -65,6 +52,14 @@ public class Inventory{
     */ 
     public String getName() {  //getter method.
         return this.name;
+    }
+    
+    public void setTotalSpace(int totalSpace) {
+        this.totalSpace = totalSpace;
+    }
+    
+    public int getTotalSpace() {
+        return totalSpace;
     }
     
     public ArrayList<TradeGood> getList() {  //getter method.

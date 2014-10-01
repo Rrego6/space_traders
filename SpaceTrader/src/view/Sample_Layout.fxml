@@ -13,30 +13,30 @@
       <Button layoutX="60.0" layoutY="346.0" mnemonicParsing="false" onAction="#onCancelAction" text="Cancel" />
       <VBox fx:id="marketplaceInventory" alignment="TOP_CENTER" layoutX="430.0" layoutY="47.0" prefHeight="172.0" prefWidth="172.0">
          <children>
-            <Label fx:id="mWaterLabel" onContextMenuRequested="#removeBuyWater" onMouseClicked="#buyWater" text="Water" />
-            <Label fx:id="mFursLabel" onContextMenuRequested="#removeBuyFurs" onMouseClicked="#buyFurs" text="Furs" />
-            <Label fx:id="mFoodLabel" onContextMenuRequested="#removeBuyFood" onMouseClicked="#buyFood" text="Food" />
-            <Label fx:id="mOreLabel" onContextMenuRequested="#removeBuyOre" onMouseClicked="#buyOre" text="Ore" />
-            <Label fx:id="mGamesLabel" onContextMenuRequested="#removeBuyGames" onMouseClicked="#buyGames" text="Games" />
-            <Label fx:id="mFirearmsLabel" onContextMenuRequested="#removeBuyFirearms" onMouseClicked="#buyFirearms" text="Firearms" />
-            <Label fx:id="mMedicineLabel" onContextMenuRequested="#removeBuyMedicine" onMouseClicked="#buyMedicine" text="Medicine" />
-            <Label fx:id="mMachinesLabel" onContextMenuRequested="#removeBuyMachines" onMouseClicked="#buyMachines" text="Machines" />
-            <Label fx:id="mNarcoticsLabel" onContextMenuRequested="#removeBuyNarcotics" onMouseClicked="#buyNarcotics" text="Narcotics" />
-            <Label fx:id="mRobotsLabel" onContextMenuRequested="#removeBuyRobots" onMouseClicked="#buyRobots" text="Robots" />
+            <Label fx:id="mWaterLabel" onMouseClicked="#buyWater" text="Water" />
+            <Label fx:id="mFursLabel" onMouseClicked="#buyFurs" text="Furs" />
+            <Label fx:id="mFoodLabel" onMouseClicked="#buyFood" text="Food" />
+            <Label fx:id="mOreLabel" onMouseClicked="#buyOre" text="Ore" />
+            <Label fx:id="mGamesLabel" onMouseClicked="#buyGames" text="Games" />
+            <Label fx:id="mFirearmsLabel" onMouseClicked="#buyFirearms" text="Firearms" />
+            <Label fx:id="mMedicineLabel" onMouseClicked="#buyMedicine" text="Medicine" />
+            <Label fx:id="mMachinesLabel" onMouseClicked="#buyMachines" text="Machines" />
+            <Label fx:id="mNarcoticsLabel" onMouseClicked="#buyNarcotics" text="Narcotics" />
+            <Label fx:id="mRobotsLabel" onMouseClicked="#buyRobots" text="Robots" />
          </children>
       </VBox>
       <VBox fx:id="playerInventory" alignment="TOP_CENTER" layoutY="47.0" prefHeight="172.0" prefWidth="172.0">
          <children>
             <Label fx:id="pWaterLabel" onMouseClicked="#sellWater" text="Units of Water" />
-            <Label fx:id="pFursLabel" onContextMenuRequested="#removeSellFurs" onMouseClicked="#sellFurs" text="Units of Furs" />
-            <Label fx:id="pFoodLabel" onContextMenuRequested="#removeSellFood" onMouseClicked="#sellFood" text="Units of Food" />
-            <Label fx:id="pOreLabel" onContextMenuRequested="#removeSellOre" onMouseClicked="#sellOre" text="Units of Ore" />
-            <Label fx:id="pGamesLabel" onContextMenuRequested="#removeSellGames" onMouseClicked="#sellGames" text="Units of Games" />
-            <Label fx:id="pFirearmsLabel" onContextMenuRequested="#removeSellFirearms" onMouseClicked="#sellFirearms" text="Units of Firearms" />
-            <Label fx:id="pMedicineLabel" onContextMenuRequested="#removeSellMedicine" onMouseClicked="#sellMedicine" text="Units of Medicine" />
-            <Label fx:id="pMachinesLabel" onContextMenuRequested="#removeSellMachines" onMouseClicked="#sellMachines" text="Units of Machines" />
-            <Label fx:id="pNarcoticsLabel" onContextMenuRequested="#removeSellNarcotics" onMouseClicked="#sellNarcotics" text="Units of Narcotics" />
-            <Label fx:id="pRobotsLabel" onContextMenuRequested="#removeSellRobots" onMouseClicked="#sellRobots" text="Units of Robots" />
+            <Label fx:id="pFursLabel" onMouseClicked="#sellFurs" text="Units of Furs" />
+            <Label fx:id="pFoodLabel" onMouseClicked="#sellFood" text="Units of Food" />
+            <Label fx:id="pOreLabel" onMouseClicked="#sellOre" text="Units of Ore" />
+            <Label fx:id="pGamesLabel" onMouseClicked="#sellGames" text="Units of Games" />
+            <Label fx:id="pFirearmsLabel" onMouseClicked="#sellFirearms" text="Units of Firearms" />
+            <Label fx:id="pMedicineLabel" onMouseClicked="#sellMedicine" text="Units of Medicine" />
+            <Label fx:id="pMachinesLabel" onMouseClicked="#sellMachines" text="Units of Machines" />
+            <Label fx:id="pNarcoticsLabel" onMouseClicked="#sellNarcotics" text="Units of Narcotics" />
+            <Label fx:id="pRobotsLabel" onMouseClicked="#sellRobots" text="Units of Robots" />
          </children>
       </VBox>
       <Label fx:id="costLabel" layoutX="185.0" layoutY="274.0" text="Cost of Transaction:" />
