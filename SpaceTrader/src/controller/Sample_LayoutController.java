@@ -7,13 +7,20 @@
 package controller;
 
 import helper.GameData;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -76,7 +83,7 @@ public class Sample_LayoutController implements Initializable {
     @FXML
     private Label mRobotsLabel;
     @FXML
-    private ListView tradeList;
+    private ListView<String> tradeList;
     private ObservableList goods = FXCollections.observableArrayList();
     private int numWater;
     // int numBuy/SellWater for popup asking how much you want to trade
@@ -100,6 +107,7 @@ public class Sample_LayoutController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         credits = GameData.getPlayer().getCredits();
         playerCredits.setText(playerCredits.getText() + credits);
+        costLabel.setText(costLabel.getText() + cost);
         numWater = GameData.getPlayer().getShip().getInventory().getNumWater();
         numFurs = GameData.getPlayer().getShip().getInventory().getNumFurs();
         numFood = GameData.getPlayer().getShip().getInventory().getNumFood();
@@ -110,6 +118,12 @@ public class Sample_LayoutController implements Initializable {
         numMachines = GameData.getPlayer().getShip().getInventory().getNumMachines();
         numNarcotics = GameData.getPlayer().getShip().getInventory().getNumNarcotics();
         numRobots = GameData.getPlayer().getShip().getInventory().getNumRobots();
+        tradeList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                goods.remove(tradeList.getSelectionModel().getSelectedItem());
+            }
+        });
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.WATER.getMTLU()) {
             pWaterLabel.disableProperty();
@@ -130,30 +144,31 @@ public class Sample_LayoutController implements Initializable {
             goods.add("Water (Sell)");
             tradeList.setItems(goods);
             numWater--;
-        }
-        if (goods.contains("Water (Sell)")) {
-            goods.remove("Water (Sell)");
-            numWater++;
+            pWaterLabel.setText(numWater + " Units of Water");
+            cost -= TradeGood.WATER.getCost();
+            costLabel.setText("Cost of Transaction: " + cost);
+            
+            //tradeList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            //    @Override
+            //    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+            //    
+            //    }
+            //});
         }
     }
     
     @FXML
     private void buyWater(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeBuyWater(MouseEvent event) {
-        
+        if (credits > 0) {
+            goods.add("Water (Buy)");
+            tradeList.setItems(goods);
+            cost += TradeGood.WATER.getCost();
+            costLabel.setText("Cost of Transaction: " + cost);
+        }
     }
     
     @FXML
     private void sellFurs(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellFurs(MouseEvent event) {
         
     }
     
@@ -163,17 +178,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyFurs(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellFood(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellFood(MouseEvent event) {
         
     }
     
@@ -183,17 +188,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyFood(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellOre(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellOre(MouseEvent event) {
         
     }
     
@@ -203,17 +198,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyOre(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellGames(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellGames(MouseEvent event) {
         
     }
     
@@ -223,17 +208,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyGames(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellFirearms(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellFirearms(MouseEvent event) {
         
     }
     
@@ -243,17 +218,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyFirearms(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellMedicine(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellMedicine(MouseEvent event) {
         
     }
     
@@ -263,17 +228,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyMedicine(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellMachines(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellMachines(MouseEvent event) {
         
     }
     
@@ -283,17 +238,7 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyMachines(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellNarcotics(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeSellNarcotics(MouseEvent event) {
         
     }
     
@@ -303,27 +248,12 @@ public class Sample_LayoutController implements Initializable {
     }
     
     @FXML
-    private void removeBuyNarcotics(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void sellRobots(MouseEvent event) {
         
     }
     
     @FXML
-    private void removeSellRobots(MouseEvent event) {
-        
-    }
-    
-    @FXML
     private void buyRobots(MouseEvent event) {
-        
-    }
-    
-    @FXML
-    private void removeBuyRobots(MouseEvent event) {
         
     }
     
@@ -334,7 +264,21 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void onCancelAction(MouseEvent event) {
-        
+        if (goods.isEmpty()) {
+            try {
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                Parent root = fxmlLoader.load();
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+        } else {
+            
+        }
     }
     
     private void update() {
