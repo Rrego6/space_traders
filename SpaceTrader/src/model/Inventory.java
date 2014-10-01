@@ -54,8 +54,8 @@ public class Inventory{
         return this.name;
     }
     
-    public void setTotalSpace(int totalSpace) {
-        this.totalSpace = totalSpace;
+    public void setTotalSpace() {
+        totalSpace = totalSpace - numWater - numFurs - numFood - numOre - numGames - numFirearms - numMedicine - numMachines - numNarcotics - numRobots;
     }
     
     public int getTotalSpace() {
