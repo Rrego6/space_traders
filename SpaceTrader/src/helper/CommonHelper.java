@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import model.SolarSystem;
-import model.TradeGood;
+import model.OriginalTradeGood;
 
 
 /**
@@ -54,9 +54,9 @@ public class CommonHelper {
     /*@param:none.
     @return: list of the goods and their traits
     */ 
-    public static ArrayList<TradeGood> readAllGoods()
+    public static ArrayList<OriginalTradeGood> readAllGoods()
     {
-        ArrayList<TradeGood> goodsList = new ArrayList<>();
+        ArrayList<OriginalTradeGood> goodsList = new ArrayList<>();
         String name;
         int MTLP;
         int MTLU;
@@ -90,7 +90,7 @@ public class CommonHelper {
                 MTL = Integer.parseInt(tokens[10]);
                 MTH = Integer.parseInt(tokens[11]);
                 
-                goodsList.add(new TradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
+                goodsList.add(new OriginalTradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
                 counter++;
                 
             }

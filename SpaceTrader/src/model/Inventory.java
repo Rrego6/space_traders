@@ -15,39 +15,39 @@ import java.util.List;
  */
 public class Inventory{ 
     private String name;
-    private ArrayList<TradeGood> tradeGoods;
+    private ArrayList<OriginalTradeGood> tradeGoods;
     private int numGoods;
     private int totalSpace;
     
     public Inventory(String name) {
         this.name = name;
         this.numGoods = 0;
-        tradeGoods = new ArrayList<TradeGood>();
+        tradeGoods = new ArrayList<OriginalTradeGood>();
     }
     
     public Inventory(String name, int totalSpace) {
         this.name = name;
         this.numGoods = 0;
         this.totalSpace = totalSpace;
-        tradeGoods = new ArrayList<TradeGood>();
+        tradeGoods = new ArrayList<OriginalTradeGood>();
     }
     
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
     
-    public void addTradeGood( List<TradeGood> list ) {
+    public void addTradeGood( List<OriginalTradeGood> list ) {
         if (!this.isFull()) {
-            for (TradeGood a : list) {
+            for (OriginalTradeGood a : list) {
                 this.addTradeGood(a);
             }
         }
     }
         
-    public void addTradeGood(TradeGood a) {
+    public void addTradeGood(OriginalTradeGood a) {
         if (!this.isFull()) {
             boolean itemFound = false;
-            for (TradeGood good : tradeGoods) {
+            for (OriginalTradeGood good : tradeGoods) {
                 if (good.getName().equals(a.getName())) {
                     itemFound = true;
                     good.add(1);
@@ -61,9 +61,9 @@ public class Inventory{
         }
     }
    
-    public void removeTradeGood(TradeGood a) {
+    public void removeTradeGood(OriginalTradeGood a) {
         boolean itemFound = false;
-        for (TradeGood good : tradeGoods) {
+        for (OriginalTradeGood good : tradeGoods) {
             if (good.getName().equals(a.getName())) {
                 if (good.getQuantity() > 0) {
                     itemFound = true;
@@ -86,7 +86,7 @@ public class Inventory{
         return this.name;
     }
     
-    public ArrayList<TradeGood> getList() {  //getter method.
+    public ArrayList<OriginalTradeGood> getList() {  //getter method.
         return this.tradeGoods;
     }
     
@@ -106,7 +106,7 @@ public class Inventory{
     public String toString()
     {
         String string = new String();
-        for( TradeGood tradeGood : tradeGoods ) {
+        for( OriginalTradeGood tradeGood : tradeGoods ) {
             string += (tradeGood.toString() + "\n" );
         }
         return "Inventory: " + name + " " + string;
