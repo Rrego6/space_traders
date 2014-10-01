@@ -27,7 +27,7 @@
       </VBox>
       <VBox fx:id="playerInventory" alignment="TOP_CENTER" layoutY="47.0" prefHeight="172.0" prefWidth="172.0">
          <children>
-            <Label fx:id="pWaterLabel" onContextMenuRequested="#removeSellWater" onMouseClicked="#sellWater" text="Water" />
+            <Label fx:id="pWaterLabel" onMouseClicked="#sellWater" text="Water" />
             <Label fx:id="pFursLabel" onContextMenuRequested="#removeSellFurs" onMouseClicked="#sellFurs" text="Furs" />
             <Label fx:id="pFoodLabel" onContextMenuRequested="#removeSellFood" onMouseClicked="#sellFood" text="Food" />
             <Label fx:id="pOreLabel" onContextMenuRequested="#removeSellOre" onMouseClicked="#sellOre" text="Ore" />
@@ -39,7 +39,7 @@
             <Label fx:id="pRobotsLabel" onContextMenuRequested="#removeSellRobots" onMouseClicked="#sellRobots" text="Robots" />
          </children>
       </VBox>
-      <Label fx:id="costLabel" layoutX="202.0" layoutY="274.0" text="Cost of Transaction:" />
+      <Label fx:id="costLabel" layoutX="185.0" layoutY="274.0" text="Cost of Transaction:" />
       <Label layoutX="20.0" layoutY="14.0" text="Your Cargo Hold">
          <font>
             <Font size="18.0" />
@@ -50,20 +50,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TabPane layoutX="202.0" layoutY="28.0" prefHeight="228.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Buying">
-               <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </content>
-            </Tab>
-          <Tab text="Selling">
-               <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
       <Label fx:id="playerCredits" layoutX="48.0" layoutY="233.0" text="Credits: " />
+      <ListView fx:id="tradeList" layoutX="201.0" layoutY="12.0" prefHeight="235.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

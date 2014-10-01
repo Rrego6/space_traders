@@ -18,6 +18,30 @@ public class Inventory{
     private ArrayList<TradeGood> tradeGoods;
     private int numGoods;
     private int totalSpace;
+    private int numWater;
+    private int numFurs;
+    private int numFood;
+    private int numOre;
+    private int numGames;
+    private int numFirearms;
+    private int numMedicine;
+    private int numMachines;
+    private int numNarcotics;
+    private int numRobots;
+    
+    public Inventory(int totalSpace) {
+        numWater = 20;
+        numFurs = 0;
+        numFood = 0;
+        numOre = 0;
+        numGames = 0;
+        numFirearms = 0;
+        numMedicine = 0;
+        numMachines = 0;
+        numNarcotics = 0;
+        numRobots = 0;
+        this.totalSpace = totalSpace;
+    }
     
     public Inventory(String name) {
         this.name = name;
@@ -34,49 +58,6 @@ public class Inventory{
     
     public void setName(String name) { //setter mathod. 
         this.name = name;
-    }
-    
-    public void addTradeGood( List<TradeGood> list ) {
-        if (!this.isFull()) {
-            for (TradeGood a : list) {
-                this.addTradeGood(a);
-            }
-        }
-    }
-        
-    public void addTradeGood(TradeGood a) {
-        if (!this.isFull()) {
-            boolean itemFound = false;
-            for (TradeGood good : tradeGoods) {
-                if (good.getName().equals(a.getName())) {
-                    itemFound = true;
-                    good.add(1);
-                    this.incrementNumGoods();
-                }
-            }
-            if (!itemFound) {
-                tradeGoods.add(a);
-                this.incrementNumGoods();
-            }
-        }
-    }
-   
-    public void removeTradeGood(TradeGood a) {
-        boolean itemFound = false;
-        for (TradeGood good : tradeGoods) {
-            if (good.getName().equals(a.getName())) {
-                if (good.getQuantity() > 0) {
-                    itemFound = true;
-                    good.remove(1);
-                    this.decrementNumGoods();
-                } else {
-                    System.out.println("The Cargo Hold does not have this good."); //If quantity = 0
-                }
-            }
-        }
-        if (!itemFound) {
-            System.out.println("The Cargo Hold does not have this good."); //If item not found
-        }
     }
     
     /*@param:none.
@@ -100,6 +81,86 @@ public class Inventory{
     
     private boolean isFull() {
         return numGoods == totalSpace;
+    }
+    
+    public void setNumWater(int numWater) {
+        this.numWater = numWater;
+    }
+    
+    public int getNumWater() {
+        return numWater;
+    }
+    
+    public void setNumFurs(int numFurs) {
+        this.numFurs = numFurs;
+    }
+    
+    public int getNumFurs() {
+        return numFurs;
+    }
+    
+    public void setNumFood(int numFood) {
+        this.numFood = numFood;
+    }
+    
+    public int getNumFood() {
+        return numFood;
+    }
+    
+    public void setNumOre(int numOre) {
+        this.numOre = numOre;
+    }
+    
+    public int getNumOre() {
+        return numOre;
+    }
+    
+    public void setNumGames(int numGames) {
+        this.numGames = numGames;
+    }
+    
+    public int getNumGames() {
+        return numGames;
+    }
+    
+    public void setNumFirearms(int numFirearms) {
+        this.numFirearms = numFirearms;
+    }
+    
+    public int getNumFirearms() {
+        return numFirearms;
+    }
+    
+    public void setNumMedicine(int numMedicine) {
+        this.numMedicine = numMedicine;
+    }
+    
+    public int getNumMedicine() {
+        return numMedicine;
+    }
+    
+    public void setNumMachines(int numMachines) {
+        this.numMachines = numMachines;
+    }
+    
+    public int getNumMachines() {
+        return numMachines;
+    }
+    
+    public void setNumNarcotics(int numNarcotics) {
+        this.numNarcotics = numNarcotics;
+    }
+    
+    public int getNumNarcotics() {
+        return numNarcotics;
+    }
+    
+    public void setNumRobots(int numRobots) {
+        this.numRobots = numRobots;
+    }
+    
+    public int getNumRobots() {
+        return numRobots;
     }
     
     @Override

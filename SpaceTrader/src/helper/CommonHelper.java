@@ -90,7 +90,7 @@ public class CommonHelper {
                 MTL = Integer.parseInt(tokens[10]);
                 MTH = Integer.parseInt(tokens[11]);
                 
-                goodsList.add(new TradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
+                //goodsList.add(new TradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
                 counter++;
                 
             }

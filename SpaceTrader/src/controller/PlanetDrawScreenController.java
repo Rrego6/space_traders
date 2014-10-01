@@ -132,7 +132,7 @@ public class PlanetDrawScreenController implements Initializable {
 
         inventory = new Inventory("First list");
         System.out.println("new list created");
-        inventory.addTradeGood(CommonHelper.readAllGoods());
+        //inventory.addTradeGood(CommonHelper.readAllGoods());
         System.out.println(inventory.toString());
         
         GraphicsContext g2d = canvas.getGraphicsContext2D();

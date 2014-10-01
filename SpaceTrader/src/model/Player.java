@@ -18,6 +18,7 @@ public class Player {
     private int engineerSP;
     private int investorSP;
     private int credits;
+    private SolarSystem currentLocation;
     private Ship ship;
     
     /*@param: name, name of the player as a String.
@@ -31,6 +32,7 @@ public class Player {
     public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
     {
         this.name = name;
+        ship = new Ship();
         this.pilotSP = pilotSP;
         this.fighterSP = fighterSP;
         this.traderSP = traderSP;
@@ -132,5 +134,13 @@ public class Player {
     
     public Ship getShip() {
         return ship;
+    }
+    
+    public void setCurrentLocation(SolarSystem solarSystem) {
+        this.currentLocation = solarSystem;
+    }
+    
+    public SolarSystem getCurrentLocation() {
+        return currentLocation;
     }
 }

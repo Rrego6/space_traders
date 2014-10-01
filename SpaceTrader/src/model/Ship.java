@@ -10,7 +10,7 @@ package model;
  *
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
-public abstract class Ship {
+public class Ship {
     private int fuel;
     private int type;
     private int hull;
@@ -29,8 +29,23 @@ public abstract class Ship {
     private int bounty;
     private int occurrence;
     
+    public Ship() {
+        maxCargo = 10;
+        weaponSlots = 0;
+        shieldSlots = 0;
+        gadgetSlots = 0;
+        crew = 1;
+        //fuel = MAX;
+        minTechLevel = 4;
+        fuelCost = 1;
+        price = 2000;
+        bounty = 5;
+        hull = 25;
+        createCargoHold();
+    }
+    
     public void createCargoHold() {
-        cargoHold = new Inventory("Cargo Hold", maxCargo);
+        cargoHold = new Inventory(maxCargo);
     }
     
     public void setInventory(Inventory inventory) {
