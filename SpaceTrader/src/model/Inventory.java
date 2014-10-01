@@ -18,6 +18,7 @@ public class Inventory{
     private ArrayList<TradeGood> tradeGoods;
     private int numGoods;
     private int totalSpace;
+    private int maxSpace;
     private int numWater;
     private int numFurs;
     private int numFood;
@@ -29,7 +30,7 @@ public class Inventory{
     private int numNarcotics;
     private int numRobots;
     
-    public Inventory(int totalSpace) {
+    public Inventory(int maxSpace) {
         numWater = 0;
         numFurs = 0;
         numFood = 0;
@@ -40,7 +41,7 @@ public class Inventory{
         numMachines = 0;
         numNarcotics = 0;
         numRobots = 0;
-        this.totalSpace = totalSpace;
+        this.maxSpace = maxSpace;
     }
     
     public void setName(String name) { //setter mathod. 
@@ -54,12 +55,12 @@ public class Inventory{
         return this.name;
     }
     
-    public void setTotalSpace() {
-        totalSpace = totalSpace - numWater - numFurs - numFood - numOre - numGames - numFirearms - numMedicine - numMachines - numNarcotics - numRobots;
+    public int getTotalSpace() {
+        return maxSpace - numWater - numFurs - numFood - numOre - numGames - numFirearms - numMedicine - numMachines - numNarcotics - numRobots;
     }
     
-    public int getTotalSpace() {
-        return totalSpace;
+    public int getMaxSpace() {
+        return maxSpace;
     }
     
     public ArrayList<TradeGood> getList() {  //getter method.

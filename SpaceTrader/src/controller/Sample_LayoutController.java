@@ -253,7 +253,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyWater(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mWaterLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mWaterLabel.isDisabled() == false) {
             goods.add("Water (Buy)");
             tradeList.setItems(goods);
             numBoughtWater++;
@@ -278,7 +278,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyFurs(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mFursLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFursLabel.isDisabled() == false) {
             goods.add("Furs (Buy)");
             tradeList.setItems(goods);
             numBoughtFurs++;
@@ -303,7 +303,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyFood(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mFoodLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFoodLabel.isDisabled() == false) {
             goods.add("Food (Buy)");
             tradeList.setItems(goods);
             numBoughtFood++;
@@ -328,7 +328,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyOre(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mOreLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mOreLabel.isDisabled() == false) {
             goods.add("Ore (Buy)");
             tradeList.setItems(goods);
             numBoughtOre++;
@@ -353,7 +353,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyGames(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mGamesLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mGamesLabel.isDisabled() == false) {
             goods.add("Games (Buy)");
             tradeList.setItems(goods);
             numBoughtGames++;
@@ -378,7 +378,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyFirearms(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mFirearmsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFirearmsLabel.isDisabled() == false) {
             goods.add("Firearms (Buy)");
             tradeList.setItems(goods);
             numBoughtFirearms++;
@@ -403,7 +403,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyMedicine(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mMedicineLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mMedicineLabel.isDisabled() == false) {
             goods.add("Medicine (Buy)");
             tradeList.setItems(goods);
             numBoughtMedicine++;
@@ -428,7 +428,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyMachines(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mMachinesLabel.isDisabled() == false) {
+        if (credits > 0  && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mMachinesLabel.isDisabled() == false) {
             goods.add("Machines (Buy)");
             tradeList.setItems(goods);
             numBoughtMachines++;
@@ -453,7 +453,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyNarcotics(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mNarcoticsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mNarcoticsLabel.isDisabled() == false) {
             goods.add("Narcotics (Buy)");
             tradeList.setItems(goods);
             numBoughtNarcotics++;
@@ -478,7 +478,7 @@ public class Sample_LayoutController implements Initializable {
     
     @FXML
     private void buyRobots(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getTotalSpace() && mRobotsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mRobotsLabel.isDisabled() == false) {
             goods.add("Robots (Buy)");
             tradeList.setItems(goods);
             numBoughtRobots++;
@@ -537,7 +537,6 @@ public class Sample_LayoutController implements Initializable {
     
     private void update() {
         GameData.getPlayer().setCredits(credits - cost);
-        GameData.getPlayer().getShip().getInventory().setTotalSpace();
         GameData.getPlayer().getShip().getInventory().setNumWater(numWater + numBoughtWater);
         GameData.getPlayer().getShip().getInventory().setNumFurs(numFurs + numBoughtFurs);
         GameData.getPlayer().getShip().getInventory().setNumFood(numFood + numBoughtFood);
