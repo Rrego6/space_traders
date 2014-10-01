@@ -129,11 +129,6 @@ public class PlanetDrawScreenController implements Initializable {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.generatePlanets());
         System.out.println( universe.toString() );
-
-        inventory = new Inventory("First list");
-        System.out.println("new list created");
-        //inventory.addTradeGood(CommonHelper.readAllGoods());
-        System.out.println(inventory.toString());
         
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
