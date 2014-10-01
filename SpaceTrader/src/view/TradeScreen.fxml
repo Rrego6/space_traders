@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/WelcomeScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TradeScreenController">
+   <children>
+      <Button fx:id="backButton" layoutX="545.0" layoutY="13.0" mnemonicParsing="false" onAction="#onCancelAction" text="Back" />
+      <Label layoutX="252.0" layoutY="13.0" styleClass="TradeLabels" text="TRADE">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="86.0" layoutY="60.0" styleClass="TradeLabels" text="INVENTORY">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="366.0" layoutY="60.0" styleClass="TradeLabels" text="MARKETPLACE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ListView fx:id="inventoryListView" layoutX="4.0" layoutY="97.0" prefHeight="289.0" prefWidth="296.0" />
+      <ListView fx:id="marketplaceListView" layoutX="300.0" layoutY="97.0" prefHeight="289.0" prefWidth="296.0" />
+      <Button fx:id="confirmButton" layoutX="246.0" layoutY="425.0" mnemonicParsing="false" onAction="#onAcceptAction" text="Confirm">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="99.0" layoutY="436.0" styleClass="TradeLabels" text="CREDITS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="462.0" layoutY="436.0" styleClass="TradeLabels" text="COST">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="currentCreditsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="398.0" styleClass="TradeLabels" text="CURRENT_CREDITS" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalCostLabel" layoutX="463.0" layoutY="398.0" styleClass="TradeLabels" text="Label">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -54,7 +54,19 @@ public class PlanetDrawScreenController implements Initializable {
     
     @FXML
     private void onAcceptAction(ActionEvent event) {
-        JOptionPane.showMessageDialog( null, "Planet Selected" );
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/TradeScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+            
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
     }
     
     @FXML

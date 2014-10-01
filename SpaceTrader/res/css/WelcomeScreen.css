@@ -29,7 +29,7 @@
     
 }
 
-.planetInfoLabel{
+.planetInfoLabel,.TradeLabels{
    // -fx-background-color: rgb(220,220,220);
     -fx-text-weight: bold;
  //   -fx-text-size: 30pt;
