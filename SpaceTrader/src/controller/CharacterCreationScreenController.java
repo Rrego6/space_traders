@@ -197,7 +197,7 @@ public class CharacterCreationScreenController implements Initializable {
         {
             Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP );
            // JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
-            
+            GameData.setPlayer(player);
                
             try {
                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));

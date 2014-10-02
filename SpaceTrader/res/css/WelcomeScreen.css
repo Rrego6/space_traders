@@ -29,7 +29,11 @@
     
 }
 
-.planetInfoLabel,.TradeLabels{
+.goodLabel{
+    -fx-text-fill: rgb(220,220,255);
+}
+
+.planetInfoLabel{
    // -fx-background-color: rgb(220,220,220);
     -fx-text-weight: bold;
  //   -fx-text-size: 30pt;
@@ -68,7 +72,7 @@
     
 }
 
-#cancelBtn,#acceptBtn {
+#cancelBtn,#acceptBtn,#tradeBtn,#cancelTradeBtn {
     //-fx-padding: 5 22 5 22;   
    // -fx-border-color: #0000cc;
    // -fx-border-width: 0 0 1 0;
