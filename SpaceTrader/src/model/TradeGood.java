@@ -51,6 +51,14 @@ public enum TradeGood {
     public int getMTLU() {
         return mtlu;
     }
+     
+    public int getttp() {
+        return ttp;
+    }
+      
+     public int getbaseprice() {
+        return baseprice;
+    }  
     
     public int getMTLP() {
         return mtlp;
