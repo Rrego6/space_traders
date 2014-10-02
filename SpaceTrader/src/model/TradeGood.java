@@ -44,14 +44,24 @@ public enum TradeGood {
         return cost;
     }
     
+    public int getBasePrice() {
+        return baseprice;
+    }
+    
+    public int getMTLU() {
+        return mtlu;
+    }
+    
+    public int getMTLP() {
+        return mtlp;
+    }
+    
     public int getipl() {
         return ipl;
     }
       
     public int getvar() {
         return var;
-    }
-    
     }
 }
 

@@ -63,10 +63,6 @@ public class Inventory{
         return maxSpace;
     }
     
-    public ArrayList<TradeGood> getList() {  //getter method.
-        return this.tradeGoods;
-    }
-    
     private void incrementNumGoods() {
         this.numGoods++;
     }
