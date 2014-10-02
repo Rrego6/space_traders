@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import javafx.scene.Scene;
-import model.Planet;
-import model.Player;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -30,7 +27,7 @@ public class CommonHelper {
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
     */ 
-    public static List<SolarSystem> getPlanets()
+    public static List<SolarSystem> generatePlanets()
     {
         List<SolarSystem> planetsList = new ArrayList<>();
         try {
@@ -39,7 +36,11 @@ public class CommonHelper {
             while (sc.hasNextLine()){
                 String line = sc.nextLine();
                 String[] tokens = line.split("\"");
-                planetsList.add(new SolarSystem( tokens[1]) );
+                
+                //Randomly Selects if Planet is to be added
+                if( CommonHelper.randInt(5) <=2 ) {
+                    planetsList.add( new SolarSystem( tokens[1]) );
+                }
             }
             sc.close();
         }
@@ -89,7 +90,7 @@ public class CommonHelper {
                 MTL = Integer.parseInt(tokens[10]);
                 MTH = Integer.parseInt(tokens[11]);
                 
-                goodsList.add(new TradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
+                //goodsList.add(new TradeGood(name, MTLP, MTLU, TTP, basePrice, IPL, VAR, IE, CR, ER, MTL, MTH) );
                 counter++;
                 
             }

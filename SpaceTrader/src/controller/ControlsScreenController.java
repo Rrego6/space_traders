@@ -6,8 +6,7 @@
 
 package controller;
 
-import model.SceneNavigatorController;
-import interfaces.SceneNavigator;
+import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +22,7 @@ import javafx.scene.Scene;
  *
  * @author Raoul
  */
-public class ControlsScreenController extends SceneNavigatorController {
+public class ControlsScreenController implements Initializable {
 
     @FXML
     private void handleBackButtonAction(ActionEvent event )
@@ -31,11 +30,10 @@ public class ControlsScreenController extends SceneNavigatorController {
         try {
         FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
         Parent root = fxmlLoader.load();
-        WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 
-        Scene scene = getScene();
+        Scene scene = GameData.getScene();
         scene.setRoot(root);
-        controller.setScene(scene);
+        GameData.setScene(scene);
         }
         catch( IOException e)
         {

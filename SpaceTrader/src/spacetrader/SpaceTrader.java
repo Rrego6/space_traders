@@ -8,6 +8,7 @@ package spacetrader;
 
 import controller.WelcomeScreenController;
 import helper.CommonHelper;
+import helper.GameData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,9 +29,9 @@ public class SpaceTrader extends Application {
         WelcomeScreenController controller = (WelcomeScreenController) fxmlLoader.getController();
 
         Scene scene = new Scene(root);
-        controller.setScene(scene);
         stage.setScene(scene);
         stage.show();
+        GameData.setScene(scene);
     }
 
     /**

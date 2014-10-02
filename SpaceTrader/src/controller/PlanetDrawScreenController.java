@@ -5,35 +5,28 @@
  */
 package controller;
 
+import helper.CommonHelper;
+import helper.GameData;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.scene.*;
-import javafx.scene.paint.*;
-import javafx.scene.canvas.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import helper.CommonHelper;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.paint.*;
 import javax.swing.JOptionPane;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import model.Player;
-import model.SceneNavigatorController;
-import model.SolarSystem;
-import model.Universe;
-import model.Planet;
 import model.Inventory;
+import model.Planet;
+import model.SolarSystem;
 import model.TradeGood;
+import model.Universe;
 
 
 
@@ -41,7 +34,7 @@ import model.TradeGood;
  *
  * @author sarah
  */
-public class PlanetDrawScreenController extends SceneNavigatorController {
+public class PlanetDrawScreenController implements Initializable {
     
     @FXML
     private Canvas canvas;
@@ -56,23 +49,30 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     @FXML
     private Label planetInfoLabel;
          
+    private SolarSystem solarSystem;
     private Universe universe;
     private Inventory inventory;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-    
-        GraphicsContext g2d = canvas.getGraphicsContext2D();
-        g2d.setFill(Color.WHITE);
-        for( SolarSystem s : universe.getList() )
-        {
-            g2d.fillOval(s.getX(),s.getY(), 7,7);
-        }
-    }
-    
-    @FXML
     private void onAcceptAction(ActionEvent event) {
-        JOptionPane.showMessageDialog( null, "Planet Selected" );
+        GameData.getPlayer().setCurrentLocation(solarSystem);
+        if (GameData.getPlayer().getCurrentLocation() == null) {
+            JOptionPane.showMessageDialog(null, "Select a starting planet first.");
+        } else {
+            try {
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Sample_Layout.fxml" ));
+                Parent root = fxmlLoader.load();
+            
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+        
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
     
     @FXML
@@ -80,11 +80,10 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
         try {
             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/CharacterCreationScreen.fxml" ));
             Parent root = fxmlLoader.load();
-            CharacterCreationScreenController controller = (CharacterCreationScreenController) fxmlLoader.getController();
-
-            Scene scene = getScene();
+            
+            Scene scene = GameData.getScene();
             scene.setRoot(root);
-            controller.setScene(scene);
+            GameData.setScene(scene);
         }
         
         catch( IOException e)
@@ -112,13 +111,14 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
                 planetInfoLabel.setText("Planet Information");
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);
-                g2d.fillOval(s.getX(),s.getY(), 7,7);
+                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
+                solarSystem = s;
                // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
             }
             else {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.WHITE);
-                g2d.fillOval(s.getX(),s.getY(), 7,7);
+                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
                
             }
         }
@@ -127,18 +127,14 @@ public class PlanetDrawScreenController extends SceneNavigatorController {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         universe = new Universe("Trader Universe");
-        universe.addSolarSystem(CommonHelper.getPlanets());
+        universe.addSolarSystem(CommonHelper.generatePlanets());
         System.out.println( universe.toString() );
-        inventory = new Inventory("First list");
-        System.out.println("new list created");
-        inventory.addTradeGood(CommonHelper.readAllGoods());
-        System.out.println(inventory.toString());
         
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
         for( SolarSystem s : universe.getList() )
         {
-            g2d.fillOval(s.getX(),s.getY(), 7,7);
+            g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
         }
     }    
     
