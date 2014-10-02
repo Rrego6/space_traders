@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package model;
-
 /**
- *
- * @author tonyrafi
- */
+*
+* @author tonyrafi
+*/
 public enum TradeGood {
     WATER(0,0,2,30,3,4),
     FURS(0,0,0,250,10,10),
@@ -28,8 +26,7 @@ public enum TradeGood {
     private int baseprice;
     private int ipl;
     private int var;
-   
-    
+    private int quantity;
     private TradeGood (int mtlp, int mtlu, int ttp, int basePrice, int ipl, int var) {
         this.mtlp = mtlp;
         this.mtlu = mtlu;
@@ -38,13 +35,42 @@ public enum TradeGood {
         this.ipl = ipl;
         this.var = var;
     }
-    
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public int getCost() {
-        int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
     }
+    
+    public int getBasePrice() {
+        return baseprice;
+    }
+    
+    public int getMTLU() {
+        return mtlu;
+    }
+     
+    public int getttp() {
+        return ttp;
+    }
+      
+     public int getbaseprice() {
+        return baseprice;
+    }  
+    
+    public int getMTLP() {
+        return mtlp;
+    }
+    
+    public int getipl() {
+        return ipl;
+    }
+      
+    public int getvar() {
+        return var;
+    }
 }
+
+
