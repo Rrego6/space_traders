@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Inventory{ 
     private String name;
-    private ArrayList<TradeGood> tradeGoods;
+    private ArrayList<OriginalTradeGood> tradeGoods;
     private int numGoods;
     private int totalSpace;
     private int maxSpace;
@@ -163,7 +163,7 @@ public class Inventory{
     public String toString()
     {
         String string = new String();
-        for( TradeGood tradeGood : tradeGoods ) {
+        for( OriginalTradeGood tradeGood : tradeGoods ) {
             string += (tradeGood.toString() + "\n" );
         }
         return "Inventory: " + name + " " + string;
