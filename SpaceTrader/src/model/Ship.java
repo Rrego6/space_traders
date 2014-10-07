@@ -37,6 +37,7 @@ public class Ship {
         gadgetSlots = 0;
         crew = 1;
         fuel = 20;
+        maxFuel = 20;
         minTechLevel = 4;
         fuelCost = 1;
         price = 2000;
@@ -61,7 +62,7 @@ public class Ship {
         return fuel;
     }
     
-    public void deductFuel() {
-        
+    public void deductFuel(int cost) {
+        fuel -= cost;
     }
 }

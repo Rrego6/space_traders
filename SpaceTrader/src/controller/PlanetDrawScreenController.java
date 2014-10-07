@@ -60,7 +60,7 @@ public class PlanetDrawScreenController implements Initializable {
             JOptionPane.showMessageDialog(null, "Select a starting planet first.");
         } else {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Sample_Layout.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                 Parent root = fxmlLoader.load();
             
                 Scene scene = GameData.getScene();
@@ -128,6 +128,7 @@ public class PlanetDrawScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.generatePlanets());
+        GameData.setUniverse(universe);
         System.out.println( universe.toString() );
         
         GraphicsContext g2d = canvas.getGraphicsContext2D();
