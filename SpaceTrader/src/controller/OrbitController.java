@@ -53,7 +53,7 @@ public class OrbitController implements Initializable {
     @FXML
     private void onMarketplaceAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Sample_Layout.fxml" ));
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Marketplace.fxml" ));
             Parent root = fxmlLoader.load();
          
             Scene scene = GameData.getScene();
