@@ -11,6 +11,7 @@ package model;
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
 public class Ship {
+    private int maxFuel;
     private int fuel;
     private int type;
     private int hull;
@@ -35,7 +36,7 @@ public class Ship {
         shieldSlots = 0;
         gadgetSlots = 0;
         crew = 1;
-        //fuel = MAX;
+        fuel = 20;
         minTechLevel = 4;
         fuelCost = 1;
         price = 2000;
@@ -54,5 +55,13 @@ public class Ship {
     
     public Inventory getInventory() {
         return cargoHold;
+    }
+    
+    public int getFuel() {
+        return fuel;
+    }
+    
+    public void deductFuel() {
+        
     }
 }
