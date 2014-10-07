@@ -36,7 +36,7 @@ import model.TradeGood;
  *
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
-public class Sample_LayoutController implements Initializable {
+public class MarketplaceController implements Initializable {
 
     @FXML
     private Label costLabel;
@@ -507,7 +507,7 @@ public class Sample_LayoutController implements Initializable {
     private void onCancelAction(ActionEvent event) {
         if (goods.isEmpty()) {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                 Parent root = fxmlLoader.load();
                 Scene scene = GameData.getScene();
                 scene.setRoot(root);
@@ -521,7 +521,7 @@ public class Sample_LayoutController implements Initializable {
             int response = JOptionPane.showConfirmDialog(null, "All goods in the trade window are untraded. Continue?");
             if (response == JOptionPane.YES_OPTION) {
                 try {
-                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                     Parent root = fxmlLoader.load();
                     Scene scene = GameData.getScene();
                     scene.setRoot(root);

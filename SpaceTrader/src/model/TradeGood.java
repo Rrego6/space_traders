@@ -4,6 +4,7 @@
 * and open the template in the editor.
 */
 package model;
+import java.util.Random;
 /**
 *
 * @author tonyrafi
@@ -20,6 +21,7 @@ public enum TradeGood {
     NARCOTICS(5,0,5,3500,-12,150),
     ROBOTS(6,4,7,5000,-150,100);
     
+    private Random varGen = new Random();
     private int mtlp;
     private int mtlu;
     private int ttp;
@@ -43,6 +45,7 @@ public enum TradeGood {
         int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
     }
+    //varGen.nextInt(var)
     
     public int getBasePrice() {
         return baseprice;
