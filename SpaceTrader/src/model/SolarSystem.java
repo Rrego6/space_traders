@@ -88,7 +88,7 @@ public class SolarSystem {
     }
 
     /**
-     * @param name of the soalarsystem, String.
+     * @param name of the solarsystem, String.
     */
     public void setName(String name) {
         this.name = name;
