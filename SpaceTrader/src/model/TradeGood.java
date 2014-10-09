@@ -4,6 +4,7 @@
 * and open the template in the editor.
 */
 package model;
+import helper.CommonHelper;
 import java.util.Random;
 /**
 *
@@ -42,10 +43,9 @@ public enum TradeGood {
      * @return
      */
     public int getCost() {
-        int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
-        return cost;
+        return baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+
     }
-    //varGen.nextInt(var)
     
     public int getBasePrice() {
         return baseprice;

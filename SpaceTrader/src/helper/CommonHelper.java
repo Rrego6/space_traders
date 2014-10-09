@@ -27,6 +27,12 @@ public class CommonHelper {
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
     */ 
+
+    /**
+     *
+     * @return
+     */
+     
     public static List<SolarSystem> generatePlanets()
     {
         List<SolarSystem> planetsList = new ArrayList<>();
@@ -54,6 +60,12 @@ public class CommonHelper {
     /*@param:none.
     @return: list of the goods and their traits
     */ 
+
+    /**
+     *
+     * @return
+     */
+     
     public static ArrayList<TradeGood> readAllGoods()
     {
         ArrayList<TradeGood> goodsList = new ArrayList<>();
@@ -105,6 +117,11 @@ public class CommonHelper {
       return goodsList;
    }
    
+    /**
+     *
+     * @param maxInt
+     * @return
+     */
     public static int randInt( int maxInt )
     {
         if( rand == null ) { rand = new Random(); }

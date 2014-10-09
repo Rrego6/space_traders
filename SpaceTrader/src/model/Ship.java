@@ -30,6 +30,9 @@ public class Ship {
     private int bounty;
     private int occurrence;
     
+    /**
+     *
+     */
     public Ship() {
         maxCargo = 10;
         weaponSlots = 0;
@@ -46,22 +49,41 @@ public class Ship {
         createCargoHold();
     }
     
+    /**
+     *
+     */
     public void createCargoHold() {
         cargoHold = new Inventory(maxCargo);
     }
     
+    /**
+     *
+     * @param inventory
+     */
     public void setInventory(Inventory inventory) {
         cargoHold = inventory;
     }
     
+    /**
+     *
+     * @return
+     */
     public Inventory getInventory() {
         return cargoHold;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getFuel() {
         return fuel;
     }
     
+    /**
+     *
+     * @param cost
+     */
     public void deductFuel(int cost) {
         fuel -= cost;
     }
