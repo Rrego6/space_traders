@@ -20,6 +20,7 @@ public class Player {
     private int credits;
     private SolarSystem currentLocation;
     private Ship ship;
+    private int reputation;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -142,5 +143,25 @@ public class Player {
     
     public SolarSystem getCurrentLocation() {
         return currentLocation;
+    }
+    
+    public boolean encounter() {
+        double chance = (Math.random() * 99) + 1;
+        if (chance > 50) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     * @return int 1 = Trader, 2 = Pirate, 3 = Police
+     */
+    public int encounterType() {
+        return ((int)(Math.random() * 2)) + 1;
+    }
+    
+    public int getReputation() {
+        return this.reputation;
     }
 }

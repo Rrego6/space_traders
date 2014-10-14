@@ -4,6 +4,9 @@
 * and open the template in the editor.
 */
 package model;
+import helper.CommonHelper;
+import java.util.Random;
+import helper.GameData;
 /**
 *
 * @author tonyrafi
@@ -20,6 +23,7 @@ public enum TradeGood {
     NARCOTICS(5,0,5,3500,-12,150),
     ROBOTS(6,4,7,5000,-150,100);
     
+    private Random varGen = new Random();
     private int mtlp;
     private int mtlu;
     private int ttp;
@@ -40,9 +44,15 @@ public enum TradeGood {
      * @return
      */
     public int getCost() {
-        int cost = (baseprice + (ipl * (ttp - mtlp)) + var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        int cost = (baseprice + (ipl * (GameData.getPlayer().getCurrentLocation().getTechLevel() - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
     }
+    
+    public int getCost(int mtlp) {
+        int cost = (baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        return cost;
+    }
+    //varGen.nextInt(var)
     
     public int getBasePrice() {
         return baseprice;
