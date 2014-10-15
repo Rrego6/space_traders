@@ -6,6 +6,7 @@
 package model;
 import helper.CommonHelper;
 import java.util.Random;
+import helper.GameData;
 /**
 *
 * @author tonyrafi
@@ -43,8 +44,13 @@ public enum TradeGood {
      * @return
      */
     public int getCost() {
-        return baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
-
+        int cost = (baseprice + (ipl * (GameData.getPlayer().getCurrentLocation().getTechLevel() - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        return cost;
+    }
+    
+    public int getCost(int mtlp) {
+        int cost = (baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        return cost;
     }
     
     public int getBasePrice() {

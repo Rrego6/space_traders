@@ -114,8 +114,92 @@ public class StarChartController implements Initializable {
         else if ( solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {
+            
+            //ADD CHANCE FOR ENCOUNTER HERE
+            if (GameData.getPlayer().encounter()) {
+                int encounterType = GameData.getPlayer().encounterType();
+                if (encounterType == 1) {
+                    //Generate Trader
+                    //Pop-up that shows there is a trader/trader wants to trade with you
+                    //Attack or trade him
+                    //If fight, battle window, if trade, trade window, else continue to destination
+                    
+                    int chanceOfFleeing = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfFleeing > GameData.getPlayer().getReputation()) {
+                        JOptionPane.showMessageDialog(null, "A trader has appeared, but he has already fled!");
+                    } else {
+                        Object[] options = {"Trade", "Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "A trader has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[2]);
+                        
+                        //check n, and go to trade/battle window accordingly
+                    }
+                        
+                } else if (encounterType == 2) {
+                    //Generate Pirate
+                    //Pop-up that shows a Pirate is attacking with a button that lets you move on
+                    //Battle window
+                    
+                    int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfFighting < GameData.getPlayer().getReputation()) {
+                        Object[] options = {"Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "A pirate has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[1]);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A pirate has appeared! Prepare to fight!");
+                        
+                        //proceed to battle window
+                    }
+                  
+                } else {
+                    //Generate Police
+                    //Flee, see if police wants to inspect you, attack, 
+                    
+                    int chanceOfInspection = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfInspection < GameData.getPlayer().getReputation()) {
+                        Object[] options = {"Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "The police has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[1]);
+                        
+                        //bring up battle window if needed
+                        
+                    } else {
+                        Object[] options = {"Allow Inspection", "Bribe", "Fight"};
+                        int n = JOptionPane.showOptionDialog(null,
+                            "The police has appeared! They want to inspect your goods! What would you like to do?",
+                            "Encounter!",
+                            JOptionPane.YES_NO_CANCEL_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[0]);
+                        
+                        //proceed to battle window if prompted, otherwise bring up input dialogs for bribe
+                    }
+                }
+            }
+            
             GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
             GameData.getPlayer().setCurrentLocation(solarSystem);
+            //GameData.getPlayer().getShip().getInventory().getTradeGood
 
             try {
                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
