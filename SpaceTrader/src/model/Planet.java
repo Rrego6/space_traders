@@ -16,15 +16,28 @@ public class Planet {
     private String name;
     private double techLevel;
     
+    /**
+     *
+     * @param name
+     */
     public Planet(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     * @param name
+     * @param techLevel
+     */
     public Planet(String name, int techLevel) {
         this.name = name;
         this.techLevel = techLevel;
     }
     
+    /**
+     *
+     * @return
+     */
     public Map sellList() {
         Map<TradeGood, Double> sellMap = new HashMap<>();
         if (techLevel >= (TradeGood.WATER.getMTLU())) {
@@ -80,6 +93,10 @@ public class Planet {
         return sellMap;
     }
     
+    /**
+     *
+     * @return
+     */
     public Map buyList() {
         Map<TradeGood, Double> buyMap = new HashMap<>();
         if (techLevel >= (TradeGood.WATER.getMTLP())) {
@@ -137,12 +154,24 @@ public class Planet {
     /*@param:name of the planet, String.
     @return: none,sets the name variable.
     */
+
+    /**
+     *
+     * @param name
+     */
+    
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
     /*@param:none.
     @return: name of the planet, String.
     */
+
+    /**
+     *
+     * @return
+     */
+    
     public String getName() {  //getter method.
         return name;
     }
