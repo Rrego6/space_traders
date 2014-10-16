@@ -40,6 +40,7 @@ public class Player {
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
         credits = 1000;
+        this.reputation = 0;
     }
     
     @Override

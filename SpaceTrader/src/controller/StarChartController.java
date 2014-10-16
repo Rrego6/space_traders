@@ -118,11 +118,11 @@ public class StarChartController implements Initializable {
             if (GameData.getPlayer().encounter()) {
                 int encounterType = GameData.getPlayer().encounterType();
                 if (encounterType == 1) {
+                    
                     //Generate Trader
                     //Pop-up that shows there is a trader/trader wants to trade with you
                     //Attack or trade him
                     //If fight, battle window, if trade, trade window, else continue to destination
-                    
                     int chanceOfFleeing = ((int)(Math.random() * 99)) + 1;
                     if (chanceOfFleeing > GameData.getPlayer().getReputation()) {
                         JOptionPane.showMessageDialog(null, "A trader has appeared, but he has already fled!");
@@ -138,13 +138,52 @@ public class StarChartController implements Initializable {
                         options[2]);
                         
                         //check n, and go to trade/battle window accordingly
+                        
+                        //trade
+                        if (n == 0) {
+                            try {
+                                //put trade screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (n == 1) {
+                            //fight
+                            try {
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                         
                 } else if (encounterType == 2) {
+                    
                     //Generate Pirate
                     //Pop-up that shows a Pirate is attacking with a button that lets you move on
                     //Battle window
-                    
                     int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
                     if (chanceOfFighting < GameData.getPlayer().getReputation()) {
                         Object[] options = {"Fight", "Continue"};
@@ -156,16 +195,52 @@ public class StarChartController implements Initializable {
                         null,
                         options,
                         options[1]);
+                        
+                        if (n == 0) {
+                            try {
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "A pirate has appeared! Prepare to fight!");
                         
                         //proceed to battle window
+                        try {
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
                     }
                   
                 } else {
+                    
                     //Generate Police
                     //Flee, see if police wants to inspect you, attack, 
-                    
                     int chanceOfInspection = ((int)(Math.random() * 99)) + 1;
                     if (chanceOfInspection < GameData.getPlayer().getReputation()) {
                         Object[] options = {"Fight", "Continue"};
@@ -179,6 +254,30 @@ public class StarChartController implements Initializable {
                         options[1]);
                         
                         //bring up battle window if needed
+                        if (n == 0) {
+                            try {
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            try {
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         
                     } else {
                         Object[] options = {"Allow Inspection", "Bribe", "Fight"};
@@ -192,6 +291,23 @@ public class StarChartController implements Initializable {
                             options[0]);
                         
                         //proceed to battle window if prompted, otherwise bring up input dialogs for bribe
+                        if (n == 0) {
+                            //check items
+                        } else if (n == 1) {
+                            //bribe screen
+                        } else {
+                            try {
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 }
             }
