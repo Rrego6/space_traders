@@ -24,6 +24,7 @@ import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 import model.SolarSystem;
 import model.Universe;
+import model.Player;
 
 /**
  * FXML Controller class
@@ -113,7 +114,8 @@ public class StarChartController implements Initializable {
         if (solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {
-            
+            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+            GameData.getPlayer().setCurrentLocation(solarSystem);
             //ADD CHANCE FOR ENCOUNTER HERE
             if (GameData.getPlayer().encounter()) {
                 int encounterType = GameData.getPlayer().encounterType();
@@ -127,6 +129,7 @@ public class StarChartController implements Initializable {
                     if (chanceOfFleeing > (GameData.getPlayer().getTraderRep())) {
                         JOptionPane.showMessageDialog(null, "A trader has appeared, but he has already fled!");
                     } else {
+                        Player trader = Player.genTrader();
                         Object[] options = {"Trade", "Fight", "Continue"};
                         int n = JOptionPane.showOptionDialog(null,
                         "A trader has appeared! What would you like to do?",
@@ -141,6 +144,8 @@ public class StarChartController implements Initializable {
                         
                         //trade
                         if (n == 0) {
+                            GameData.getPlayer().setEncounterPerson(trader);
+                            trader.setEncounterPerson(GameData.getPlayer());
                             try {
                                 //put trade screen here
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Marketplace.fxml" ));
@@ -154,6 +159,8 @@ public class StarChartController implements Initializable {
                             }
                         } else if (n == 1) {
                             //fight
+                            GameData.getPlayer().setEncounterPerson(trader);
+                            trader.setEncounterPerson(GameData.getPlayer());
                             try {
                                 //put fight screen here
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BattleScreen.fxml" ));
@@ -186,6 +193,7 @@ public class StarChartController implements Initializable {
                     //Battle window
                     int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
                     if (chanceOfFighting < GameData.getPlayer().getPirateRep()) {
+                        Player fighter = Player.genFighter();
                         Object[] options = {"Fight", "Continue"};
                         int n = JOptionPane.showOptionDialog(null,
                         "A pirate has appeared! What would you like to do?",
@@ -197,6 +205,8 @@ public class StarChartController implements Initializable {
                         options[1]);
                         
                         if (n == 0) {
+                            GameData.getPlayer().setEncounterPerson(fighter);
+                            fighter.setEncounterPerson(GameData.getPlayer());
                             try {
                                 //put fight screen here
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BattleScreen.fxml" ));
@@ -222,7 +232,9 @@ public class StarChartController implements Initializable {
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "A pirate has appeared! Prepare to fight!");
-                        
+                        Player fighter = Player.genFighter();
+                        GameData.getPlayer().setEncounterPerson(fighter);
+                        fighter.setEncounterPerson(GameData.getPlayer());
                         //proceed to battle window
                         try {
                                 //put fight screen here
@@ -323,25 +335,25 @@ public class StarChartController implements Initializable {
                         }
                     }
                 }
-            }
+            } else {
             
-            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
-            GameData.getPlayer().setCurrentLocation(solarSystem);
+            
             //GameData.getPlayer().getShip().getInventory().getTradeGood
 
-//            try {
-//               FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
-//              Parent root = fxmlLoader.load();
-//          
-//              Scene scene = GameData.getScene();
-//              scene.setRoot(root);
-//              GameData.setScene(scene);
-//          }
-//      
-//          catch( IOException e)
-//          {
-//              e.printStackTrace();
-//          }
+              try {
+                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                Parent root = fxmlLoader.load();
+            
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+        
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+            }
         }
     }
     
