@@ -20,7 +20,9 @@ public class Player {
     private int credits;
     private SolarSystem currentLocation;
     private Ship ship;
-    private int reputation;
+    private int traderRep;
+    private int pirateRep;
+    private int policeRep;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -40,7 +42,9 @@ public class Player {
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
         credits = 1000;
-        this.reputation = 0;
+        this.traderRep = 100;
+        this.pirateRep = 0;
+        this.policeRep = 100;
     }
     
     @Override
@@ -162,7 +166,15 @@ public class Player {
         return ((int)(Math.random() * 2)) + 1;
     }
     
-    public int getReputation() {
-        return this.reputation;
+    public int getTraderRep() {
+        return this.traderRep;
+    }
+    
+    public int getPirateRep() {
+        return this.pirateRep;
+    }
+    
+    public int getPoliceRep() {
+        return this.policeRep;
     }
 }
