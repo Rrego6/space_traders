@@ -30,6 +30,21 @@ public class OriginalTradeGood {
     
     private int quantity;
     
+    /**
+     *
+     * @param name
+     * @param MTLP
+     * @param MTLU
+     * @param TTP
+     * @param basePrice
+     * @param IPL
+     * @param VAR
+     * @param IE
+     * @param CR
+     * @param ER
+     * @param MTL
+     * @param MTH
+     */
     public OriginalTradeGood(String name, int MTLP, int MTLU, int TTP, int basePrice, int IPL, int VAR, String IE, String CR, String ER, int MTL, int MTH){
         this.name = name;
         this.MTLP = MTLP;
@@ -44,26 +59,52 @@ public class OriginalTradeGood {
         this.MTL = MTL;
         this.MTH = MTH;   
     }
+
+    /**
+     *
+     * @return
+     */
     public int getCost() {
         int cost = (basePrice + (IPL * (TTP - MTLP)) + VAR); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
         return cost;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return this.name;
     }
     
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getQuantity() {
         return this.quantity;
     }
     
+    /**
+     *
+     * @param a
+     */
     public void add(int a) {
         this.quantity += a;
     }
     
+    /**
+     *
+     * @param a
+     */
     public void remove(int a) {
         this.quantity -= a;
     }

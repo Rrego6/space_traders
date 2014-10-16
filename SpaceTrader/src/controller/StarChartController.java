@@ -111,7 +111,8 @@ public class StarChartController implements Initializable {
     
     @FXML
     private void onTravelAction(ActionEvent event) {
-        if (solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
+        if(solarSystem != null) {}
+        else if ( solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {
             GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());

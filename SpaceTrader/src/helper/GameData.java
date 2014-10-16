@@ -7,6 +7,7 @@
 package helper;
 
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.Planet;
 import model.Player;
 import model.Universe;
@@ -23,6 +24,7 @@ public class GameData {
     
     private static Player player;
     private static Scene scene;
+    private static Stage stage;
     private static Universe universe;
 
     public static Scene getScene() {
@@ -30,7 +32,14 @@ public class GameData {
     }
     public static void setScene(Scene scene) {
         GameData.scene = scene;
-    } 
+    }
+    
+    public static Stage getStage() {
+       return stage;
+    }
+    public static void setStage(Stage stage) {
+        GameData.stage = stage;
+    }
     
     public static Universe getUniverse() {
         return universe;
