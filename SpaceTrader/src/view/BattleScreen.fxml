@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/WelcomeScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BattleScreenController">
+   <children>
+      <Label fx:id="healthLabel" layoutX="14.0" layoutY="403.0" text="HEALTH" />
+      <Label fx:id="shieldLabel" layoutX="14.0" layoutY="420.0" text="SHIELD" />
+      <Label fx:id="enemyHealthLabel" layoutX="504.0" layoutY="46.0" text="ENEMYHEALTH" />
+      <Label fx:id="enemyShieldLabel" layoutX="507.0" layoutY="63.0" text="ENEMYSHIELD" />
+      <Label fx:id="enemyDamageLabel" layoutX="496.0" layoutY="80.0" text="ENEMYDAMAGE" />
+      <Label fx:id="damageLabel" layoutX="14.0" layoutY="437.0" text="DAMAGE" />
+      <Button fx:id="attackButton" layoutX="200.0" layoutY="416.0" mnemonicParsing="false" onAction="#onAttackAction" text="ATTACK" />
+      <Button fx:id="fleeButton" layoutX="274.0" layoutY="416.0" mnemonicParsing="false" onAction="#onFleeAction" text="FLEE" />
+      <Button fx:id="surrenderButton" layoutX="349.0" layoutY="416.0" mnemonicParsing="false" onAction="#onSurrenderAction" text="SURRENDER" />
+   </children>
+</AnchorPane>
