@@ -74,7 +74,7 @@ public class OriginalTradeGood {
      * @return
      */
     public String getName() {
-        return this.name;
+        return this.toString();
     }
     
     /**

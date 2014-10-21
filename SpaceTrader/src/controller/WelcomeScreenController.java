@@ -69,6 +69,11 @@ public class WelcomeScreenController implements Initializable {
         }
     }
     
+    @FXML
+    private void handleLoadGameButtonAction(ActionEvent event) {
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

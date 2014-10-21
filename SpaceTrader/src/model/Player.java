@@ -20,6 +20,7 @@ public class Player {
     private int credits;
     private SolarSystem currentLocation;
     private Ship ship;
+    private int reputation;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -40,7 +41,7 @@ public class Player {
      * @param investorSP
      */
     
-    public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
+    public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP, int credits )
     {
         this.name = name;
         ship = new Ship();
@@ -49,7 +50,7 @@ public class Player {
         this.traderSP = traderSP;
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
-        credits = 1000;
+        this.credits = credits;
     }
     
     @Override
@@ -249,5 +250,25 @@ public class Player {
      */
     public SolarSystem getCurrentLocation() {
         return currentLocation;
+    }
+    
+    public boolean encounter() {
+        double chance = (Math.random() * 99) + 1;
+        if (chance > 50) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     * @return int 1 = Trader, 2 = Pirate, 3 = Police
+     */
+    public int encounterType() {
+        return ((int)(Math.random() * 2)) + 1;
+    }
+    
+    public int getReputation() {
+        return this.reputation;
     }
 }

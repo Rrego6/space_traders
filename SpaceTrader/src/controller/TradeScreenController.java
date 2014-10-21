@@ -10,16 +10,24 @@ import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javax.swing.JOptionPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javax.swing.JOptionPane;
+import model.Inventory;
+import model.TradeGood;
+import view.TradeLabel;
 
 /**
  * FXML TradeScreenController Class
@@ -29,9 +37,9 @@ import javafx.scene.control.ListView;
 public class TradeScreenController implements Initializable {
     
     @FXML
-    private ListView inventoryListView;
+    private ListView<TradeLabel> inventoryListView;
     @FXML
-    private ListView marketplaceListView;
+    private ListView<TradeLabel> marketplaceListView;
     @FXML
     private Label currentCreditsLabel;
     @FXML
@@ -41,8 +49,86 @@ public class TradeScreenController implements Initializable {
     @FXML
     private Button backButton;
 
+    private final ObservableList goodList = FXCollections.observableArrayList();
     private String currentCreditsText;
     private String totalCostText;
+    private TradeLabel playerWaterLabel;
+    private TradeLabel playerFursLabel;
+    private TradeLabel playerFoodLabel;
+    private TradeLabel playerOreLabel;
+    private TradeLabel playerGamesLabel;
+    private TradeLabel playerFirearmsLabel;
+    private TradeLabel playerMedicineLabel;
+    private TradeLabel playerNarcoticsLabel;
+    private TradeLabel playerRobotsLabel;
+    private TradeLabel playerMachinesLabel;
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        currentCreditsLabel.setText(GameData.player.toString());
+        
+        Inventory playerInventory = GameData.player.getShip().getInventory();
+        Inventory planetInventory = new Inventory(100);
+        
+        initInventoryListView(playerInventory);
+        removedGood = tradeList.getSelectionModel().getSelectedItem();
+        goods.remove(removedGood);
+    }
+
+    private void initInventoryListView(Inventory playerInventory) {
+        if( playerInventory.getNumWater() > 0 ) {
+            playerWaterLabel = new TradeLabel(TradeGood.WATER, playerInventory.getNumWater(), true);
+            goodList.add(playerWaterLabel);
+        }
+        if( playerInventory.getNumFurs() > 0 ) {
+            playerFursLabel = new TradeLabel(TradeGood.FURS, playerInventory.getNumFurs(), true); 
+            goodList.add(playerFursLabel);
+        }
+        if( playerInventory.getNumFood() > 0) { 
+            playerFoodLabel = new TradeLabel(TradeGood.FOOD, playerInventory.getNumFood(), true); 
+            goodList.add(playerFoodLabel);
+        }
+        if( playerInventory.getNumOre() > 0 ) {
+            playerOreLabel = new TradeLabel(TradeGood.ORE, playerInventory.getNumOre(), true ); 
+            goodList.add(playerOreLabel);
+        }
+        if( playerInventory.getNumGames() > 0 ) {
+            playerGamesLabel = new TradeLabel(TradeGood.GAMES, playerInventory.getNumGames(), true ); 
+            goodList.add(playerGamesLabel);
+        }
+        if( playerInventory.getNumFirearms() > 0 ) {
+            playerFirearmsLabel = new TradeLabel(TradeGood.FIREARMS, playerInventory.getNumFirearms(), true ); 
+            goodList.add(playerFirearmsLabel);
+        }
+        //machine medicine narcotics robots
+        if( playerInventory.getNumMedicine() > 0 ) {
+            playerMedicineLabel = new TradeLabel(TradeGood.MEDICINE, playerInventory.getNumMedicine(), true);
+            goodList.add(playerMedicineLabel);
+        }
+        if( playerInventory.getNumMachines() > 0 ) {
+            playerMachinesLabel = new TradeLabel(TradeGood.MACHINES, playerInventory.getNumMachines(), true);
+            goodList.add(playerMachinesLabel);
+        }
+        if( playerInventory.getNumNarcotics() > 0 ) {
+            playerNarcoticsLabel = new TradeLabel(TradeGood.NARCOTICS, playerInventory.getNumNarcotics(), true); 
+            goodList.add(playerNarcoticsLabel);
+        }
+        if( playerInventory.getNumRobots() > 0 ) {
+            playerRobotsLabel = new TradeLabel(TradeGood.ROBOTS, playerInventory.getNumRobots(), true); 
+            goodList.add(playerRobotsLabel);
+        }
+        
+        inventoryListView.setItems( goodList );
+        inventoryListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                TradeLabel selectedLabel = inventoryListView.getSelectionModel().getSelectedItem();
+                if( selectedLabel == null ) { return; }
+                TradeGood good = selectedLabel.getGood();
+            }
+        });
+    }
     
     @FXML
     private void onAcceptAction(ActionEvent event) {
@@ -64,11 +150,6 @@ public class TradeScreenController implements Initializable {
         {
             e.printStackTrace();
         }
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        currentCreditsLabel.setText("500");
     }
     
     

@@ -33,10 +33,10 @@ public class GameData {
      */
     public static final int PLANET_DIAMETER = 8;
     
-    private static Player player;
-    private static Scene scene;
-    private static Stage stage;
-    private static Universe universe;
+    public static Player player;
+    public static Scene scene;
+    public static Stage stage;
+    public static Universe universe;
 
     /**
      *
