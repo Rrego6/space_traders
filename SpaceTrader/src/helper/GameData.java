@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 import model.Planet;
 import model.Player;
 import model.Universe;
+import com.google.gson.Gson;
+import java.io.*;
+import java.io.IOException; 
 
 /**
  *
@@ -26,6 +29,8 @@ public class GameData {
     private static Scene scene;
     private static Stage stage;
     private static Universe universe;
+    
+    private static String gson;
 
     public static Scene getScene() {
        return scene;
@@ -55,4 +60,54 @@ public class GameData {
         GameData.player = player;
     }
     
+    public static void saveData() {
+        
+            try {
+                PrintWriter out1 = new PrintWriter(new File("res/txt/gameDataPlayer.json"));
+                Gson gs = new Gson();
+                gson = gs.toJson(player);
+                out1.println(gson);
+                out1.flush(); 
+            } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            } 
+            
+            try {
+                PrintWriter out1 = new PrintWriter(new File("res/txt/gameDataUniverse.json"));
+                Gson gs = new Gson();
+                gson = gs.toJson(universe);
+                out1.println(gson);
+                out1.flush(); 
+            } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+            }
+            
+           
+    }
+
+    public static void loadData() {    
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("res/txt/GameDataPlayer.json"));
+            String json1 = br.readLine();
+            Gson gs = new Gson();
+            GameData.player = gs.fromJson(json1, Player.class);      
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("res/txt/GameDataUniverse.json"));
+            String json1 = br.readLine();
+            Gson gs = new Gson();
+            GameData.universe = gs.fromJson(json1, Universe.class);      
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
