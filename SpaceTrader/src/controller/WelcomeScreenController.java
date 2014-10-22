@@ -72,6 +72,22 @@ public class WelcomeScreenController implements Initializable {
     @FXML
     private void handleLoadGameButtonAction(ActionEvent event) {
         
+        try
+        {
+            
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/Orbit.fxml"));
+            Parent root = fxmlLoader.load();
+           
+            Scene scene = GameData.getScene();
+            GameData.loadData();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+            
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
     
     @Override

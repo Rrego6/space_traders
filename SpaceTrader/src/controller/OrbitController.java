@@ -66,4 +66,23 @@ public class OrbitController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    private void handleSaveGameAction(ActionEvent event) {
+        
+        try {
+            GameData.saveData();
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+         
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
