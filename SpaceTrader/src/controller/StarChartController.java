@@ -59,13 +59,16 @@ public class StarChartController implements Initializable {
         universe = GameData.getUniverse();
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
+        
         for( SolarSystem s : universe.getList() )
         {
-            if(s.equals(GameData.getPlayer().getCurrentLocation())) {
+            //System.out.println("for solarsystem " + s.getName());
+            if(s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                 g2d.setFill(Color.GREEN);
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
+            } 
+            else if(!s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                 g2d.setFill(Color.WHITE);
-            } else {
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
             }
         }
@@ -98,7 +101,7 @@ public class StarChartController implements Initializable {
             }
             else {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
-                if(s.equals(GameData.getPlayer().getCurrentLocation())) {
+                if(s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                     g2d.setFill(Color.GREEN);
                     g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
                 } else {
@@ -111,7 +114,7 @@ public class StarChartController implements Initializable {
     
     @FXML
     private void onTravelAction(ActionEvent event) {
-        if(solarSystem != null) {}
+        if(solarSystem == null) {}
         else if ( solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {

@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,13 +26,25 @@ import javax.swing.JOptionPane;
  */
 public class OrbitController implements Initializable {
 
+    @FXML
+    private Label playerName;
+    @FXML
+    private Label planetName;
+    
+    private String currentPlanet, currentPlayer;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        currentPlanet = GameData.getPlayer().getCurrentLocation().getName();
+        planetName.setText("Location:  " + currentPlanet);
+        currentPlayer = GameData.getPlayer().getName();
+        playerName.setText("Name:  " + currentPlayer);
     }    
+    
+    
     
     @FXML
     private void onStarChartAction(ActionEvent event) {
