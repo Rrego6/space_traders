@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -48,7 +49,9 @@ public class CommonHelper {
             AlertPopupController controller = (AlertPopupController) fxmlLoader.getController();
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initStyle(StageStyle.UTILITY);
             dialog.initOwner(primaryStage);
+            dialog.setResizable(false);
             dialog.setScene(new Scene(root));
             controller.setLabelText(msg);
             controller.setButtonAction(new EventHandler<ActionEvent>() {
