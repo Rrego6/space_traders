@@ -214,7 +214,7 @@ public class CharacterCreationScreenController implements Initializable {
             GameData.setPlayer(player);
                
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/StarChart.fxml" ));
                 Parent root = fxmlLoader.load(); 
                            
                 Scene scene = GameData.getScene();

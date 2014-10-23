@@ -25,6 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -38,10 +39,14 @@ public class CommonHelper {
     private static Random rand;
     
     /**
-     * 
-     * @param msg - Text to display
+     * @param primaryStage - the Stage from where the popup is init (current stage)
+     * @param msg - String to display
+     * @param eventHandler - event that occurs on CloseandOk
      */
     public static void alertBox(Stage primaryStage, String msg) {
+        alertBox(primaryStage, msg, null);
+    }
+    public static void alertBox(Stage primaryStage, String msg, EventHandler<ActionEvent> onCloseandOk) {
         FXMLLoader fxmlLoader =  new FXMLLoader( CommonHelper.class.getResource( "/view/AlertPopup.fxml" ));
         Parent root;
         try {
@@ -54,10 +59,22 @@ public class CommonHelper {
             dialog.setResizable(false);
             dialog.setScene(new Scene(root));
             controller.setLabelText(msg);
+            if(onCloseandOk != null ) {
+                dialog.setOnCloseRequest( new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        onCloseandOk.handle(new ActionEvent(event.getSource(), event.getTarget()));
+                    }
+                } );
+            }
+            dialog.setOnCloseRequest(null);
             controller.setButtonAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     dialog.close();
+                    if(onCloseandOk != null) {
+                        onCloseandOk.handle(event);
+                    }
                 }
             });
             dialog.show();   

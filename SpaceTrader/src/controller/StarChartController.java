@@ -6,6 +6,7 @@
 
 package controller;
 
+import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
@@ -59,6 +60,13 @@ public class StarChartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         universe = GameData.getUniverse();
+        if( universe == null ) {
+            universe = new Universe("Trader Universe");
+            universe.addSolarSystem(CommonHelper.generatePlanets());
+            GameData.setUniverse(universe);
+            GameData.getPlayer().setCurrentLocation(universe.getList().get(CommonHelper.randInt(universe.getList().size())));
+            CommonHelper.alertBox( GameData.stage, "Location Selected: " + GameData.player.getCurrentLocation().getName() );
+        }
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
         
