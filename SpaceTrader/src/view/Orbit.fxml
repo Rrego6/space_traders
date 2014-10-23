@@ -13,5 +13,6 @@
       <Button fx:id="saveGameButton" layoutX="207.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveGameAction" text="Save Game" />
       <Label id="playerName" fx:id="playerName" layoutX="286.0" layoutY="42.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
       <Label id="planetName" fx:id="planetName" layoutX="286.0" layoutY="115.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
+      <Button layoutX="335.0" layoutY="330.0" mnemonicParsing="false" onAction="#refillFuel" text="Refill Fuel" />
    </children>
 </AnchorPane>

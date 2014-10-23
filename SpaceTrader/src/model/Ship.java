@@ -92,6 +92,10 @@ public class Ship {
         this.hull = n;
     }
     
+    public void refillFuel() {
+        fuel = maxFuel;
+    }
+    
     public int getHull() {
         return this.hull;
     }

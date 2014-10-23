@@ -45,7 +45,10 @@ public enum TradeGood {
      */
     public int getCost() {
         return baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
-
+    }
+    
+    public int getCost(int techLevel ) {
+        return baseprice + ipl * (techLevel - mtlp) + CommonHelper.randInt(var);
     }
     
     public int getBasePrice() {

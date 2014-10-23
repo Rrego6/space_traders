@@ -46,6 +46,10 @@ public class OrbitController implements Initializable {
         playerName.setText("Name:  " + currentPlayer);
     }    
     
+    @FXML
+    private void refillFuel(ActionEvent event) {
+        GameData.getPlayer().getShip().refillFuel();
+    }
     
     
     @FXML
