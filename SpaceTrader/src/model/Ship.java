@@ -87,4 +87,29 @@ public class Ship {
     public void deductFuel(int cost) {
         fuel -= cost;
     }
+    
+    public void setHull(int n) {
+        this.hull = n;
+    }
+    
+    public int getHull() {
+        return this.hull;
+    }
+    
+    public void setDamage(int n) {
+        this.damage = n;
+    }
+    
+    public int getDamage() {
+        return this.damage;
+    }
+    
+    public void setShields(int n) {
+        this.shields = n;
+    }
+    
+    public int getShields() {
+        return this.shields;
+    }
+    
 }

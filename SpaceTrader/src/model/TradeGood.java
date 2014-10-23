@@ -12,7 +12,6 @@ import helper.GameData;
 * @author tonyrafi
 */
 public enum TradeGood {
-
     WATER(0,0,2,30,3,4),
     FURS(0,0,0,250,10,10),
     FOOD(1,0,1,100,5,5),
@@ -45,75 +44,38 @@ public enum TradeGood {
      * @return
      */
     public int getCost() {
-        int cost = (baseprice + (ipl * (GameData.getPlayer().getCurrentLocation().getTechLevel() - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
-        return cost;
+        return baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+
     }
     
-    public int getCost(int mtlp) {
-        int cost = (baseprice + (ipl * (ttp - mtlp)) + CommonHelper.randInt(var) ); //by formula (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
-        return cost;
-    }
-    
-    /**
-     *
-     * @return
-     */
     public int getBasePrice() {
         return baseprice;
     }
     
-    /**
-     *
-     * @return
-     */
     public int getMTLU() {
         return mtlu;
     }
      
-    /**
-     *
-     * @return
-     */
     public int getttp() {
         return ttp;
     }
       
-    /**
-     *
-     * @return
-     */
-    public int getbaseprice() {
-        return baseprice;
-    }  
-    
-    /**
-     *
-     * @return
-     */
     public int getMTLP() {
         return mtlp;
     }
     
-    /**
-     *
-     * @return
-     */
+     public int getbaseprice() {
+        return baseprice;
+    }  
+    
     public int getipl() {
         return ipl;
     }
-      
-    /**
-     *
-     * @return
-     */
-    public int getvar() {
+    
+    public int getVar() {
         return var;
     }
-
-    @Override
-    public String toString() {
-        return name().charAt(0) + name().toLowerCase();
-    }
+      
 }
 
 

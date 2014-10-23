@@ -6,10 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.OrbitController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrbitController">
    <children>
       <Button layoutX="41.0" layoutY="330.0" mnemonicParsing="false" onAction="#onStarChartAction" text="Star Chart" />
-      <Button layoutX="455.0" layoutY="144.0" mnemonicParsing="false" onAction="#onMarketplaceAction" text="Marketplace" />
+      <Button layoutX="450.0" layoutY="330.0" mnemonicParsing="false" onAction="#onMarketplaceAction" text="Marketplace" />
+      <Button fx:id="saveGameButton" layoutX="207.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleSaveGameAction" text="Save Game" />
+      <Label id="playerName" fx:id="playerName" layoutX="286.0" layoutY="42.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <Label id="planetName" fx:id="planetName" layoutX="286.0" layoutY="115.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>

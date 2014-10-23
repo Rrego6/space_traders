@@ -20,7 +20,10 @@ public class Player {
     private int credits;
     private SolarSystem currentLocation;
     private Ship ship;
-    private int reputation;
+    private int traderRep;
+    private int pirateRep;
+    private int policeRep;
+    private Player encounterPerson;
     
     /*@param: name, name of the player as a String.
     *@param: pilotSP, int number of pilots.
@@ -44,25 +47,36 @@ public class Player {
     public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
     {
         this.name = name;
-        ship = new Ship();
+        this.ship = new Ship();
         this.pilotSP = pilotSP;
         this.fighterSP = fighterSP;
         this.traderSP = traderSP;
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
         this.credits = 1000;
+        this.traderRep = 100;
+        this.pirateRep = 0;
+        this.policeRep = 100;
     }
-        
-    public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP, int credits )
-    {
-        this.name = name;
-        ship = new Ship();
-        this.pilotSP = pilotSP;
-        this.fighterSP = fighterSP;
-        this.traderSP = traderSP;
-        this.engineerSP = engineerSP;
-        this.investorSP = investorSP;
-        this.credits = credits;
+    
+    public static Player genTrader() {
+        //give him items, weapons, ship, etc
+        Player trader = new Player("Trader", 0, 0, 0, 0, 0);
+        trader.setTraderSP(((int) Math.random() * 5) + 10);
+        trader.setFighterSP(15 - trader.getTraderSP());
+        trader.setCredits(((int) Math.random() * 1000) + 1000);
+        trader.setShip(new Ship());
+        return trader;
+    }
+    
+    public static Player genFighter() {
+        //give him items, weapons, ship, etc
+        Player fighter = new Player("Fighter", 0, 0, 0, 0, 0);
+        fighter.setFighterSP(((int) Math.random() * 5) + 10);
+        fighter.setPilotSP(15 - fighter.getFighterSP());
+        fighter.setCredits(((int) Math.random() * 1000) + 1000);
+        fighter.setShip(new Ship());
+        return fighter;
     }
     
     @Override
@@ -182,13 +196,7 @@ public class Player {
     /*@param:number of traderSP int.
     @return: sets the traderSP variable.
     */    
-
-    /**
-     *
-     * @param no
-     */
-        
-    public void getTraderSP(int no) {  //Setter method.
+    public void setTraderSP(int no) {  //Setter method.
         this.traderSP = no;
     }  
     /*@param:number of engineerSP int.
@@ -280,7 +288,35 @@ public class Player {
         return ((int)(Math.random() * 2)) + 1;
     }
     
-    public int getReputation() {
-        return this.reputation;
+    public int getTraderRep() {
+        return this.traderRep;
+    }
+    
+    public int getPirateRep() {
+        return this.pirateRep;
+    }
+    
+    public int getPoliceRep() {
+        return this.policeRep;
+    }
+    
+    public void setTraderRep(int n) {
+        this.traderRep = n;
+    }
+    
+    public void setPirateRep(int n) {
+        this.pirateRep = n;
+    }
+    
+    public void setPoliceRep(int n) {
+        this.policeRep = n;
+    }
+    
+    public void setEncounterPerson(Player p) {
+        this.encounterPerson = p;
+    }
+    
+    public Player getEncounterPerson() {
+        return this.encounterPerson;
     }
 }
