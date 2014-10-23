@@ -105,7 +105,7 @@ public class BattleScreenController implements Initializable {
     private void onSurrenderAction(ActionEvent event) {
         //Show you surrendered
         //Lose goods/credits
-        GameData.getPlayer().setPirateRep(GameData.getPlayer().getPirateRep() - 1);
+        GameData.getPlayer().setReputation(GameData.getPlayer().getReputation() - 1);
     }
     
     

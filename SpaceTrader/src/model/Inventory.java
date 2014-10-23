@@ -16,6 +16,7 @@ import java.util.List;
 public class Inventory{ 
     private String name;
     private ArrayList<OriginalTradeGood> tradeGoods;
+    private int[] numGoodsList;
     private int numGoods;
     private int totalSpace;
     private int maxSpace;
@@ -41,6 +42,7 @@ public class Inventory{
         numMachines = 0;
         numNarcotics = 0;
         numRobots = 0;
+        numGoodsList = new int[10];
         this.maxSpace = maxSpace;
     }
     
@@ -73,6 +75,38 @@ public class Inventory{
     
     private boolean isFull() {
         return numGoods == totalSpace;
+    }
+    
+    public void setNumGoodsList(int[] list) {
+        numGoodsList = list;
+        numWater = numGoodsList[0];
+        numFurs = numGoodsList[1];
+        numFood = numGoodsList[2];
+        numOre = numGoodsList[3];
+        numGames = numGoodsList[4];
+        numFirearms = numGoodsList[5];
+        numMedicine = numGoodsList[6];
+        numMachines = numGoodsList[7];
+        numNarcotics = numGoodsList[8];
+        numRobots = numGoodsList[9];
+        
+    }
+    
+    public void addNumGoodsList(int[] list) {
+        numWater += list[0];
+        numFurs += list[1];
+        numFood += list[2];
+        numOre += list[3];
+        numGames += list[4];
+        numFirearms += list[5];
+        numMedicine += list[6];
+        numMachines += list[7];
+        numNarcotics += list[8];
+        numRobots += list[9];
+    }
+    
+    public int[] getNumGoodsList() {
+        return numGoodsList;
     }
     
     public void setNumWater(int numWater) {

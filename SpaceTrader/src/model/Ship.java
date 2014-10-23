@@ -11,24 +11,24 @@ package model;
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
 public class Ship {
-    private int maxFuel;
-    private int fuel;
-    private int type;
-    private int hull;
-    private int shields;
-    private int shieldSlots;
-    private int damage;
-    private int weaponSlots;
-    private int gadgetSlots;
-    private int crew;
+    protected int maxFuel;
+    protected int fuel;
+    protected int type;
+    protected int hull;
+    protected int shields;
+    protected int shieldSlots;
+    protected int damage;
+    protected int weaponSlots;
+    protected int gadgetSlots;
+    protected int crew;
     //private Crew[] crewRoster;
-    private Inventory cargoHold;
-    private int maxCargo;
-    private int minTechLevel;
-    private int fuelCost;
-    private int price;
-    private int bounty;
-    private int occurrence;
+    protected Inventory cargoHold;
+    protected int maxCargo;
+    protected int minTechLevel;
+    protected int fuelCost;
+    protected int price;
+    protected int bounty;
+    protected int occurrence;
     
     /**
      *

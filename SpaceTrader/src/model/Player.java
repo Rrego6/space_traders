@@ -20,9 +20,7 @@ public class Player {
     private int credits;
     private SolarSystem currentLocation;
     private Ship ship;
-    private int traderRep;
-    private int pirateRep;
-    private int policeRep;
+    private int reputation;
     private Player encounterPerson;
     
     /*@param: name, name of the player as a String.
@@ -43,9 +41,7 @@ public class Player {
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
         this.credits = 1000;
-        this.traderRep = 100;
-        this.pirateRep = 0;
-        this.policeRep = 100;
+        this.reputation = 0;
     }
     
     public static Player genTrader() {
@@ -159,6 +155,10 @@ public class Player {
         this.ship = ship;
     }
     
+    public void resetShip() {
+        this.ship = new Ship();
+    }
+    
     public Ship getShip() {
         return ship;
     }
@@ -187,28 +187,12 @@ public class Player {
         return ((int)(Math.random() * 2)) + 1;
     }
     
-    public int getTraderRep() {
-        return this.traderRep;
+    public int getReputation() {
+        return this.reputation;
     }
     
-    public int getPirateRep() {
-        return this.pirateRep;
-    }
-    
-    public int getPoliceRep() {
-        return this.policeRep;
-    }
-    
-    public void setTraderRep(int n) {
-        this.traderRep = n;
-    }
-    
-    public void setPirateRep(int n) {
-        this.pirateRep = n;
-    }
-    
-    public void setPoliceRep(int n) {
-        this.policeRep = n;
+    public void setReputation(int n) {
+        this.reputation = n;
     }
     
     public void setEncounterPerson(Player p) {
@@ -217,5 +201,11 @@ public class Player {
     
     public Player getEncounterPerson() {
         return this.encounterPerson;
+    }
+    
+    public void dumpCargo() {
+        if(ship != null) {
+            ship.createCargoHold();
+        }
     }
 }

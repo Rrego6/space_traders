@@ -25,4 +25,7 @@ public class TraderEncounterController implements Initializable {
         // TODO
     }    
     
+    public void enterOrbit() {
+        
+    }
 }
