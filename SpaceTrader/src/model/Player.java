@@ -6,11 +6,14 @@
 
 package model;
 
+import helper.GameData;
+import interfaces.Savable;
+
 /**
  *
  * @author Raoul
  */
-public class Player {
+public class Player implements Savable{
     private String name;
     private int pilotSP;
     private int fighterSP;
@@ -318,5 +321,11 @@ public class Player {
     
     public Player getEncounterPerson() {
         return this.encounterPerson;
+    }
+    
+
+    @Override
+    public void onSave() {
+        encounterPerson = null;
     }
 }

@@ -112,6 +112,7 @@ public class GameData {
             try {
                 PrintWriter out1 = new PrintWriter(new File("res/txt/gameDataPlayer.json"));
                 Gson gs = new Gson();
+                player.onSave();
                 gson = gs.toJson(player);
                 out1.println(gson);
                 out1.flush(); 
@@ -140,6 +141,7 @@ public class GameData {
             Gson gs = new Gson();
             GameData.player = gs.fromJson(json1, Player.class);      
         } catch (FileNotFoundException ex) {
+            CommonHelper.alertBox(stage, "No Save found.");
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
