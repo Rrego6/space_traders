@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import model.Inventory;
 import model.TradeGood;
@@ -71,8 +72,7 @@ public class TradeScreenController implements Initializable {
         Inventory planetInventory = new Inventory(100);
         
         initInventoryListView(playerInventory);
-        removedGood = tradeList.getSelectionModel().getSelectedItem();
-        goods.remove(removedGood);
+
     }
 
     private void initInventoryListView(Inventory playerInventory) {
@@ -120,12 +120,12 @@ public class TradeScreenController implements Initializable {
         
         inventoryListView.setItems( goodList );
         inventoryListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent event) {
                 TradeLabel selectedLabel = inventoryListView.getSelectionModel().getSelectedItem();
                 if( selectedLabel == null ) { return; }
-                TradeGood good = selectedLabel.getGood();
+                TradeGood good = selectedLabel.getTradeGood();
+                //goodList.remove(good);
             }
         });
     }

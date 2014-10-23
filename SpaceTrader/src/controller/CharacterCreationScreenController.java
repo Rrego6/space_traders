@@ -6,6 +6,7 @@
 
 package controller;
 
+import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
@@ -199,12 +200,12 @@ public class CharacterCreationScreenController implements Initializable {
     private void onAcceptAction(ActionEvent event) {
         if( nameField.getText().isEmpty() )
         {
-            JOptionPane.showMessageDialog(null, "Name cannot be blank.");
+            CommonHelper.alertBox(GameData.stage, "Name cannot be blank." );
             nameField.requestFocus();
         }
         else if( spLeft > 0 )
         {
-            JOptionPane.showMessageDialog(null, "Allocate All Stats.");
+            CommonHelper.alertBox(GameData.stage, "Allocate All Stats.");
         }
         else
         {

@@ -6,12 +6,24 @@
 
 package helper;
 
+import controller.AlertPopupController;
+import controller.WelcomeScreenController;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -23,7 +35,34 @@ import model.TradeGood;
 public class CommonHelper {
 
     private static Random rand;
-
+    
+    /**
+     * 
+     * @param msg - Text to display
+     */
+    public static void alertBox(Stage primaryStage, String msg) {
+        FXMLLoader fxmlLoader =  new FXMLLoader( CommonHelper.class.getResource( "/view/AlertPopup.fxml" ));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+            AlertPopupController controller = (AlertPopupController) fxmlLoader.getController();
+            Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(primaryStage);
+            dialog.setScene(new Scene(root));
+            controller.setLabelText(msg);
+            controller.setButtonAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                }
+            });
+            dialog.show();   
+        } catch(IOException e ) {
+            e.printStackTrace();
+            System.exit(1);
+        }        
+    }
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
     */ 

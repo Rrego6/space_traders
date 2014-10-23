@@ -41,6 +41,18 @@ public class Player {
      * @param investorSP
      */
     
+    public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
+    {
+        this.name = name;
+        ship = new Ship();
+        this.pilotSP = pilotSP;
+        this.fighterSP = fighterSP;
+        this.traderSP = traderSP;
+        this.engineerSP = engineerSP;
+        this.investorSP = investorSP;
+        this.credits = 1000;
+    }
+        
     public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP, int credits )
     {
         this.name = name;
