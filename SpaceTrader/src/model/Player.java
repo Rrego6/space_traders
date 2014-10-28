@@ -19,6 +19,7 @@ public class Player {
     private int investorSP;
     private int credits;
     private SolarSystem currentLocation;
+    //private OriginalShip ship;
     private Ship ship;
     private int traderRep;
     private int pirateRep;
@@ -36,7 +37,8 @@ public class Player {
     public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
     {
         this.name = name;
-        this.ship = new Ship();
+        //this.ship = new OriginalShip();
+        this.ship = Ship.GNAT; //added from the enum ship class
         this.pilotSP = pilotSP;
         this.fighterSP = fighterSP;
         this.traderSP = traderSP;
@@ -54,7 +56,8 @@ public class Player {
         trader.setTraderSP(((int) Math.random() * 5) + 10);
         trader.setFighterSP(15 - trader.getTraderSP());
         trader.setCredits(((int) Math.random() * 1000) + 1000);
-        trader.setShip(new Ship());
+        //trader.setShip(new OriginalShip());
+        trader.setShip(Ship.TRADER);
         return trader;
     }
     
@@ -64,7 +67,7 @@ public class Player {
         fighter.setFighterSP(((int) Math.random() * 5) + 10);
         fighter.setPilotSP(15 - fighter.getFighterSP());
         fighter.setCredits(((int) Math.random() * 1000) + 1000);
-        fighter.setShip(new Ship());
+        fighter.setShip(Ship.FIGHTER);
         return fighter;
     }
     
@@ -155,9 +158,17 @@ public class Player {
         return credits;
     }
     
+    /*public void setShip(OriginalShip ship) {
+        this.ship = ship;
+    }*/
+    
     public void setShip(Ship ship) {
         this.ship = ship;
     }
+    
+    /*public OriginalShip getShip() {
+        return ship;
+    }*/
     
     public Ship getShip() {
         return ship;

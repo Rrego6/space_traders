@@ -10,7 +10,7 @@ package model;
  *
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
-public class Ship {
+public class OriginalShip {
     private int maxFuel;
     private int fuel;
     private int type;
@@ -33,7 +33,7 @@ public class Ship {
     /**
      *
      */
-    public Ship() {
+    public OriginalShip() {
         maxCargo = 10;
         weaponSlots = 0;
         shieldSlots = 0;
