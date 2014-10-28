@@ -13,50 +13,99 @@ import model.Player;
 import model.Universe;
 import com.google.gson.Gson;
 import java.io.*;
-
-
+import java.io.IOException; 
+import javafx.stage.StageStyle;
 
 /**
  *
  * @author Raoul
  */
 public class GameData {
+
+    /**
+     *
+     */
     public static final int GAME_WIDTH = 300;
+
+    /**
+     *
+     */
     public static final int GAME_HEIGHT = 300;
     
+    /**
+     *
+     */
     public static final int PLANET_DIAMETER = 8;
     
-    private static Player player;
-    private static Scene scene;
-    private static Stage stage;
-    private static Universe universe;
+    public static Player player;
+    public static Scene scene;
+    public static Stage stage;
+    public static Universe universe;
     
     private static String gson;
 
+    /**
+     *
+     * @return
+     */
     public static Scene getScene() {
        return scene;
     }
+
+    /**
+     *
+     * @param scene
+     */
     public static void setScene(Scene scene) {
         GameData.scene = scene;
     }
     
+    /**
+     *
+     * @return
+     */
     public static Stage getStage() {
        return stage;
     }
+
+    /**
+     *
+     * @param stage
+     */
     public static void setStage(Stage stage) {
         GameData.stage = stage;
+       // stage.setResizable(false);
+       // stage.initStyle(StageStyle.UNDECORATED);
     }
     
+    /**
+     *
+     * @return
+     */
     public static Universe getUniverse() {
         return universe;
     }
+
+    /**
+     *
+     * @param universe
+     */
     public static void setUniverse(Universe universe) {
         GameData.universe = universe;
     }
 
+    /**
+     *
+     * @return
+     */
     public static Player getPlayer() {
         return player;
     }
+
+    /**
+     *
+     * @param player
+     */
     public static void setPlayer( Player player ) {
         GameData.player = player;
     }
@@ -66,6 +115,7 @@ public class GameData {
             try {
                 PrintWriter out1 = new PrintWriter(new File("res/txt/gameDataPlayer.json"));
                 Gson gs = new Gson();
+                player.onSave();
                 gson = gs.toJson(player);
                 out1.println(gson);
                 out1.flush(); 
@@ -81,9 +131,11 @@ public class GameData {
                 out1.flush(); 
             } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-            }  
+            }
+            
+           
     }
-   
+
     public static void loadData() {    
         
         try {
@@ -92,6 +144,7 @@ public class GameData {
             Gson gs = new Gson();
             GameData.player = gs.fromJson(json1, Player.class);      
         } catch (FileNotFoundException ex) {
+            CommonHelper.alertBox(stage, "No Save found.");
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -108,5 +161,5 @@ public class GameData {
             ex.printStackTrace();
         }
     }
-    
+
 }

@@ -6,12 +6,26 @@
 
 package helper;
 
+import controller.AlertPopupController;
+import controller.WelcomeScreenController;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -23,7 +37,52 @@ import model.TradeGood;
 public class CommonHelper {
 
     private static Random rand;
-
+    
+    /**
+     * @param primaryStage - the Stage from where the popup is init (current stage)
+     * @param msg - String to display
+     * @param eventHandler - event that occurs on CloseandOk
+     */
+    public static void alertBox(Stage primaryStage, String msg) {
+        alertBox(primaryStage, msg, null);
+    }
+    public static void alertBox(Stage primaryStage, String msg, EventHandler<ActionEvent> onCloseandOk) {
+        FXMLLoader fxmlLoader =  new FXMLLoader( CommonHelper.class.getResource( "/view/AlertPopup.fxml" ));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+            AlertPopupController controller = (AlertPopupController) fxmlLoader.getController();
+            Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initStyle(StageStyle.UTILITY);
+            dialog.initOwner(primaryStage);
+            dialog.setResizable(false);
+            dialog.setScene(new Scene(root));
+            controller.setLabelText(msg);
+            if(onCloseandOk != null ) {
+                dialog.setOnCloseRequest( new EventHandler<WindowEvent>() {
+                    @Override
+                    public void handle(WindowEvent event) {
+                        onCloseandOk.handle(new ActionEvent(event.getSource(), event.getTarget()));
+                    }
+                } );
+            }
+            dialog.setOnCloseRequest(null);
+            controller.setButtonAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                    if(onCloseandOk != null) {
+                        onCloseandOk.handle(event);
+                    }
+                }
+            });
+            dialog.show();   
+        } catch(IOException e ) {
+            e.printStackTrace();
+            System.exit(1);
+        }        
+    }
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
     */ 
