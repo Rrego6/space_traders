@@ -30,7 +30,7 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-      <Button layoutX="24.0" layoutY="309.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="110.0" mnemonicParsing="false" onAction="#refillFuel" prefHeight="30.0" prefWidth="110.0" text="Refill Fuel" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="24.0">
+      <Button layoutX="24.0" layoutY="309.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="110.0" mnemonicParsing="false" onAction="#onShipyardAction" prefHeight="30.0" prefWidth="110.0" text="Shipyard" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="24.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>

@@ -85,11 +85,28 @@ public class OrbitController implements Initializable {
     }    
     
     @FXML
-    private void refillFuel(ActionEvent event) {
-        GameData.getPlayer().getShip().refillFuel();
-        fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());
+    private void onShipyardAction(ActionEvent event) {
+        if(GameData.getPlayer().getCurrentLocation().getTechLevel() > GameData.SHIPYARD_TECHLEVEL){
+            try {
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/ShipyardScreen.fxml" ));
+                Parent root = fxmlLoader.load();
+
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else{
+           System.out.println("planet doesnt have high enough tech level");
+        }
+        //GameData.getPlayer().getShip().refillFuel();
+        //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
-    
     
     @FXML
     private void onStarChartAction(ActionEvent event) {
