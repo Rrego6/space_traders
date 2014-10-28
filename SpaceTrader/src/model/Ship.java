@@ -11,6 +11,7 @@ package model;
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
 public class Ship {
+    private int maxFuel;
     private int fuel;
     private int type;
     private int hull;
@@ -29,13 +30,17 @@ public class Ship {
     private int bounty;
     private int occurrence;
     
+    /**
+     *
+     */
     public Ship() {
         maxCargo = 10;
         weaponSlots = 0;
         shieldSlots = 0;
         gadgetSlots = 0;
         crew = 1;
-        //fuel = MAX;
+        fuel = 20;
+        maxFuel = 100;
         minTechLevel = 4;
         fuelCost = 1;
         price = 2000;
@@ -44,15 +49,71 @@ public class Ship {
         createCargoHold();
     }
     
+    /**
+     *
+     */
     public void createCargoHold() {
         cargoHold = new Inventory(maxCargo);
     }
     
+    /**
+     *
+     * @param inventory
+     */
     public void setInventory(Inventory inventory) {
         cargoHold = inventory;
     }
     
+    /**
+     *
+     * @return
+     */
     public Inventory getInventory() {
         return cargoHold;
     }
+    
+    /**
+     *
+     * @return
+     */
+    public int getFuel() {
+        return fuel;
+    }
+    
+    /**
+     *
+     * @param cost
+     */
+    public void deductFuel(int cost) {
+        fuel -= cost;
+    }
+    
+    public void setHull(int n) {
+        this.hull = n;
+    }
+    
+    public void refillFuel() {
+        fuel = maxFuel;
+    }
+    
+    public int getHull() {
+        return this.hull;
+    }
+    
+    public void setDamage(int n) {
+        this.damage = n;
+    }
+    
+    public int getDamage() {
+        return this.damage;
+    }
+    
+    public void setShields(int n) {
+        this.shields = n;
+    }
+    
+    public int getShields() {
+        return this.shields;
+    }
+    
 }

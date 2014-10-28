@@ -8,6 +8,7 @@ package controller;
 
 import controller.ControlsScreenController;
 import controller.CharacterCreationScreenController;
+import model.Player;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
@@ -62,6 +63,28 @@ public class WelcomeScreenController implements Initializable {
             scene.setRoot(root);
             GameData.setScene(scene);
             //controller.setScene(scene);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void handleLoadGameButtonAction(ActionEvent event) {
+        
+        try
+        {
+            GameData.loadData();
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/Orbit.fxml"));
+            Parent root = fxmlLoader.load();
+           
+            Scene scene = GameData.getScene();
+            
+            scene.setRoot(root);
+            GameData.setScene(scene);
+            System.out.println(GameData.getPlayer().getName());
+            
         }
         catch (IOException e)
         {

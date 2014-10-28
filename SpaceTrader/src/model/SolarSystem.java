@@ -10,6 +10,7 @@ import helper.CommonHelper;
 import helper.GameData;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.lang.Math;
 
 
 /*FIXME: FIX X AND Y COORDINATES*/
@@ -156,6 +157,12 @@ public class SolarSystem {
         return coordCenter.distance(new Point((int)px, (int)py)) < GameData.PLANET_DIAMETER/2;
     }
     
+    public int getDistance() {
+        int xDist = Math.abs(GameData.getPlayer().getCurrentLocation().getX() - coordTopLeft.x);
+        int yDist = Math.abs(GameData.getPlayer().getCurrentLocation().getY() - coordTopLeft.y);
+        return (int) Math.round(Math.sqrt(xDist*xDist+yDist*yDist)/5);
+    }
+    
     @Override
     public String toString()
     {
@@ -163,3 +170,4 @@ public class SolarSystem {
                 "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }
+

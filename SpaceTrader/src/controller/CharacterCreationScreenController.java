@@ -6,6 +6,7 @@
 
 package controller;
 
+import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import model.Player;
@@ -43,6 +45,8 @@ public class CharacterCreationScreenController implements Initializable {
     private Label engineerLabel;
     @FXML
     private Label investorLabel;
+    @FXML
+    private Rectangle pilotBar, traderBar, investorBar, fighterBar, engineerBar;
 
     int spLeft = 15;
     int pilotSP = 0;
@@ -82,6 +86,7 @@ public class CharacterCreationScreenController implements Initializable {
         if( pilotSP > 0 )
         {
             pilotLabel.setText( pilotSPText + " " + --pilotSP );
+            pilotBar.setWidth(20*pilotSP);
             spRemainingLabel.setText( spLeftText + " " + ++spLeft );
         }
     }
@@ -92,6 +97,7 @@ public class CharacterCreationScreenController implements Initializable {
         {
             pilotLabel.setText( pilotSPText + " " + ++pilotSP );
             spRemainingLabel.setText( spLeftText + " " + --spLeft );
+            pilotBar.setWidth(20*pilotSP);
         }
     }
 
@@ -100,6 +106,7 @@ public class CharacterCreationScreenController implements Initializable {
         if( fighterSP > 0)
         {
             fighterLabel.setText( fighterSPText + " " + --fighterSP);
+            fighterBar.setWidth(20*fighterSP);
             spRemainingLabel.setText( spLeftText + " " + ++spLeft );
         }
     }
@@ -109,6 +116,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(spLeft > 0)
         {
             fighterLabel.setText( fighterSPText + " " + ++fighterSP);
+            fighterBar.setWidth(20*fighterSP);
             spRemainingLabel.setText( spLeftText + " " + --spLeft );
         }
     }
@@ -118,6 +126,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(traderSP>0)
         {
             traderLabel.setText( traderSPText + " " + --traderSP );
+            traderBar.setWidth(20*traderSP);
             spRemainingLabel.setText( spLeftText + " " + ++spLeft );
         }
     }
@@ -127,6 +136,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(spLeft>0)
         {
             traderLabel.setText( traderSPText + " " + ++traderSP );
+            traderBar.setWidth(20*traderSP);
             spRemainingLabel.setText( spLeftText + " " + --spLeft );
         }
     }
@@ -136,6 +146,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(engineerSP>0)
         {
             engineerLabel.setText( engineerSPText + " " + --engineerSP );
+            engineerBar.setWidth(20*engineerSP);
             spRemainingLabel.setText( spLeftText + " " + ++spLeft );
         }
     }
@@ -145,6 +156,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(spLeft>0)
         {
             engineerLabel.setText( engineerSPText + " " + ++engineerSP );
+            engineerBar.setWidth(20*engineerSP);
             spRemainingLabel.setText( spLeftText + " " + --spLeft );
         }
     }
@@ -154,6 +166,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(investorSP > 0)
         {
             investorLabel.setText( investorSPText + " " + --investorSP );
+            investorBar.setWidth(20*investorSP);
             spRemainingLabel.setText( spLeftText + " " + ++spLeft );
         }
     }
@@ -163,6 +176,7 @@ public class CharacterCreationScreenController implements Initializable {
         if(spLeft > 0)
         {
             investorLabel.setText( investorSPText + " " + ++investorSP );
+            investorBar.setWidth(20*investorSP);
             spRemainingLabel.setText( spLeftText + " " + --spLeft );
         }
     }
@@ -186,12 +200,12 @@ public class CharacterCreationScreenController implements Initializable {
     private void onAcceptAction(ActionEvent event) {
         if( nameField.getText().isEmpty() )
         {
-            JOptionPane.showMessageDialog(null, "Name cannot be blank.");
+            CommonHelper.alertBox(GameData.stage, "Name cannot be blank." );
             nameField.requestFocus();
         }
         else if( spLeft > 0 )
         {
-            JOptionPane.showMessageDialog(null, "Allocate All Stats.");
+            CommonHelper.alertBox(GameData.stage, "Allocate All Stats.");
         }
         else
         {
@@ -200,7 +214,7 @@ public class CharacterCreationScreenController implements Initializable {
             GameData.setPlayer(player);
                
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/StarChart.fxml" ));
                 Parent root = fxmlLoader.load(); 
                            
                 Scene scene = GameData.getScene();

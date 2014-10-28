@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/WelcomeScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlanetDrawScreenController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/WelcomeScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StarChartController">
 
     <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
@@ -51,11 +51,27 @@
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin></Label>
+                  <Label id="resourcesLabel" fx:id="distanceLabel" styleClass="planetInfoLabel" text="Distance: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label id="resourcesLabel" fx:id="fuelLabel" styleClass="planetInfoLabel" text="Fuel in Ship: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </left>
          <top>
-            <Label id="titleUMap" alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="780.0" text="Choose a Starting System" BorderPane.alignment="CENTER" />
+            <Label id="titleUMap" alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="780.0" text="Select a System" BorderPane.alignment="CENTER" />
          </top>
       </BorderPane>
       <Button id="cancelBtn" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#onCancelAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
@@ -63,7 +79,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button id="acceptBtn" layoutX="488.0" layoutY="444.0" mnemonicParsing="false" onAction="#onAcceptAction" prefHeight="42.0" prefWidth="115.0" text="Accept" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <Button id="acceptBtn" layoutX="488.0" layoutY="444.0" mnemonicParsing="false" onAction="#onTravelAction" prefHeight="42.0" prefWidth="115.0" text="Travel" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

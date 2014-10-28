@@ -9,6 +9,7 @@ import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.*;
 import javax.swing.JOptionPane;
@@ -60,7 +62,7 @@ public class PlanetDrawScreenController implements Initializable {
             JOptionPane.showMessageDialog(null, "Select a starting planet first.");
         } else {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Sample_Layout.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                 Parent root = fxmlLoader.load();
             
                 Scene scene = GameData.getScene();
@@ -96,14 +98,39 @@ public class PlanetDrawScreenController implements Initializable {
     private void handleMouseClick(MouseEvent event) {
         System.out.print(event.getX());
         System.out.println( " " + event.getY());
+
+        double x = event.getX();
+        double y = event.getY();
+        handlePlanetClick(x,y);
+    }
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        universe = new Universe("Trader Universe");
+        universe.addSolarSystem(CommonHelper.generatePlanets());
+        GameData.setUniverse(universe);
+        System.out.println( universe.toString() );
         
+        GraphicsContext g2d = canvas.getGraphicsContext2D();
+        g2d.setFill(Color.WHITE);
+        for( SolarSystem s : universe.getList() )
+        {
+            g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
+        }
+        GameData.getPlayer().setCurrentLocation(universe.getList().get(CommonHelper.randInt(universe.getList().size())));
+        CommonHelper.alertBox( GameData.stage, "Location Selected: " + GameData.player.getCurrentLocation().getName() );
+        handlePlanetClick(GameData.getPlayer().getCurrentLocation().getX(), GameData.getPlayer().getCurrentLocation().getY());    
+    }    
+
+    private void handlePlanetClick(double x, double y) {
         nameLabel.setText("Name: ");
         locationLabel.setText("Location: ");
         techLabel.setText("Tech Level: ");
         resourcesLabel.setText("Resources: ");
         planetInfoLabel.setText("Planet Information");
         for( SolarSystem s : universe.getList() ) {
-            if (s.isHit(event.getX(), event.getY())) {
+            if (s.isHit(x, y) ) {
                 nameLabel.setText("Name: " + s.getName());
                 locationLabel.setText("Location: " + s.getLocation());
                 techLabel.setText("Tech Level: " + s.getTechLevel());
@@ -121,21 +148,6 @@ public class PlanetDrawScreenController implements Initializable {
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
                
             }
-        }
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        universe = new Universe("Trader Universe");
-        universe.addSolarSystem(CommonHelper.generatePlanets());
-        System.out.println( universe.toString() );
-        
-        GraphicsContext g2d = canvas.getGraphicsContext2D();
-        g2d.setFill(Color.WHITE);
-        for( SolarSystem s : universe.getList() )
-        {
-            g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
-        }
-    }    
+        }    }
     
 }

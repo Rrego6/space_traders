@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/OrbitScreen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrbitController">
+   <children>
+      <Button layoutX="250.0" layoutY="353.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="110.0" mnemonicParsing="false" onAction="#onStarChartAction" prefHeight="30.0" prefWidth="110.0" text="Star Chart" AnchorPane.bottomAnchor="17.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="483.0" layoutY="358.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="110.0" mnemonicParsing="false" onAction="#onMarketplaceAction" prefHeight="30.0" prefWidth="110.0" text="Marketplace" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="19.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="saveGameButton" layoutX="24.0" layoutY="353.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="50.0" mnemonicParsing="false" onAction="#handleSaveGameAction" prefHeight="30.0" prefWidth="110.0" text="Save Game" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="24.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label id="playerName" fx:id="playerName" alignment="CENTER" layoutY="187.0" prefHeight="27.0" prefWidth="158.0" text="name" textFill="WHITE" AnchorPane.bottomAnchor="225.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label id="planetName" fx:id="planetName" alignment="CENTER" contentDisplay="CENTER" layoutX="171.0" layoutY="306.0" prefHeight="35.0" prefWidth="268.0" text="planet" textFill="WHITE" AnchorPane.bottomAnchor="59.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Button layoutX="24.0" layoutY="309.0" maxHeight="30.0" maxWidth="110.0" minHeight="30.0" minWidth="110.0" mnemonicParsing="false" onAction="#refillFuel" prefHeight="30.0" prefWidth="110.0" text="Refill Fuel" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="24.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Label alignment="CENTER" layoutX="476.0" layoutY="151.0" prefHeight="35.0" prefWidth="150.0" text="Cargo Hold:" textFill="WHITE" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="fuelContent" alignment="CENTER" layoutX="11.0" layoutY="263.0" prefHeight="20.0" prefWidth="137.0" text="Fuel Content:" textFill="#fffefe" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="452.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="pRobotsLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Robots" />
+      <Label fx:id="pNarcoticsLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Narcotics" />
+      <Label fx:id="pMachinesLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Machines" />
+      <Label fx:id="pMedicineLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Medicine" />
+      <Label fx:id="pFirearmsLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Firearms" />
+      <Label fx:id="pGamesLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Games" />
+      <Label fx:id="pOreLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Ore" />
+      <Label fx:id="pFoodLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Food" />
+      <Label fx:id="pFursLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Furs" />
+      <Label fx:id="pWaterLabel" layoutX="409.0" layoutY="-38.0" styleClass="goodLabel" text="Units of Water" />
+      <VBox fx:id="playerInventory" alignment="TOP_CENTER" layoutX="405.5" layoutY="180.0" prefHeight="181.0" prefWidth="150.0" AnchorPane.bottomAnchor="37.0" AnchorPane.rightAnchor="1.0">
+         <children>
+            <Label fx:id="pWaterLabel" styleClass="goodLabel" text="Units of Water" textFill="WHITE" />
+            <Label fx:id="pFursLabel" styleClass="goodLabel" text="Units of Furs" textFill="WHITE" />
+            <Label fx:id="pFoodLabel" styleClass="goodLabel" text="Units of Food" textFill="WHITE" />
+            <Label fx:id="pOreLabel" styleClass="goodLabel" text="Units of Ore" textFill="WHITE" />
+            <Label fx:id="pGamesLabel" styleClass="goodLabel" text="Units of Games" textFill="WHITE" />
+            <Label fx:id="pFirearmsLabel" styleClass="goodLabel" text="Units of Firearms" textFill="WHITE" />
+            <Label fx:id="pMedicineLabel" styleClass="goodLabel" text="Units of Medicine" textFill="WHITE" />
+            <Label fx:id="pMachinesLabel" styleClass="goodLabel" text="Units of Machines" textFill="WHITE" />
+            <Label fx:id="pNarcoticsLabel" styleClass="goodLabel" text="Units of Narcotics" textFill="WHITE" />
+            <Label fx:id="pRobotsLabel" styleClass="goodLabel" text="Units of Robots" textFill="WHITE" />
+         </children>
+      </VBox>
+      <Label fx:id="playerCredits" alignment="CENTER" layoutX="5.0" layoutY="232.0" prefHeight="20.0" prefWidth="150.0" styleClass="goodLabel" text="Credits: " textFill="WHITE" AnchorPane.bottomAnchor="190.0" AnchorPane.rightAnchor="445.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

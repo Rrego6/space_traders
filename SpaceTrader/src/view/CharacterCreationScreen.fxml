@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -41,14 +42,14 @@
             <Font name="System Bold" size="18.0" />
          </font></Button>
       <Label id="title" alignment="CENTER" contentDisplay="CENTER" layoutX="286.0" layoutY="6.0" text="Create Character" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Label id="pointsRemainingLabel" fx:id="spRemainingLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="151.0" prefHeight="38.0" prefWidth="173.0" text="Points Remaining: " AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label id="pointsRemainingLabel" fx:id="spRemainingLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="214.0" layoutY="128.0" prefHeight="38.0" prefWidth="600.0" text="Points Remaining: " AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <StackPane layoutY="189.0" prefHeight="42.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutY="164.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane alignment="CENTER" maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane alignment="CENTER" maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0" StackPane.alignment="CENTER_LEFT">
                <children>
                   <Label id="pilotLabel" fx:id="pilotLabel" minHeight="17.0" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" styleClass="statLabels" text="Pilot:">
                      <font>
@@ -74,12 +75,20 @@
                         <Insets left="10.0" />
                      </FlowPane.margin></Button>
                </children>
+               <StackPane.margin>
+                  <Insets left="100.0" />
+               </StackPane.margin>
             </FlowPane>
+            <Rectangle fx:id="pilotBar" arcHeight="5.0" arcWidth="5.0" fill="#dcdcffe5" height="27.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="280.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
-      <StackPane layoutY="224.0" prefHeight="42.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutY="196.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxHeight="25.0" maxWidth="160.0" prefHeight="25.0" prefWidth="150.0" StackPane.alignment="CENTER_LEFT">
                <children>
                   <Label id="fighterLabel" fx:id="fighterLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" styleClass="statLabels" text="Fighter:">
                      <font>
@@ -106,12 +115,20 @@
                      </font>
                   </Button>
                </children>
+               <StackPane.margin>
+                  <Insets left="100.0" />
+               </StackPane.margin>
             </FlowPane>
+            <Rectangle fx:id="fighterBar" arcHeight="5.0" arcWidth="5.0" fill="#dcdcffe5" height="27.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="280.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
-      <StackPane layoutY="266.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutY="228.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0" StackPane.alignment="CENTER_LEFT">
                <children>
                   <Label id="traderLabel" fx:id="traderLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Trader:">
                      <font>
@@ -130,12 +147,20 @@
                         <Insets left="10.0" />
                      </FlowPane.margin></Button>
                </children>
+               <StackPane.margin>
+                  <Insets left="100.0" />
+               </StackPane.margin>
             </FlowPane>
+            <Rectangle fx:id="traderBar" arcHeight="5.0" arcWidth="5.0" fill="#dcdcffe5" height="27.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="280.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
-      <StackPane layoutY="301.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutY="260.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0" StackPane.alignment="CENTER_LEFT">
                <children>
                   <Label id="engineerLabel" fx:id="engineerLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Engineer:">
                      <font>
@@ -153,12 +178,20 @@
                         <Insets left="10.0" />
                      </FlowPane.margin></Button>
                </children>
+               <StackPane.margin>
+                  <Insets left="100.0" />
+               </StackPane.margin>
             </FlowPane>
+            <Rectangle fx:id="engineerBar" arcHeight="5.0" arcWidth="5.0" fill="#dcdcffe5" height="27.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="280.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
-      <StackPane layoutY="335.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <StackPane layoutY="292.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0">
+            <FlowPane maxWidth="160.0" prefHeight="25.0" prefWidth="150.0" StackPane.alignment="CENTER_LEFT">
                <children>
                   <Label id="investorLabel" fx:id="investorLabel" minWidth="80.0" prefHeight="20.0" prefWidth="100.0" text="Investor:">
                      <font>
@@ -176,7 +209,15 @@
                         <Insets left="10.0" />
                      </FlowPane.margin></Button>
                </children>
+               <StackPane.margin>
+                  <Insets left="100.0" />
+               </StackPane.margin>
             </FlowPane>
+            <Rectangle fx:id="investorBar" arcHeight="5.0" arcWidth="5.0" fill="#dcdcffe5" height="27.0" stroke="BLACK" strokeType="INSIDE" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="280.0" />
+               </StackPane.margin>
+            </Rectangle>
          </children>
       </StackPane>
    </children>

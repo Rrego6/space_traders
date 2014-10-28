@@ -36,7 +36,7 @@ import model.TradeGood;
  *
  * @author Ambrose Cheung <cheungambrose30@gmail.com>
  */
-public class Sample_LayoutController implements Initializable {
+public class MarketplaceController implements Initializable {
 
     @FXML
     private Label costLabel;
@@ -111,9 +111,11 @@ public class Sample_LayoutController implements Initializable {
     private int cost;
     private int totalGoods;
     
-    
+    private int techLevel;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -121,117 +123,118 @@ public class Sample_LayoutController implements Initializable {
         tradeList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                int techLevel = GameData.getPlayer().getCurrentLocation().getTechLevel();
                 removedGood = tradeList.getSelectionModel().getSelectedItem();
                 goods.remove(removedGood);
                 if(removedGood.equals("Water (Sell)")) {
                     numWater++;
                     totalGoods++;
                     pWaterLabel.setText(numWater + " Units of Water");
-                    cost += TradeGood.WATER.getCost();
+                    cost += TradeGood.WATER.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Water (Buy)")) {
                     numBoughtWater--;
                     totalGoods--;
-                    cost -= TradeGood.WATER.getCost();
+                    cost -= TradeGood.WATER.getCost(techLevel);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Furs (Sell)")) {
                     numFurs++;
                     totalGoods++;
                     pFursLabel.setText(numFurs + " Units of Furs");
-                    cost += TradeGood.FURS.getCost();
+                    cost += TradeGood.FURS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Furs (Buy)")) {
                     numBoughtFurs--;
                     totalGoods--;
-                    cost -= TradeGood.FURS.getCost();
+                    cost -= TradeGood.FURS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Food (Sell)")) {
                     numFood++;
                     totalGoods++;
                     pFoodLabel.setText(numFood + " Units of Food");
-                    cost += TradeGood.FOOD.getCost();
+                    cost += TradeGood.FOOD.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Food (Buy)")) {
                     numBoughtFood--;
                     totalGoods--;
-                    cost -= TradeGood.FOOD.getCost();
+                    cost -= TradeGood.FOOD.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Ore (Sell)")) {
                     numOre++;
                     totalGoods++;
                     pOreLabel.setText(numOre + " Units of Ore");
-                    cost += TradeGood.ORE.getCost();
+                    cost += TradeGood.ORE.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Ore (Buy)")) {
                     numBoughtOre--;
                     totalGoods--;
-                    cost -= TradeGood.ORE.getCost();
+                    cost -= TradeGood.ORE.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Games (Sell)")) {
                     numGames++;
                     totalGoods++;
                     pGamesLabel.setText(numGames + " Units of Games");
-                    cost += TradeGood.GAMES.getCost();
+                    cost += TradeGood.GAMES.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Games (Buy)")) {
                     numBoughtGames--;
                     totalGoods--;
-                    cost -= TradeGood.GAMES.getCost();
+                    cost -= TradeGood.GAMES.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Firearms (Sell)")) {
                     numFirearms++;
                     totalGoods++;
                     pFirearmsLabel.setText(numFirearms + " Units of Firearms");
-                    cost += TradeGood.FIREARMS.getCost();
+                    cost += TradeGood.FIREARMS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Firearms (Buy)")) {
                     numBoughtFirearms--;
                     totalGoods--;
-                    cost -= TradeGood.FIREARMS.getCost();
+                    cost -= TradeGood.FIREARMS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Medicine (Sell)")) {
                     numMedicine++;
                     totalGoods++;
                     pMedicineLabel.setText(numMedicine + " Units of Medicine");
-                    cost += TradeGood.MEDICINE.getCost();
+                    cost += TradeGood.MEDICINE.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Medicine (Buy)")) {
                     numBoughtMedicine--;
                     totalGoods--;
-                    cost -= TradeGood.MEDICINE.getCost();
+                    cost -= TradeGood.MEDICINE.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Machines (Sell)")) {
                     numMachines++;
                     totalGoods++;
                     pMachinesLabel.setText(numMachines + " Units of Machines");
-                    cost += TradeGood.MACHINES.getCost();
+                    cost += TradeGood.MACHINES.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Machines (Buy)")) {
                     numBoughtMachines--;
                     totalGoods--;
-                    cost -= TradeGood.MACHINES.getCost();
+                    cost -= TradeGood.MACHINES.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Narcotics (Sell)")) {
                     numNarcotics++;
                     totalGoods++;
                     pNarcoticsLabel.setText(numNarcotics + " Units of Narcotics");
-                    cost += TradeGood.NARCOTICS.getCost();
+                    cost += TradeGood.NARCOTICS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Narcotics (Buy)")) {
                     numBoughtNarcotics--;
                     totalGoods--;
-                    cost -= TradeGood.NARCOTICS.getCost();
+                    cost -= TradeGood.NARCOTICS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if(removedGood.equals("Robots (Sell)")) {
                     numRobots++;
                     totalGoods++;
                     pRobotsLabel.setText(numRobots + " Units of Robots");
-                    cost += TradeGood.ROBOTS.getCost();
+                    cost += TradeGood.ROBOTS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Robots (Buy)")) {
                     numBoughtRobots--;
                     totalGoods--;
-                    cost -= TradeGood.ROBOTS.getCost();
+                    cost -= TradeGood.ROBOTS.getCost( techLevel );
                     costLabel.setText("Cost of Transaction: " + cost);
                 } 
             }
@@ -246,7 +249,7 @@ public class Sample_LayoutController implements Initializable {
             numWater--;
             totalGoods--;
             pWaterLabel.setText(numWater + " Units of Water");
-            cost -= TradeGood.WATER.getCost();
+            cost -= TradeGood.WATER.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -258,7 +261,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtWater++;
             totalGoods++;
-            cost += TradeGood.WATER.getCost();
+            cost += TradeGood.WATER.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -271,7 +274,7 @@ public class Sample_LayoutController implements Initializable {
             numFurs--;
             totalGoods--;
             pFursLabel.setText(numFurs + " Units of Furs");
-            cost -= TradeGood.FURS.getCost();
+            cost -= TradeGood.FURS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -283,7 +286,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtFurs++;
             totalGoods++;
-            cost += TradeGood.FURS.getCost();
+            cost += TradeGood.FURS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -296,7 +299,7 @@ public class Sample_LayoutController implements Initializable {
             numFood--;
             totalGoods--;
             pFoodLabel.setText(numFood + " Units of Food");
-            cost -= TradeGood.FOOD.getCost();
+            cost -= TradeGood.FOOD.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -308,7 +311,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtFood++;
             totalGoods++;
-            cost += TradeGood.FOOD.getCost();
+            cost += TradeGood.FOOD.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -321,7 +324,7 @@ public class Sample_LayoutController implements Initializable {
             numOre--;
             totalGoods--;
             pOreLabel.setText(numOre + " Units of Ore");
-            cost -= TradeGood.ORE.getCost();
+            cost -= TradeGood.ORE.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -333,7 +336,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtOre++;
             totalGoods++;
-            cost += TradeGood.ORE.getCost();
+            cost += TradeGood.ORE.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -346,7 +349,7 @@ public class Sample_LayoutController implements Initializable {
             numGames--;
             totalGoods--;
             pGamesLabel.setText(numGames + " Units of Water");
-            cost -= TradeGood.GAMES.getCost();
+            cost -= TradeGood.GAMES.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -358,7 +361,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtGames++;
             totalGoods++;
-            cost += TradeGood.GAMES.getCost();
+            cost += TradeGood.GAMES.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -371,7 +374,7 @@ public class Sample_LayoutController implements Initializable {
             numFirearms--;
             totalGoods--;
             pFirearmsLabel.setText(numWater + " Units of Firearms");
-            cost -= TradeGood.FIREARMS.getCost();
+            cost -= TradeGood.FIREARMS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -383,7 +386,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtFirearms++;
             totalGoods++;
-            cost += TradeGood.FIREARMS.getCost();
+            cost += TradeGood.FIREARMS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -396,7 +399,7 @@ public class Sample_LayoutController implements Initializable {
             numMedicine--;
             totalGoods--;
             pMedicineLabel.setText(numMedicine + " Units of Medicine");
-            cost -= TradeGood.MEDICINE.getCost();
+            cost -= TradeGood.MEDICINE.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -408,7 +411,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtMedicine++;
             totalGoods++;
-            cost += TradeGood.MEDICINE.getCost();
+            cost += TradeGood.MEDICINE.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -421,7 +424,7 @@ public class Sample_LayoutController implements Initializable {
             numMachines--;
             totalGoods--;
             pMachinesLabel.setText(numMachines + " Units of Machines");
-            cost -= TradeGood.MACHINES.getCost();
+            cost -= TradeGood.MACHINES.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -433,7 +436,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtMachines++;
             totalGoods++;
-            cost += TradeGood.MACHINES.getCost();
+            cost += TradeGood.MACHINES.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -446,7 +449,7 @@ public class Sample_LayoutController implements Initializable {
             numNarcotics--;
             totalGoods--;
             pNarcoticsLabel.setText(numNarcotics + " Units of Narcotics");
-            cost -= TradeGood.NARCOTICS.getCost();
+            cost -= TradeGood.NARCOTICS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -458,7 +461,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtNarcotics++;
             totalGoods++;
-            cost += TradeGood.NARCOTICS.getCost();
+            cost += TradeGood.NARCOTICS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -471,7 +474,7 @@ public class Sample_LayoutController implements Initializable {
             numRobots--;
             totalGoods--;
             pRobotsLabel.setText(numRobots + " Units of Robots");
-            cost -= TradeGood.ROBOTS.getCost();
+            cost -= TradeGood.ROBOTS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -483,7 +486,7 @@ public class Sample_LayoutController implements Initializable {
             tradeList.setItems(goods);
             numBoughtRobots++;
             totalGoods++;
-            cost += TradeGood.ROBOTS.getCost();
+            cost += TradeGood.ROBOTS.getCost( techLevel );
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
@@ -507,7 +510,7 @@ public class Sample_LayoutController implements Initializable {
     private void onCancelAction(ActionEvent event) {
         if (goods.isEmpty()) {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                 Parent root = fxmlLoader.load();
                 Scene scene = GameData.getScene();
                 scene.setRoot(root);
@@ -521,7 +524,7 @@ public class Sample_LayoutController implements Initializable {
             int response = JOptionPane.showConfirmDialog(null, "All goods in the trade window are untraded. Continue?");
             if (response == JOptionPane.YES_OPTION) {
                 try {
-                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/PlanetDrawScreen.fxml" ));
+                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                     Parent root = fxmlLoader.load();
                     Scene scene = GameData.getScene();
                     scene.setRoot(root);
@@ -577,6 +580,8 @@ public class Sample_LayoutController implements Initializable {
         numBoughtRobots = 0;
         totalGoods = numWater + numFurs + numOre + numGames + numFirearms + numMedicine + numMachines + numNarcotics + numRobots;
         
+        techLevel = GameData.getPlayer().getCurrentLocation().getTechLevel();
+
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.WATER.getMTLU()) {
             pWaterLabel.disableProperty();
         } else {
@@ -586,7 +591,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.WATER.getMTLP()) {
             mWaterLabel.disableProperty();
         } else {
-            mWaterLabel.setText("Water @ " + TradeGood.WATER.getCost());
+            mWaterLabel.setText("Water @ " + TradeGood.WATER.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FURS.getMTLU()) {
@@ -598,7 +603,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FURS.getMTLP()) {
             mFursLabel.disableProperty();
         } else {
-            mFursLabel.setText("Furs @ " + TradeGood.FURS.getCost());
+            mFursLabel.setText("Furs @ " + TradeGood.FURS.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FOOD.getMTLU()) {
@@ -610,7 +615,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FOOD.getMTLP()) {
             mFoodLabel.disableProperty();
         } else {
-            mFoodLabel.setText("Food @ " + TradeGood.FOOD.getCost());
+            mFoodLabel.setText("Food @ " + TradeGood.FOOD.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ORE.getMTLU()) {
@@ -622,7 +627,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ORE.getMTLP()) {
             mOreLabel.disableProperty();
         } else {
-            mOreLabel.setText("Ore @ " + TradeGood.ORE.getCost());
+            mOreLabel.setText("Ore @ " + TradeGood.ORE.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.GAMES.getMTLU()) {
@@ -634,7 +639,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.GAMES.getMTLP()) {
             mGamesLabel.disableProperty();
         } else {
-            mGamesLabel.setText("Games @ " + TradeGood.GAMES.getCost());
+            mGamesLabel.setText("Games @ " + TradeGood.GAMES.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FIREARMS.getMTLU()) {
@@ -646,7 +651,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FIREARMS.getMTLP()) {
             mFirearmsLabel.disableProperty();
         } else {
-            mFirearmsLabel.setText("Firearms @ " + TradeGood.FIREARMS.getCost());
+            mFirearmsLabel.setText("Firearms @ " + TradeGood.FIREARMS.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MEDICINE.getMTLU()) {
@@ -658,7 +663,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MEDICINE.getMTLP()) {
             mMedicineLabel.disableProperty();
         } else {
-            mMedicineLabel.setText("Medicine @ " + TradeGood.MEDICINE.getCost());
+            mMedicineLabel.setText("Medicine @ " + TradeGood.MEDICINE.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MACHINES.getMTLU()) {
@@ -670,7 +675,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MACHINES.getMTLP()) {
             mMachinesLabel.disableProperty();
         } else {
-            mMachinesLabel.setText("Machines @ " + TradeGood.MACHINES.getCost());
+            mMachinesLabel.setText("Machines @ " + TradeGood.MACHINES.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.NARCOTICS.getMTLU()) {
@@ -682,7 +687,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.NARCOTICS.getMTLP()) {
             mNarcoticsLabel.disableProperty();
         } else {
-            mNarcoticsLabel.setText("Narcotics @ " + TradeGood.NARCOTICS.getCost());
+            mNarcoticsLabel.setText("Narcotics @ " + TradeGood.NARCOTICS.getCost( techLevel ));
         }
         
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ROBOTS.getMTLU()) {
@@ -694,7 +699,7 @@ public class Sample_LayoutController implements Initializable {
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ROBOTS.getMTLP()) {
             mRobotsLabel.disableProperty();
         } else {
-            mRobotsLabel.setText("Robots @ " + TradeGood.ROBOTS.getCost());
+            mRobotsLabel.setText("Robots @ " + TradeGood.ROBOTS.getCost( techLevel ));
         }
     }
 }
