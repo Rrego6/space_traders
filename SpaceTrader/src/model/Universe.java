@@ -18,6 +18,10 @@ public class Universe {
     private String name;
     private ArrayList<SolarSystem> solarsystems;
     
+    /**
+     *
+     * @param name
+     */
     public Universe(String name) {
         this.name = name;
         solarsystems = new ArrayList<>();
@@ -25,6 +29,12 @@ public class Universe {
     /*@param:List of solarSystems.
     @return: none. add the list of solarSystems to the universe.
     */ 
+
+    /**
+     *
+     * @param list
+     */
+     
     public void addSolarSystem( List<SolarSystem> list )
     {
         solarsystems.addAll( list );
@@ -33,30 +43,59 @@ public class Universe {
     @return: none. add a solarSystems to the list of solarSystem.
     */     
     }
+
+    /**
+     *
+     * @param a
+     */
     public void addSolarSystem(SolarSystem a) {
         solarsystems.add(a);
     }
     /*@param: solarSystem object.
     @return: none. remove the solarSystem object from the solarSystem list.
     */ 
+
+    /**
+     *
+     * @param a
+     */
+     
     public void removeSolarSystem(SolarSystem a) {
         solarsystems.remove(a);
     }
     /*@param:name of the universe, String.
     @return: none. set the name variable.
     */ 
+
+    /**
+     *
+     * @param name
+     */
+     
     public void setName(String name) { //setter mathod. 
         this.name = name;
     }
     /*@param:none.
     @return: name variable value.
     */ 
+
+    /**
+     *
+     * @return
+     */
+     
     public String getName() {  //getter method.
         return name;
     }
     /*@param:none.
     @return: solarSystem valriable value.
     */ 
+
+    /**
+     *
+     * @return
+     */
+     
     public ArrayList<SolarSystem> getList() {  //getter method.
         return solarsystems;
     }

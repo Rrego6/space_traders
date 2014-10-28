@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,13 +26,31 @@ import javax.swing.JOptionPane;
  */
 public class OrbitController implements Initializable {
 
+    @FXML
+    private Label playerName;
+    @FXML
+    private Label planetName;
+    
+    private String currentPlanet, currentPlayer;
+    
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        currentPlanet = GameData.getPlayer().getCurrentLocation().getName();
+        planetName.setText("Location:  " + currentPlanet);
+        currentPlayer = GameData.getPlayer().getName();
+        playerName.setText("Name:  " + currentPlayer);
     }    
+    
+    @FXML
+    private void refillFuel(ActionEvent event) {
+        GameData.getPlayer().getShip().refillFuel();
+    }
+    
     
     @FXML
     private void onStarChartAction(ActionEvent event) {
@@ -54,6 +73,25 @@ public class OrbitController implements Initializable {
     private void onMarketplaceAction(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Marketplace.fxml" ));
+            Parent root = fxmlLoader.load();
+         
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void handleSaveGameAction(ActionEvent event) {
+        
+        try {
+            GameData.saveData();
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
             Parent root = fxmlLoader.load();
          
             Scene scene = GameData.getScene();

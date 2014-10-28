@@ -40,7 +40,7 @@ public class Ship {
         gadgetSlots = 0;
         crew = 1;
         fuel = 20;
-        maxFuel = 20;
+        maxFuel = 100;
         minTechLevel = 4;
         fuelCost = 1;
         price = 2000;
@@ -90,6 +90,10 @@ public class Ship {
     
     public void setHull(int n) {
         this.hull = n;
+    }
+    
+    public void refillFuel() {
+        fuel = maxFuel;
     }
     
     public int getHull() {

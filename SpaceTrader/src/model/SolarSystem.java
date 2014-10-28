@@ -170,3 +170,4 @@ public class SolarSystem {
                 "), Tech Level: " + techLevel + ", Resources: " + resource + "}";
     }
 }
+
