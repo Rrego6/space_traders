@@ -229,4 +229,8 @@ public class Player {
     public Player getEncounterPerson() {
         return this.encounterPerson;
     }
+    
+    public void onSave() {
+        encounterPerson = null;
+    }
 }
