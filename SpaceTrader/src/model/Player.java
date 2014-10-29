@@ -6,14 +6,11 @@
 
 package model;
 
-import helper.GameData;
-import interfaces.Savable;
-
 /**
  *
  * @author Raoul
  */
-public class Player implements Savable{
+public class Player {
     private String name;
     private int pilotSP;
     private int fighterSP;
@@ -22,6 +19,7 @@ public class Player implements Savable{
     private int investorSP;
     private int credits;
     private SolarSystem currentLocation;
+    //private OriginalShip ship;
     private Ship ship;
     private int traderRep;
     private int pirateRep;
@@ -36,21 +34,11 @@ public class Player implements Savable{
     @param: investorSP, int number of investors.
     *@return: player object
     */
-
-    /**
-     *
-     * @param name
-     * @param pilotSP
-     * @param fighterSP
-     * @param traderSP
-     * @param engineerSP
-     * @param investorSP
-     */
-    
     public Player(String name, int pilotSP, int fighterSP, int traderSP, int engineerSP, int investorSP )
     {
         this.name = name;
-        this.ship = new Ship();
+        //this.ship = new OriginalShip();
+        this.ship = Ship.GNAT; //added from the enum ship class
         this.pilotSP = pilotSP;
         this.fighterSP = fighterSP;
         this.traderSP = traderSP;
@@ -68,7 +56,8 @@ public class Player implements Savable{
         trader.setTraderSP(((int) Math.random() * 5) + 10);
         trader.setFighterSP(15 - trader.getTraderSP());
         trader.setCredits(((int) Math.random() * 1000) + 1000);
-        trader.setShip(new Ship());
+        //trader.setShip(new OriginalShip());
+        trader.setShip(Ship.TRADER);
         return trader;
     }
     
@@ -78,7 +67,7 @@ public class Player implements Savable{
         fighter.setFighterSP(((int) Math.random() * 5) + 10);
         fighter.setPilotSP(15 - fighter.getFighterSP());
         fighter.setCredits(((int) Math.random() * 1000) + 1000);
-        fighter.setShip(new Ship());
+        fighter.setShip(Ship.FIGHTER);
         return fighter;
     }
     
@@ -91,108 +80,54 @@ public class Player implements Savable{
     /*@param:name, name of the player String
     @return: sets the name variable.
     */
-
-    /**
-     *
-     * @param name
-     */
-    
     public void setName(String name) { //getter method.
         this.name = name;
     }
     /*@param:none.
     @return: name variable value.
     */
-
-    /**
-     *
-     * @return
-     */
-    
     public String getName() {  //getter method.
         return name;
     }
     /*@param:none.
     @return: pilotSP variable value int.
     */
-
-    /**
-     *
-     * @return
-     */
-    
     public int getPilotSP() {  //getter method.
         return pilotSP;
     }
     /*@param:none.
     @return: fighterSP value int.
     */
-
-    /**
-     *
-     * @return
-     */
-    
     public int getFighterSP() {  //getter method.
         return fighterSP;
     }
      /*@param:none.
     @return: traderSP value int.
     */   
-
-    /**
-     *
-     * @return
-     */
-       
     public int getTraderSP() {  //getter method.
         return traderSP;
     }  
     /*@param:none.
     @return: engineerSP value int.
     */
-
-    /**
-     *
-     * @return
-     */
-    
     public int getEngineerSP() {  //getter method.
         return engineerSP;
     } 
     /*@param:none.
     @return: investorSP value int.
     */
-
-    /**
-     *
-     * @return
-     */
-    
     public int getInvestorSP() {  //getter method.
         return investorSP;
     }
     /*@param:number of pilotSP int.
     @return: sets the pilotSP variable.
     */
-
-    /**
-     *
-     * @param no
-     */
-    
     public void setPilotSP(int no) {  //Setter method.
         this.pilotSP = no;
     }
     /*@param:number of fighterSP int.
     @return: sets the fighter variable.
     */
-
-    /**
-     *
-     * @param no
-     */
-    
     public void setFighterSP(int no) {  //Setter method.
         this.fighterSP = no;
     }
@@ -205,72 +140,44 @@ public class Player implements Savable{
     /*@param:number of engineerSP int.
     @return: sets the engineerSP variable.
     */
-
-    /**
-     *
-     * @param no
-     */
-    
     public void setEngineerSP(int no) {  //Setter method.
         this.engineerSP = no;
     } 
     /*@param:number of investorSP int.
     @return: sets the investorSP variable.
     */
-
-    /**
-     *
-     * @param no
-     */
-    
     public void setInvestorSP(int no) {  //Setter method.
         this.investorSP = no;
     }
     
-    /**
-     *
-     * @param credits
-     */
     public void setCredits(int credits) {
         this.credits = credits;
     }
     
-    /**
-     *
-     * @return
-     */
     public int getCredits() {
         return credits;
     }
     
-    /**
-     *
-     * @param ship
-     */
+    /*public void setShip(OriginalShip ship) {
+        this.ship = ship;
+    }*/
+    
     public void setShip(Ship ship) {
         this.ship = ship;
     }
     
-    /**
-     *
-     * @return
-     */
+    /*public OriginalShip getShip() {
+        return ship;
+    }*/
+    
     public Ship getShip() {
         return ship;
     }
     
-    /**
-     *
-     * @param solarSystem
-     */
     public void setCurrentLocation(SolarSystem solarSystem) {
         this.currentLocation = solarSystem;
     }
     
-    /**
-     *
-     * @return
-     */
     public SolarSystem getCurrentLocation() {
         return currentLocation;
     }
@@ -323,8 +230,6 @@ public class Player implements Savable{
         return this.encounterPerson;
     }
     
-
-    @Override
     public void onSave() {
         encounterPerson = null;
     }
