@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 23, 2014, 9:55:05 PM
+    Author     : Sarah
+*/
+.background {
+    //-fx-background-color: #1d1d1d;
+    -fx-background-image: url("/img/shipyard.jpg");
+    -fx-background-size: cover;
+    //-fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}
+
+.button:hover {
+     //-fx-background-color: #0099CC;
+     -fx-background-color: linear-gradient(rgb(48,41,52),rgb(97,84,106));
+}
+
+.button {
+    //-fx-padding: 5 22 5 22;   
+   // -fx-border-color: #0000cc;
+   // -fx-border-width: 0 0 1 0;
+   // -fx-background-color: #ff0000;
+   // -fx-text-fill: #000000;
+   // -fx-font-size: 15pt;
+    -fx-text-fill: white;
+    //-fx-font-weight: bold;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-background-color: linear-gradient(rgb(97,84,106), rgb(48,41,52));
+}
+
+#titleShipyard {
+    -fx-font-size: 40pt;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-text-fill: rgb(230,230,255);
+    //-fx-border-color: whitesmoke;
+   // -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 2 );
+    
+}

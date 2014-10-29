@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import model.SolarSystem;
 import model.Universe;
 import model.Player;
+import model.Inventory;
 
 /**
  * FXML Controller class
@@ -83,6 +84,10 @@ public class StarChartController implements Initializable {
             }
         }
         fuelLabel.setText("Fuel in Ship: " + GameData.getPlayer().getShip().getFuel());
+        nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
+        locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
+        techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
+        resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
     }    
     
     @FXML
@@ -183,9 +188,17 @@ public class StarChartController implements Initializable {
                         options[1]);
                         if (n == 0) {
                             //generate win/lose
-                            int chanceOfWinning = (int) Math.random() * GameData.getPlayer().getPirateRep();
-                            if (chanceOfWinning > 50) {
+                            int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getPirateRep())));
+                            if (chanceOfWinning > 10) {
                                 JOptionPane.showMessageDialog(null, "You won the battle!");
+                                GameData.getPlayer().setPirateRep(GameData.getPlayer().getPirateRep() + 1);
+                                int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
+                                if (damTaken <= GameData.getPlayer().getShip().getShields()) {
+                                    GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
+                                } else {
+                                    GameData.getPlayer().getShip().setShields(0);
+                                    GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
+                                }
                                 try {
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                                 Parent root = fxmlLoader.load();
@@ -197,8 +210,8 @@ public class StarChartController implements Initializable {
                                     e.printStackTrace();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "You lost the battle!");
-                                //Lose ship?
+                                JOptionPane.showMessageDialog(null, "You lost the battle! You have lost all your items!");
+                                GameData.getPlayer().getShip().setInventory(new Inventory(100));
                                 try {
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                                 Parent root = fxmlLoader.load();
@@ -212,6 +225,8 @@ public class StarChartController implements Initializable {
                             }
                         } else if (n == 1) {
                             //remove goods and then continue
+                            JOptionPane.showMessageDialog(null, "You have been pillaged and lost all your items!");
+                            GameData.getPlayer().getShip().setInventory(new Inventory(100));
                             try {
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                                 Parent root = fxmlLoader.load();
@@ -239,6 +254,39 @@ public class StarChartController implements Initializable {
                         //if not clean, take item, fine, etc.
                         //if clean, raise police rep
                         //continue
+                        JOptionPane.showMessageDialog(null, "The police is inspecting.");
+                        if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() > 0) {
+                            JOptionPane.showMessageDialog(null, "The police has found narcotics! They have taken it away and fined you 100 credits!");
+                            if (GameData.getPlayer().getPoliceRep() < 1) {
+                                GameData.getPlayer().setPoliceRep(0);
+                            } else {
+                                GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                            }
+                            GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                            if (GameData.getPlayer().getCredits() < 100) {
+                                GameData.getPlayer().setCredits(0);
+                            } else {
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                            }
+                        }
+                        if (GameData.getPlayer().getShip().getInventory().getNumFirearms() > 0) {
+                            JOptionPane.showMessageDialog(null, "The police has found firearms! They have taken it away and fined you 100 credits!");
+                            if (GameData.getPlayer().getPoliceRep() < 1) {
+                                GameData.getPlayer().setPoliceRep(0);
+                            } else {
+                                GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                            }
+                            GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                            if (GameData.getPlayer().getCredits() < 100) {
+                                GameData.getPlayer().setCredits(0);
+                            } else {
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                            }
+                        }
+                        if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() == 0 && GameData.getPlayer().getShip().getInventory().getNumFirearms() == 0) {
+                            JOptionPane.showMessageDialog(null, "The police did not find anything and apologizes for using your time.");
+                            GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() + 1);
+                        }
                         try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                             Parent root = fxmlLoader.load();
@@ -255,6 +303,136 @@ public class StarChartController implements Initializable {
                         //result
                         //if no, inspection
                         //if yes, continue
+                        Object[] bribe = {GameData.getPlayer().getCredits() / 10, GameData.getPlayer().getCredits() / 2, GameData.getPlayer().getCredits()};
+                        int m = JOptionPane.showOptionDialog(null,
+                            "How much would you like to bribe? (10%, 50%, 100%)",
+                            "Bribe!",
+                            JOptionPane.YES_NO_CANCEL_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            bribe,
+                            bribe[0]);
+                        if (m == 0) {
+                            if ((GameData.getPlayer().getCredits() / 10) > ((int) (Math.random() * GameData.getPlayer().getCredits()))) {
+                                JOptionPane.showMessageDialog(null, "The police has accepted your bribe.");
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - (GameData.getPlayer().getCredits() / 10));
+                            } else {
+                                JOptionPane.showMessageDialog(null, "The police has rejected your bribe.");
+                                JOptionPane.showMessageDialog(null, "The police is inspecting.");
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found narcotics! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumFirearms() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found firearms! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() == 0 && GameData.getPlayer().getShip().getInventory().getNumFirearms() == 0) {
+                                    JOptionPane.showMessageDialog(null, "The police did not find anything and apologizes for using your time.");
+                                    GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() + 1);
+                                }
+                            }
+                        } else if (m == 1) {
+                            if ((GameData.getPlayer().getCredits() / 2) > ((int) (Math.random() * GameData.getPlayer().getCredits()))) {
+                                JOptionPane.showMessageDialog(null, "The police has accepted your bribe.");
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - (GameData.getPlayer().getCredits() / 2));
+                            } else {
+                                JOptionPane.showMessageDialog(null, "The police has rejected your bribe.");
+                                JOptionPane.showMessageDialog(null, "The police is inspecting.");
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found narcotics! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumFirearms() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found firearms! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() == 0 && GameData.getPlayer().getShip().getInventory().getNumFirearms() == 0) {
+                                    JOptionPane.showMessageDialog(null, "The police did not find anything and apologizes for using your time.");
+                                    GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() + 1);
+                                }
+                            }
+                        } else {
+                            if ((GameData.getPlayer().getCredits()) > ((int) (Math.random() * GameData.getPlayer().getCredits()))) {
+                                JOptionPane.showMessageDialog(null, "The police has accepted your bribe.");
+                                GameData.getPlayer().setCredits(0);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "The police has rejected your bribe.");
+                                JOptionPane.showMessageDialog(null, "The police is inspecting.");
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found narcotics! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumFirearms() > 0) {
+                                    JOptionPane.showMessageDialog(null, "The police has found firearms! They have taken it away and fined you 100 credits!");
+                                    if (GameData.getPlayer().getPoliceRep() < 1) {
+                                        GameData.getPlayer().setPoliceRep(0);
+                                    } else {
+                                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 1);
+                                    }
+                                    GameData.getPlayer().getShip().getInventory().setNumFirearms(0);
+                                    if (GameData.getPlayer().getCredits() < 100) {
+                                        GameData.getPlayer().setCredits(0);
+                                    } else {
+                                        GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                                    }
+                                }
+                                if (GameData.getPlayer().getShip().getInventory().getNumNarcotics() == 0 && GameData.getPlayer().getShip().getInventory().getNumFirearms() == 0) {
+                                    JOptionPane.showMessageDialog(null, "The police did not find anything and apologizes for using your time.");
+                                    GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() + 1);
+                                }
+                            }
+                        }
                         try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                             Parent root = fxmlLoader.load();
@@ -269,10 +447,17 @@ public class StarChartController implements Initializable {
                         //result
                         //lose == jail
                         //win == continue, rep down
-                        int chanceOfWinning = (int) Math.random() * GameData.getPlayer().getPirateRep();
-                        if (chanceOfWinning > 50) {
+                        GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 10);
+                        int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getPirateRep())));
+                        if (chanceOfWinning > 10) {
                             JOptionPane.showMessageDialog(null, "You won the battle!");
-                            GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 10);
+                            int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
+                            if (damTaken <= GameData.getPlayer().getShip().getShields()) {
+                                GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
+                            } else {
+                                GameData.getPlayer().getShip().setShields(0);
+                                GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
+                            }
                             try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                             Parent root = fxmlLoader.load();
@@ -286,6 +471,12 @@ public class StarChartController implements Initializable {
                         } else {
                             JOptionPane.showMessageDialog(null, "You lost the battle!");
                             //Lose ship?
+                            JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits.");
+                            if (GameData.getPlayer().getCredits() < 100) {
+                                GameData.getPlayer().setCredits(0);
+                            } else {
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
+                            }
                             try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                             Parent root = fxmlLoader.load();

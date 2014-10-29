@@ -58,11 +58,6 @@
             <Label id="titleUMap" alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="780.0" text="Choose a Starting System" BorderPane.alignment="CENTER" />
          </top>
       </BorderPane>
-      <Button id="cancelBtn" layoutX="14.0" layoutY="444.0" mnemonicParsing="false" onAction="#onCancelAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
       <Button id="acceptBtn" layoutX="488.0" layoutY="444.0" mnemonicParsing="false" onAction="#onAcceptAction" prefHeight="42.0" prefWidth="115.0" text="Accept" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <font>
             <Font name="System Bold" size="18.0" />

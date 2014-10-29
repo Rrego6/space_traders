@@ -14,51 +14,51 @@
             <Font name="System Bold" size="18.0" />
         </font>
       </Button>
-      <Button id="cancelTradeBtn" layoutX="60.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCancelAction" text="Cancel">
+      <Button id="cancelTradeBtn" layoutX="60.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCancelAction" text="Back">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
       </Button>
       <VBox fx:id="marketplaceInventory" alignment="TOP_CENTER" layoutX="430.0" layoutY="106.0" prefHeight="172.0" prefWidth="172.0">
          <children>
-            <Label fx:id="mWaterLabel" onMouseClicked="#buyWater" text="Water" styleClass="goodLabel" />
-            <Label fx:id="mFursLabel" onMouseClicked="#buyFurs" text="Furs" styleClass="goodLabel" />
-            <Label fx:id="mFoodLabel" onMouseClicked="#buyFood" text="Food" styleClass="goodLabel" />
-            <Label fx:id="mOreLabel" onMouseClicked="#buyOre" text="Ore" styleClass="goodLabel" />
-            <Label fx:id="mGamesLabel" onMouseClicked="#buyGames" text="Games" styleClass="goodLabel" />
-            <Label fx:id="mFirearmsLabel" onMouseClicked="#buyFirearms" text="Firearms" styleClass="goodLabel" />
-            <Label fx:id="mMedicineLabel" onMouseClicked="#buyMedicine" text="Medicine" styleClass="goodLabel" />
-            <Label fx:id="mMachinesLabel" onMouseClicked="#buyMachines" text="Machines" styleClass="goodLabel" />
-            <Label fx:id="mNarcoticsLabel" onMouseClicked="#buyNarcotics" text="Narcotics" styleClass="goodLabel" />
-            <Label fx:id="mRobotsLabel" onMouseClicked="#buyRobots" text="Robots" styleClass="goodLabel" />
+            <Label fx:id="mWaterLabel" onMouseClicked="#buyWater" styleClass="goodLabel" text="Water" />
+            <Label fx:id="mFursLabel" onMouseClicked="#buyFurs" styleClass="goodLabel" text="Furs" />
+            <Label fx:id="mFoodLabel" onMouseClicked="#buyFood" styleClass="goodLabel" text="Food" />
+            <Label fx:id="mOreLabel" onMouseClicked="#buyOre" styleClass="goodLabel" text="Ore" />
+            <Label fx:id="mGamesLabel" onMouseClicked="#buyGames" styleClass="goodLabel" text="Games" />
+            <Label fx:id="mFirearmsLabel" onMouseClicked="#buyFirearms" styleClass="goodLabel" text="Firearms" />
+            <Label fx:id="mMedicineLabel" onMouseClicked="#buyMedicine" styleClass="goodLabel" text="Medicine" />
+            <Label fx:id="mMachinesLabel" onMouseClicked="#buyMachines" styleClass="goodLabel" text="Machines" />
+            <Label fx:id="mNarcoticsLabel" onMouseClicked="#buyNarcotics" styleClass="goodLabel" text="Narcotics" />
+            <Label fx:id="mRobotsLabel" onMouseClicked="#buyRobots" styleClass="goodLabel" text="Robots" />
          </children>
       </VBox>
       <VBox fx:id="playerInventory" alignment="TOP_CENTER" layoutY="106.0" prefHeight="172.0" prefWidth="172.0">
          <children>
-            <Label fx:id="pWaterLabel" onMouseClicked="#sellWater" text="Units of Water" styleClass="goodLabel" />
-            <Label fx:id="pFursLabel" onMouseClicked="#sellFurs" text="Units of Furs" styleClass="goodLabel" />
-            <Label fx:id="pFoodLabel" onMouseClicked="#sellFood" text="Units of Food" styleClass="goodLabel" />
-            <Label fx:id="pOreLabel" onMouseClicked="#sellOre" text="Units of Ore" styleClass="goodLabel" />
-            <Label fx:id="pGamesLabel" onMouseClicked="#sellGames" text="Units of Games" styleClass="goodLabel" />
-            <Label fx:id="pFirearmsLabel" onMouseClicked="#sellFirearms" text="Units of Firearms" styleClass="goodLabel" />
-            <Label fx:id="pMedicineLabel" onMouseClicked="#sellMedicine" text="Units of Medicine" styleClass="goodLabel" />
-            <Label fx:id="pMachinesLabel" onMouseClicked="#sellMachines" text="Units of Machines" styleClass="goodLabel" />
-            <Label fx:id="pNarcoticsLabel" onMouseClicked="#sellNarcotics" text="Units of Narcotics" styleClass="goodLabel" />
-            <Label fx:id="pRobotsLabel" onMouseClicked="#sellRobots" text="Units of Robots" styleClass="goodLabel" />
+            <Label fx:id="pWaterLabel" onMouseClicked="#sellWater" styleClass="goodLabel" text="Units of Water" />
+            <Label fx:id="pFursLabel" onMouseClicked="#sellFurs" styleClass="goodLabel" text="Units of Furs" />
+            <Label fx:id="pFoodLabel" onMouseClicked="#sellFood" styleClass="goodLabel" text="Units of Food" />
+            <Label fx:id="pOreLabel" onMouseClicked="#sellOre" styleClass="goodLabel" text="Units of Ore" />
+            <Label fx:id="pGamesLabel" onMouseClicked="#sellGames" styleClass="goodLabel" text="Units of Games" />
+            <Label fx:id="pFirearmsLabel" onMouseClicked="#sellFirearms" styleClass="goodLabel" text="Units of Firearms" />
+            <Label fx:id="pMedicineLabel" onMouseClicked="#sellMedicine" styleClass="goodLabel" text="Units of Medicine" />
+            <Label fx:id="pMachinesLabel" onMouseClicked="#sellMachines" styleClass="goodLabel" text="Units of Machines" />
+            <Label fx:id="pNarcoticsLabel" onMouseClicked="#sellNarcotics" styleClass="goodLabel" text="Units of Narcotics" />
+            <Label fx:id="pRobotsLabel" onMouseClicked="#sellRobots" styleClass="goodLabel" text="Units of Robots" />
          </children>
       </VBox>
-      <Label fx:id="costLabel" layoutX="222.0" layoutY="332.0" text="Cost of Transaction:" styleClass="goodLabel" />
-      <Label layoutX="20.0" layoutY="73.0" text="Your Cargo Hold" styleClass="goodLabel" >
+      <Label fx:id="costLabel" layoutX="222.0" layoutY="332.0" styleClass="goodLabel" text="Cost of Transaction:" />
+      <Label layoutX="20.0" layoutY="73.0" styleClass="goodLabel" text="Your Cargo Hold">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="467.0" layoutY="73.0" text="Marketplace" styleClass="goodLabel" >
+      <Label layoutX="467.0" layoutY="73.0" styleClass="goodLabel" text="Marketplace">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="playerCredits" layoutX="48.0" layoutY="292.0" text="Credits: " styleClass="goodLabel" />
+      <Label fx:id="playerCredits" layoutX="48.0" layoutY="292.0" styleClass="goodLabel" text="Credits: " />
       <ListView fx:id="tradeList" layoutX="201.0" layoutY="71.0" prefHeight="235.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

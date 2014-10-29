@@ -9,7 +9,7 @@ import java.util.Random;
 import helper.GameData;
 /**
 *
-* @author tonyrafi
+* @author Noora
 */
 public enum TradeGood {
     WATER(0,0,2,30,3,4),
