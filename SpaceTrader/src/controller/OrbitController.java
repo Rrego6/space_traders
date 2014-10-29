@@ -57,6 +57,8 @@ public class OrbitController implements Initializable {
     private Label pRobotsLabel;
     @FXML
     private Label fuelContent;
+    @FXML
+    private Label techLevelLabel;
   
     
     private String currentPlanet, currentPlayer;
@@ -73,9 +75,9 @@ public class OrbitController implements Initializable {
         }
         else{
            shipyardBtn.setVisible(false);
-            System.out.println("planet doesnt have high enough tech level");
         }
         currentPlanet = GameData.getPlayer().getCurrentLocation().getName();
+        techLevelLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
         planetName.setText("Location:  " + currentPlanet);
         currentPlayer = GameData.getPlayer().getName();
         playerName.setText("Name:  " + currentPlayer);

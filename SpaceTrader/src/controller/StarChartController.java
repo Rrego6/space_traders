@@ -83,6 +83,10 @@ public class StarChartController implements Initializable {
             }
         }
         fuelLabel.setText("Fuel in Ship: " + GameData.getPlayer().getShip().getFuel());
+        nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
+        locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
+        techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
+        resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
     }    
     
     @FXML

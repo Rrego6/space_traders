@@ -6,16 +6,21 @@
 
 package controller;
 
+import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 
 /**
  * FXML Controller class
@@ -31,6 +36,10 @@ public class ShipyardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    @FXML
+    private ListView<String> actionsListView;
+    private ObservableList actions = FXCollections.observableArrayList();
+    
     
     @FXML
     private void onBackAction(ActionEvent event) {
@@ -47,5 +56,13 @@ public class ShipyardScreenController implements Initializable {
         {
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    private void onRefuelAction(ActionEvent event){
+        GameData.getPlayer().getShip().refillFuel();
+        actions.add("Ship Refueled (current fuel: " + GameData.getPlayer().getShip().getFuel() + ")");
+        actionsListView.setItems(actions);
+        //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
 }

@@ -110,7 +110,11 @@ public class PlanetDrawScreenController implements Initializable {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.generatePlanets());
         GameData.setUniverse(universe);
-        System.out.println( universe.toString() );
+        //System.out.println( universe.toString() );
+        nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
+        locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
+        techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
+        resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
         
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
