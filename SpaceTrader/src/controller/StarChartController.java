@@ -471,9 +471,10 @@ public class StarChartController implements Initializable {
                         } else {
                             JOptionPane.showMessageDialog(null, "You lost the battle!");
                             //Lose ship?
-                            JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits.");
+                            JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits. If you cannot pay, you will lose your ship and items. You will be given a basic level ship to compensate.");
                             if (GameData.getPlayer().getCredits() < 100) {
                                 GameData.getPlayer().setCredits(0);
+                                GameData.getPlayer().getShip().setInventory(new Inventory(100));
                             } else {
                                 GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
                             }
