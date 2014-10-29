@@ -6,6 +6,7 @@
 
 package controller;
 
+import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +23,9 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
-import model.*;
+import model.SolarSystem;
+import model.Universe;
+import model.Player;
 
 /**
  * FXML Controller class
@@ -51,23 +54,39 @@ public class StarChartController implements Initializable {
     private SolarSystem solarSystem;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         universe = GameData.getUniverse();
+        if( universe == null ) {
+            universe = new Universe("Trader Universe");
+            universe.addSolarSystem(CommonHelper.generatePlanets());
+            GameData.setUniverse(universe);
+            GameData.getPlayer().setCurrentLocation(universe.getList().get(CommonHelper.randInt(universe.getList().size())));
+            CommonHelper.alertBox( GameData.stage, "Location Selected: " + GameData.player.getCurrentLocation().getName() );
+        }
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
+        
         for( SolarSystem s : universe.getList() )
         {
-            if(s.equals(GameData.getPlayer().getCurrentLocation())) {
+            //System.out.println("for solarsystem " + s.getName());
+            if(s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                 g2d.setFill(Color.GREEN);
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
+            } 
+            else if(!s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                 g2d.setFill(Color.WHITE);
-            } else {
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
             }
         }
         fuelLabel.setText("Fuel in Ship: " + GameData.getPlayer().getShip().getFuel());
+        nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
+        locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
+        techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
+        resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
     }    
     
     @FXML
@@ -96,7 +115,7 @@ public class StarChartController implements Initializable {
             }
             else {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
-                if(s.equals(GameData.getPlayer().getCurrentLocation())) {
+                if(s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                     g2d.setFill(Color.GREEN);
                     g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
                 } else {
@@ -109,22 +128,106 @@ public class StarChartController implements Initializable {
     
     @FXML
     private void onTravelAction(ActionEvent event) {
-        if ( solarSystem != null && solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
+        if(solarSystem == null) {}
+        else if ( solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {
+            
+            //ADD CHANCE FOR ENCOUNTER HERE
+            if (GameData.getPlayer().encounter()) {
+                int encounterType = GameData.getPlayer().encounterType();
+                if (encounterType == 1) {
+                    //Generate Trader
+                    //Pop-up that shows there is a trader/trader wants to trade with you
+                    //Attack or trade him
+                    //If fight, battle window, if trade, trade window, else continue to destination
+                    
+                    int chanceOfFleeing = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfFleeing > GameData.getPlayer().getTraderRep()) {
+                        JOptionPane.showMessageDialog(null, "A trader has appeared, but he has already fled!");
+                    } else {
+                        Object[] options = {"Trade", "Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "A trader has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[2]);
+                        
+                        //check n, and go to trade/battle window accordingly
+                    }
+                        
+                } else if (encounterType == 2) {
+                    //Generate Pirate
+                    //Pop-up that shows a Pirate is attacking with a button that lets you move on
+                    //Battle window
+                    
+                    int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfFighting < GameData.getPlayer().getPirateRep()) {
+                        Object[] options = {"Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "A pirate has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[1]);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A pirate has appeared! Prepare to fight!");
+                        
+                        //proceed to battle window
+                    }
+                  
+                } else {
+                    //Generate Police
+                    //Flee, see if police wants to inspect you, attack, 
+                    
+                    int chanceOfInspection = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfInspection < GameData.getPlayer().getPoliceRep()) {
+                        Object[] options = {"Fight", "Continue"};
+                        int n = JOptionPane.showOptionDialog(null,
+                        "The police has appeared! What would you like to do?",
+                        "Encounter!",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[1]);
+                        
+                        //bring up battle window if needed
+                        
+                    } else {
+                        Object[] options = {"Allow Inspection", "Bribe", "Fight"};
+                        int n = JOptionPane.showOptionDialog(null,
+                            "The police has appeared! They want to inspect your goods! What would you like to do?",
+                            "Encounter!",
+                            JOptionPane.YES_NO_CANCEL_OPTION,
+                            JOptionPane.QUESTION_MESSAGE,
+                            null,
+                            options,
+                            options[0]);
+                        
+                        //proceed to battle window if prompted, otherwise bring up input dialogs for bribe
+                    }
+                }
+            }
+            
             GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
             GameData.getPlayer().setCurrentLocation(solarSystem);
             //ADD CHANCE FOR ENCOUNTER HERE
-            //if (GameData.getPlayer().encounter()) {
+            if (GameData.getPlayer().encounter()) {
                 int encounterType = GameData.getPlayer().encounterType();
-                /*if (encounterType == 1) {
+                if (encounterType == 1) {
                     
                     //Generate Trader
                     //Pop-up that shows there is a trader/trader wants to trade with you
                     //Attack or trade him
                     //If fight, battle window, if trade, trade window, else continue to destination
                     int chanceOfFleeing = ((int)(Math.random() * 99)) + 1;
-                    if (chanceOfFleeing > (GameData.getPlayer().getReputation())) {
+                    if (chanceOfFleeing > (GameData.getPlayer().getTraderRep())) {
                         JOptionPane.showMessageDialog(null, "A trader has appeared, but he has already fled!");
                     } else {
                         Player trader = Player.genTrader();
@@ -184,30 +287,13 @@ public class StarChartController implements Initializable {
                         }
                     }
                         
-                } else*/ if (encounterType == 2) {
-                    int choice = JOptionPane.showConfirmDialog(null, "You've encountered a pirate! Would you like to fight?", "Pirate Encounter", JOptionPane.YES_NO_OPTION);
-                    if (choice == 0) { //Fight
-                        int outcome = Math.round((float)Math.random());
-                        if (outcome == 0) {
-                            JOptionPane.showMessageDialog(null, "You defeat the pirate, and take his cargo for your own.", "Victory", JOptionPane.OK_OPTION);
-                            NPCShip pirateShip = new NPCShip();
-                            int[] salvagedGoods = pirateShip.getInventory().getNumGoodsList();
-                            GameData.getPlayer().getShip().getInventory().addNumGoodsList(salvagedGoods);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Your ship is destroyed, and your fortune with it. You work hard to start your life over.", "Defeat", JOptionPane.OK_OPTION);
-                            GameData.getPlayer().resetShip();
-                            GameData.getPlayer().setCredits(0);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "You trade your cargo for your life, and live to trade another day", "Surrender", JOptionPane.OK_OPTION);
-                        GameData.getPlayer().dumpCargo();
-                    }
-                }
+                } else if (encounterType == 2) {
+                    
                     //Generate Pirate
                     //Pop-up that shows a Pirate is attacking with a button that lets you move on
                     //Battle window
-                    /*int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
-                    if (chanceOfFighting < GameData.getPlayer().getReputation()) {
+                    int chanceOfFighting = ((int)(Math.random() * 99)) + 1;
+                    if (chanceOfFighting < GameData.getPlayer().getPirateRep()) {
                         Player fighter = Player.genFighter();
                         Object[] options = {"Fight", "Continue"};
                         int n = JOptionPane.showOptionDialog(null,
@@ -252,16 +338,16 @@ public class StarChartController implements Initializable {
                         fighter.setEncounterPerson(GameData.getPlayer());
                         //proceed to battle window
                         try {
-                            //put fight screen here
-                            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BattleScreen.fxml" ));
-                            Parent root = fxmlLoader.load();
+                                //put fight screen here
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BattleScreen.fxml" ));
+                                Parent root = fxmlLoader.load();
 
-                            Scene scene = GameData.getScene();
-                            scene.setRoot(root);
-                            GameData.setScene(scene);
-                        } catch( IOException e) {
-                            e.printStackTrace();
-                        }
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
                     }
                   
                 } else {
@@ -269,7 +355,7 @@ public class StarChartController implements Initializable {
                     //Generate Police
                     //Flee, see if police wants to inspect you, attack, 
                     int chanceOfInspection = ((int)(Math.random() * 99)) + 1;
-                    if (GameData.getPlayer().getReputation() <= 10) {
+                    if (GameData.getPlayer().getPoliceRep() <= 10) {
                         JOptionPane.showMessageDialog(null, "The police are attacking! Prepare to battle!");
                         try {
                             //put fight screen here
@@ -282,7 +368,7 @@ public class StarChartController implements Initializable {
                         } catch( IOException e) {
                             e.printStackTrace();
                         }
-                    } else if (chanceOfInspection < GameData.getPlayer().getReputation()) {
+                    } else if (chanceOfInspection < GameData.getPlayer().getPoliceRep()) {
                         Object[] options = {"Fight", "Continue"};
                         int n = JOptionPane.showOptionDialog(null,
                         "The police has appeared! What would you like to do?",
@@ -349,25 +435,26 @@ public class StarChartController implements Initializable {
                             }
                         }
                     }
-                }*/
-            //} else {
+                }
+            } else {
+            
             
             //GameData.getPlayer().getShip().getInventory().getTradeGood
 
-                try {
-                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
-                    Parent root = fxmlLoader.load();
+              try {
+                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                Parent root = fxmlLoader.load();
             
-                    Scene scene = GameData.getScene();
-                    scene.setRoot(root);
-                    GameData.setScene(scene);
-                }
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
         
-                catch( IOException e)
-                {
-                    e.printStackTrace();
-                }
-            //}
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+            }
         }
     }
     
