@@ -14,6 +14,7 @@ import model.Universe;
 import com.google.gson.Gson;
 import java.io.*;
 import java.io.IOException; 
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -35,6 +36,8 @@ public class GameData {
      *
      */
     public static final int PLANET_DIAMETER = 8;
+    
+    public static final int SHIPYARD_TECHLEVEL = 3;
     
     public static Player player;
     public static Scene scene;
@@ -73,6 +76,8 @@ public class GameData {
      */
     public static void setStage(Stage stage) {
         GameData.stage = stage;
+       // stage.setResizable(false);
+       // stage.initStyle(StageStyle.UNDECORATED);
     }
     
     /**
