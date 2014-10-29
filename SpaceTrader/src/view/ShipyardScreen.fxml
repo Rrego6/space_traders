@@ -14,22 +14,22 @@
 <AnchorPane id="AnchorPane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/OrbitScreen_1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ShipyardScreenController">
     
     <children>
-      <FlowPane layoutX="50.0" layoutY="99.0" prefHeight="301.0" prefWidth="500.0" AnchorPane.bottomAnchor="30.0">
+      <FlowPane layoutX="50.0" layoutY="99.0" prefHeight="300.0" prefWidth="500.0" AnchorPane.bottomAnchor="100.0">
          <children>
             <ListView fx:id="actionsListView" opacity="0.7" prefHeight="300.0" prefWidth="200.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#edebeb" height="300.0" opacity="0.5" stroke="#eeeaea" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
-               <FlowPane.margin>
-                  <Insets left="100.0" />
-               </FlowPane.margin>
-            </Rectangle>
          </children>
       </FlowPane>
-        <Button layoutX="402.0" layoutY="321.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onBackAction" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="100.0">
+        <Button layoutX="23.0" layoutY="355.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onBackAction" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="25.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-        <Button fx:id="refuelBtn" layoutX="402.0" layoutY="114.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onRefuelAction" text="Refuel" textFill="WHITE" AnchorPane.bottomAnchor="256.0">
+      <Button minHeight="30.0" minWidth="90.0" mnemonicParsing="false" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+        <Button fx:id="refuelBtn" layoutX="402.0" layoutY="114.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onRefuelAction" text="Refuel" textFill="WHITE" AnchorPane.bottomAnchor="250.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -39,5 +39,15 @@
             <Label id="titleShipyard" alignment="CENTER" contentDisplay="CENTER" text="Ship Yard" />
          </children>
       </StackPane>
+      <Button layoutX="64.0" layoutY="10.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="74.0" layoutY="20.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="300.0" AnchorPane.rightAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
