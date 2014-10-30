@@ -37,6 +37,8 @@ public class GameData {
      */
     public static final int PLANET_DIAMETER = 8;
     
+    public static final int SHIPYARD_TECHLEVEL = 3;
+    
     public static Player player;
     public static Scene scene;
     public static Stage stage;

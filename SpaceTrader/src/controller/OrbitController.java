@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +31,8 @@ public class OrbitController implements Initializable {
     private Label playerName;
     @FXML
     private Label planetName;
-    
+    @FXML
+    private Button shipyardBtn;
     @FXML
     private Label playerCredits;
     @FXML
@@ -55,6 +57,8 @@ public class OrbitController implements Initializable {
     private Label pRobotsLabel;
     @FXML
     private Label fuelContent;
+    @FXML
+    private Label techLevelLabel;
   
     
     private String currentPlanet, currentPlayer;
@@ -66,7 +70,14 @@ public class OrbitController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        if(GameData.getPlayer().getCurrentLocation().getTechLevel() > GameData.SHIPYARD_TECHLEVEL){
+            shipyardBtn.setVisible(true);
+        }
+        else{
+           shipyardBtn.setVisible(false);
+        }
         currentPlanet = GameData.getPlayer().getCurrentLocation().getName();
+        techLevelLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
         planetName.setText("Location:  " + currentPlanet);
         currentPlayer = GameData.getPlayer().getName();
         playerName.setText("Name:  " + currentPlayer);
@@ -85,11 +96,28 @@ public class OrbitController implements Initializable {
     }    
     
     @FXML
-    private void refillFuel(ActionEvent event) {
-        GameData.getPlayer().getShip().refillFuel();
-        fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());
+    private void onShipyardAction(ActionEvent event) {
+        //if(GameData.getPlayer().getCurrentLocation().getTechLevel() > GameData.SHIPYARD_TECHLEVEL){
+            try {
+                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/ShipyardScreen.fxml" ));
+                Parent root = fxmlLoader.load();
+
+                Scene scene = GameData.getScene();
+                scene.setRoot(root);
+                GameData.setScene(scene);
+            }
+
+            catch( IOException e)
+            {
+                e.printStackTrace();
+            }
+       // }
+       // else{
+         //  System.out.println("planet doesnt have high enough tech level");
+        //}
+        //GameData.getPlayer().getShip().refillFuel();
+        //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
-    
     
     @FXML
     private void onStarChartAction(ActionEvent event) {
