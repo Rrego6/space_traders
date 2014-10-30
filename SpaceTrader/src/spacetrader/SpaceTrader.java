@@ -33,6 +33,7 @@ public class SpaceTrader extends Application {
         stage.setResizable(false);
         stage.show();
         GameData.setScene(scene);
+        GameData.stage = stage;
     }
 
     /**

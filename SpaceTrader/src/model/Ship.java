@@ -11,15 +11,15 @@ package model;
  * @author Noora
  */
 public enum Ship {
-    FLEA(10000,10, 0, 0, 0, 1, 10000, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 1 ),
-    GNAT(14,15, 1, 0, 1, 1, 14, 5, 2, 10000, 50, 28, 100, 0, 0, 0, 1),
-    FIREFLY(17,20, 1, 1, 1, 1, 17, 5, 3, 25000, 75, 20, 100, 0, 0, 0, 1),
-    MOSQUITO(13,15, 2, 1, 1, 1, 13, 5, 5, 30000, 100, 20, 100, 0, 1, 0, 1),
-    BUMBLEBEE(15,25, 1, 2, 2, 2, 15, 5, 7, 60000, 125, 15, 100, 0, 1, 0, 1),
-    TRADER(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0 ),
-    POLICE(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0 ),
-    FIGHTER(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0 ),
-    PIRATE(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0 );
+    FLEA(10000,10, 0, 0, 0, 1, 10000, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 1, 100),
+    GNAT(14,15, 1, 0, 1, 1, 14, 5, 2, 10000, 50, 28, 100, 0, 0, 0, 1, 200),
+    FIREFLY(17,20, 1, 1, 1, 1, 17, 5, 3, 25000, 75, 20, 100, 0, 0, 0, 1, 300),
+    MOSQUITO(13,15, 2, 1, 1, 1, 13, 5, 5, 30000, 100, 20, 100, 0, 1, 0, 1, 400),
+    BUMBLEBEE(15,25, 1, 2, 2, 2, 15, 5, 7, 60000, 125, 15, 100, 0, 1, 0, 1, 500),
+    TRADER(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0, 600),
+    POLICE(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0, 700),
+    FIGHTER(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0, 800),
+    PIRATE(10,10, 0, 0, 0, 1, 10, 4, 1, 2000, 5, 2, 25, -1, -1, 0, 0, 900);
 
     
     
@@ -40,14 +40,14 @@ public enum Ship {
     private int trader;
     private int pirate;
     private int maxfuel;
-    
+    private int shipCost;
     
     private Inventory cargoHold;
     private int damage;
     
     private Ship(int maxfuel,int cargoBay, int weaponSlot, int shieldSlot, int gadgetSlot, int crew, 
             int fuel,int minTechLevel,int fuelCost, int price, int bounty, int occurance, 
-            int hullStrength, int police, int pirate, int trader, int repairCost ){
+            int hullStrength, int police, int pirate, int trader, int repairCost, int shipCost){
         
         this.cargoBay = cargoBay ;
         this.weaponSlot = weaponSlot;
@@ -66,6 +66,7 @@ public enum Ship {
         this.police = police;
         this.pirate = pirate;
         this.maxfuel = maxfuel;
+        this.shipCost = shipCost;
         
         createCargoHold();
     }
@@ -118,7 +119,7 @@ public enum Ship {
         fuel = maxfuel;
     }
     
-    public int getPrice() {
-        return this.price;
+    public int getCost() {
+        return shipCost;
     }
 }

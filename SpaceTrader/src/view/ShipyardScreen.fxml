@@ -44,7 +44,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="74.0" layoutY="20.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="300.0" AnchorPane.rightAnchor="100.0">
+      <Button layoutX="74.0" layoutY="20.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onBuyShip" text="Buy Ship" textFill="WHITE" AnchorPane.bottomAnchor="300.0" AnchorPane.rightAnchor="100.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

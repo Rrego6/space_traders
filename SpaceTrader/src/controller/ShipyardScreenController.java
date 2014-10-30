@@ -70,45 +70,17 @@ public class ShipyardScreenController implements Initializable {
     }
     
     @FXML
-    private void onShowShipAction(ActionEvent event){
-        actions.clear();
-        actions.add("Flea");
-        actions.add("Gnat");
-        actions.add("Firefly");
-        actions.add("Mosquito");
-        actions.add("Bumblebee");
-        actionsListView.setItems(actions);
+    public void onBuyShip(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyShipScreen.fxml" ));
+            Parent root = fxmlLoader.load();
         
-        actionsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                selection = actionsListView.getSelectionModel().getSelectedItem();
-            }
-        });
-    }
-    
-    @FXML
-    private void onBuyShipAction(ActionEvent event){
-        Ship s = null;
-        if(selection.equals("Flea")) {
-            s = Ship.FLEA;
-        } else if (selection.equals("Gnat")) {
-            s = Ship.GNAT;
-        } else if (selection.equals("Firefly")) {
-            s = Ship.FIREFLY;
-        } else if (selection.equals("Mosquito")) {
-            s = Ship.MOSQUITO;
-        } else if (selection.equals("Bumblebee")) {
-            s = Ship.BUMBLEBEE;
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
         }
-        
-        if(s == null) {
-            CommonHelper.alertBox(GameData.stage, "Select a ship.");
-        } else if (GameData.getPlayer().getCredits() < s.getPrice()) {
-            CommonHelper.alertBox(GameData.stage, "You don't have enough credits.");
-        } else {
-            s.getInventory().addNumGoodsList(GameData.getPlayer().getShip().getInventory().getNumGoodsList());
-            GameData.getPlayer().setShip(s);
-            CommonHelper.alertBox(GameData.stage, "Enjoy your new " + GameData.getPlayer().getShip());
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
-}
+ }
