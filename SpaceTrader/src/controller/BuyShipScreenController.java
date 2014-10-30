@@ -72,7 +72,6 @@ public class BuyShipScreenController implements Initializable {
             Ship oldShip = player.getShip();
             player.setCredits(player.getShip().getCost() + player.getCredits());
             ship.setInventory(oldShip.getInventory());
-            
             player.setShip(ship);
             player.setCredits(player.getCredits() - ship.getCost());
             shipName.setText(ship.name());
