@@ -46,7 +46,7 @@ public class Player {
         this.investorSP = investorSP;
         this.credits = 1000;
         this.traderRep = 100;
-        this.pirateRep = 0;
+        this.pirateRep = 50;
         this.policeRep = 100;
     }
     
@@ -195,7 +195,7 @@ public class Player {
      * @return int 1 = Trader, 2 = Pirate, 3 = Police
      */
     public int encounterType() {
-        return ((int)(Math.random() * 2)) + 1;
+        return ((int)(Math.random() * 3)) + 1;
     }
     
     public int getTraderRep() {

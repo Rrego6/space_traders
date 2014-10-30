@@ -8,6 +8,7 @@ package helper;
 
 import controller.AlertPopupController;
 import controller.WelcomeScreenController;
+import controller.YesAndNoPopupController;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -82,6 +83,45 @@ public class CommonHelper {
             e.printStackTrace();
             System.exit(1);
         }        
+    }
+    
+    public static void yesAndNoBox(Stage primaryStage, String msg, EventHandler<ActionEvent> onYes, EventHandler<ActionEvent> onNoClose ) {
+        FXMLLoader fxmlLoader =  new FXMLLoader( CommonHelper.class.getResource( "/view/YesAndNoPopup.fxml" ));
+        Parent root;
+        try {
+            root = fxmlLoader.load();
+            YesAndNoPopupController controller = (YesAndNoPopupController) fxmlLoader.getController();
+            Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initStyle(StageStyle.UTILITY);
+            dialog.initOwner(primaryStage);
+            dialog.setResizable(false);
+            dialog.setScene(new Scene(root));
+            controller.setLabelText(msg);
+                controller.setNoButtonAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                    if(onNoClose != null) {
+                        onNoClose.handle(event);
+                    }
+                }
+            });
+            controller.setYesButtonAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    dialog.close();
+                    if(onYes != null) {
+                        onYes.handle(event);
+                    }
+                }
+            });
+            dialog.show();
+        }
+        catch(IOException e ) {
+            e.printStackTrace();
+        }
+        
     }
     /*@param:none.
     @return: list of the name of the planets from the text file, String.
