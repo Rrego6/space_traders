@@ -65,4 +65,19 @@ public class ShipyardScreenController implements Initializable {
         actionsListView.setItems(actions);
         //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
-}
+    
+    @FXML
+    public void onBuyShip(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyShipScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+ }
