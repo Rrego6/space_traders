@@ -54,7 +54,7 @@ public enum Ship {
         this.shieldSlot = shieldSlot;
         this.gadgetSlot = gadgetSlot;
         this.crew = crew;
-        this.fuel = fuel;
+        this.fuel = maxfuel;
         this.minTechLevel = minTechLevel;
         this.fuelCost = fuelCost;
         this.price = price;
@@ -116,5 +116,9 @@ public enum Ship {
     
     public void refillFuel() {
         fuel = maxfuel;
+    }
+    
+    public int getPrice() {
+        return this.price;
     }
 }

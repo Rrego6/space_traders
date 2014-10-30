@@ -44,7 +44,7 @@ public class Player {
         this.traderSP = traderSP;
         this.engineerSP = engineerSP;
         this.investorSP = investorSP;
-        this.credits = 1000;
+        this.credits = 100000;
         this.traderRep = 100;
         this.pirateRep = 50;
         this.policeRep = 100;
@@ -56,6 +56,7 @@ public class Player {
         trader.setTraderSP(((int) Math.random() * 5) + 10);
         trader.setFighterSP(15 - trader.getTraderSP());
         trader.setCredits(((int) Math.random() * 1000) + 1000);
+        trader.setShip(Ship.TRADER);
         return trader;
     }
     
@@ -65,6 +66,7 @@ public class Player {
         fighter.setFighterSP(((int) Math.random() * 5) + 10);
         fighter.setPilotSP(15 - fighter.getFighterSP());
         fighter.setCredits(((int) Math.random() * 1000) + 1000);
+        fighter.setShip(Ship.FIGHTER);
         return fighter;
     }
     
@@ -84,14 +86,14 @@ public class Player {
     @return: name variable value.
     */
         //trader.setShip(new OriginalShip());
-        trader.setShip(Ship.TRADER);
+        //trader.setShip(Ship.TRADER);
     public String getName() {  //getter method.
         return name;
     }
     /*@param:none.
     @return: pilotSP variable value int.
     */
-        fighter.setShip(Ship.FIGHTER);
+        //fighter.setShip(Ship.FIGHTER);
     public int getPilotSP() {  //getter method.
         return pilotSP;
     }

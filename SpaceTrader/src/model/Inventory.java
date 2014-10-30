@@ -106,6 +106,16 @@ public class Inventory{
     }
     
     public int[] getNumGoodsList() {
+        numGoodsList[0] = numWater;
+        numGoodsList[1] = numFurs;
+        numGoodsList[2] = numFood;
+        numGoodsList[3] = numOre;
+        numGoodsList[4] = numGames;
+        numGoodsList[5] = numFirearms;
+        numGoodsList[6] = numMedicine;
+        numGoodsList[7] = numMachines;
+        numGoodsList[8] = numNarcotics;
+        numGoodsList[9] = numRobots;
         return numGoodsList;
     }
     
