@@ -27,6 +27,7 @@ import model.SolarSystem;
 import model.Universe;
 import model.Player;
 import model.Inventory;
+import model.Ship;
 
 /**
  * FXML Controller class
@@ -188,8 +189,8 @@ public class StarChartController implements Initializable {
                         options[1]);
                         if (n == 0) {
                             //generate win/lose
-                            int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getPirateRep())));
-                            if (chanceOfWinning > 10) {
+                            int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getPirateRep());
+                            if (chanceOfWinning > ((int) (Math.random() * 100))) {
                                 JOptionPane.showMessageDialog(null, "You won the battle!");
                                 GameData.getPlayer().setPirateRep(GameData.getPlayer().getPirateRep() + 1);
                                 int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
@@ -212,6 +213,13 @@ public class StarChartController implements Initializable {
                             } else {
                                 JOptionPane.showMessageDialog(null, "You lost the battle! You have lost all your items!");
                                 GameData.getPlayer().getShip().setInventory(new Inventory(100));
+                                int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
+                                if (damTaken <= GameData.getPlayer().getShip().getShields()) {
+                                    GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
+                                } else {
+                                    GameData.getPlayer().getShip().setShields(0);
+                                    GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
+                                }
                                 try {
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                                 Parent root = fxmlLoader.load();
@@ -448,8 +456,8 @@ public class StarChartController implements Initializable {
                         //lose == jail
                         //win == continue, rep down
                         GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 10);
-                        int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getPirateRep())));
-                        if (chanceOfWinning > 10) {
+                        int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getPirateRep());
+                        if (chanceOfWinning > ((int) (Math.random() * 100))) {
                             JOptionPane.showMessageDialog(null, "You won the battle!");
                             int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
                             if (damTaken <= GameData.getPlayer().getShip().getShields()) {
@@ -471,10 +479,17 @@ public class StarChartController implements Initializable {
                         } else {
                             JOptionPane.showMessageDialog(null, "You lost the battle!");
                             //Lose ship?
+                            int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
+                            if (damTaken <= GameData.getPlayer().getShip().getShields()) {
+                                GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
+                            } else {
+                                GameData.getPlayer().getShip().setShields(0);
+                                GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
+                            }
                             JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits. If you cannot pay, you will lose your ship and items. You will be given a basic level ship to compensate.");
                             if (GameData.getPlayer().getCredits() < 100) {
                                 GameData.getPlayer().setCredits(0);
-                                GameData.getPlayer().getShip().setInventory(new Inventory(100));
+                                GameData.getPlayer().setShip(Ship.FLEA);
                             } else {
                                 GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - 100);
                             }
