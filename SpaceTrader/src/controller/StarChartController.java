@@ -134,8 +134,6 @@ public class StarChartController implements Initializable {
         else if ( solarSystem.getDistance() > GameData.getPlayer().getShip().getFuel()) {
             JOptionPane.showMessageDialog(null, "You don't have enough fuel!");
         } else {
-            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
-            GameData.getPlayer().setCurrentLocation(solarSystem);
             //Chance of encounter
             if (GameData.getPlayer().encounter()) {
                 int encounterType = GameData.getPlayer().encounterType();
@@ -154,6 +152,8 @@ public class StarChartController implements Initializable {
                     //check n
                     if (n == 0) {
                         //go to trade window
+                        GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                        GameData.getPlayer().setCurrentLocation(solarSystem);
                         try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Marketplace.fxml" ));
                             Parent root = fxmlLoader.load();
@@ -165,6 +165,8 @@ public class StarChartController implements Initializable {
                             e.printStackTrace();
                         }
                     } else if (n == 1) {
+                        GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                        GameData.getPlayer().setCurrentLocation(solarSystem);
                         try {
                             FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                             Parent root = fxmlLoader.load();
@@ -178,7 +180,7 @@ public class StarChartController implements Initializable {
                     }   
                 } else if (encounterType == 2) {
                     //Generate Pirate
-                        Object[] options = {"Fight", "Allow Plunder"};
+                        Object[] options = {"Fight", "Flee", "Allow Plunder"};
                         int n = JOptionPane.showOptionDialog(null,
                         "A pirate has appeared! What would you like to do?",
                         "Encounter!",
@@ -189,8 +191,10 @@ public class StarChartController implements Initializable {
                         options[1]);
                         if (n == 0) {
                             //generate win/lose
-                            int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getPirateRep());
+                            int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getFighterSP());
                             if (chanceOfWinning > ((int) (Math.random() * 100))) {
+                                GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                                GameData.getPlayer().setCurrentLocation(solarSystem);
                                 JOptionPane.showMessageDialog(null, "You won the battle!");
                                 GameData.getPlayer().setPirateRep(GameData.getPlayer().getPirateRep() + 1);
                                 int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
@@ -211,15 +215,9 @@ public class StarChartController implements Initializable {
                                     e.printStackTrace();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(null, "You lost the battle! You have lost all your items!");
+                                JOptionPane.showMessageDialog(null, "You lost the battle! You have lost all your items and your ship will be replaced with a flea!");
+                                GameData.getPlayer().setShip(Ship.FLEA);
                                 GameData.getPlayer().getShip().setInventory(new Inventory(100));
-                                int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
-                                if (damTaken <= GameData.getPlayer().getShip().getShields()) {
-                                    GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
-                                } else {
-                                    GameData.getPlayer().getShip().setShields(0);
-                                    GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
-                                }
                                 try {
                                 FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                                 Parent root = fxmlLoader.load();
@@ -232,6 +230,22 @@ public class StarChartController implements Initializable {
                                 }
                             }
                         } else if (n == 1) {
+                            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                            GameData.getPlayer().setCurrentLocation(solarSystem);
+                            JOptionPane.showMessageDialog(null, "You have fled!");
+                            try {
+                                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                                Parent root = fxmlLoader.load();
+
+                                Scene scene = GameData.getScene();
+                                scene.setRoot(root);
+                                GameData.setScene(scene);
+                            } catch( IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else if (n == 2) {
+                            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                            GameData.getPlayer().setCurrentLocation(solarSystem);
                             //remove goods and then continue
                             JOptionPane.showMessageDialog(null, "You have been pillaged and lost all your items!");
                             GameData.getPlayer().getShip().setInventory(new Inventory(100));
@@ -258,6 +272,8 @@ public class StarChartController implements Initializable {
                         options,
                         options[0]);
                     if (n == 0) {
+                        GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                        GameData.getPlayer().setCurrentLocation(solarSystem);
                         //show inspection
                         //if not clean, take item, fine, etc.
                         //if clean, raise police rep
@@ -306,6 +322,8 @@ public class StarChartController implements Initializable {
                             e.printStackTrace();
                         }
                     } else if (n == 1) {
+                        GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                        GameData.getPlayer().setCurrentLocation(solarSystem);
                         //bribe window
                         //ask amount of money
                         //result
@@ -456,8 +474,10 @@ public class StarChartController implements Initializable {
                         //lose == jail
                         //win == continue, rep down
                         GameData.getPlayer().setPoliceRep(GameData.getPlayer().getPoliceRep() - 10);
-                        int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getPirateRep());
+                        int chanceOfWinning = ((int) (Math.random() * (GameData.getPlayer().getShip().getDamage())) + GameData.getPlayer().getFighterSP());
                         if (chanceOfWinning > ((int) (Math.random() * 100))) {
+                            GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                            GameData.getPlayer().setCurrentLocation(solarSystem);
                             JOptionPane.showMessageDialog(null, "You won the battle!");
                             int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
                             if (damTaken <= GameData.getPlayer().getShip().getShields()) {
@@ -477,16 +497,10 @@ public class StarChartController implements Initializable {
                                 e.printStackTrace();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "You lost the battle!");
-                            //Lose ship?
-                            int damTaken = ((int) (Math.random() * GameData.getPlayer().getShip().getHull()));
-                            if (damTaken <= GameData.getPlayer().getShip().getShields()) {
-                                GameData.getPlayer().getShip().setShields(GameData.getPlayer().getShip().getShields() - damTaken);
-                            } else {
-                                GameData.getPlayer().getShip().setShields(0);
-                                GameData.getPlayer().getShip().setHull(GameData.getPlayer().getShip().getHull() - damTaken);
-                            }
-                            JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits. If you cannot pay, you will lose your ship and items. You will be given a basic level ship to compensate.");
+                            JOptionPane.showMessageDialog(null, "You lost the battle! You lost all your items and your ship has been replaced with a flea!");
+                            GameData.getPlayer().setShip(Ship.FLEA);
+                            GameData.getPlayer().getShip().setInventory(new Inventory(100));
+                            JOptionPane.showMessageDialog(null, "You have been tried and will lose 100 credits.");
                             if (GameData.getPlayer().getCredits() < 100) {
                                 GameData.getPlayer().setCredits(0);
                                 GameData.getPlayer().setShip(Ship.FLEA);
@@ -507,6 +521,8 @@ public class StarChartController implements Initializable {
                     }
                 }
             } else {
+                GameData.getPlayer().getShip().deductFuel(solarSystem.getDistance());
+                GameData.getPlayer().setCurrentLocation(solarSystem);
                 try {
                     FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
                     Parent root = fxmlLoader.load();
