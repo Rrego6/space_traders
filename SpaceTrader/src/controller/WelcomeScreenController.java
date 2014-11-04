@@ -6,10 +6,8 @@
 
 package controller;
 
-import controller.ControlsScreenController;
-import controller.CharacterCreationScreenController;
-import model.Player;
 import helper.GameData;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.OPCode;
 
 /**
  *
@@ -91,9 +88,20 @@ public class WelcomeScreenController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+    @FXML 
+    private Button loadGameBtn;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        File f = new File("res/txt/GameDataPlayer.json");
+        System.out.println(f.length());
+        if(!f.exists()) { 
+            loadGameBtn.setVisible(false);
+        }
+        else if(f.length() < 10){
+            loadGameBtn.setVisible(false);
+        }
+        else{
+            loadGameBtn.setVisible(true);
+        }
     }   
 }
