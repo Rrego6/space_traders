@@ -39,15 +39,10 @@ public class BuyShieldScreenController implements Initializable {
     @FXML
     private Label priceLabel;
     @FXML
-    private Label cargoLabel;
+    private Label energyLabel;
     @FXML
-    private Label navigateLabel;
-    @FXML
-    private Label autoLabel;
-    @FXML
-    private Label targetLabel;
-    @FXML
-    private Label cloakLabel;
+    private Label reflectLabel;
+    
     @FXML
     private Label creditsLabel;
     
@@ -65,15 +60,9 @@ public class BuyShieldScreenController implements Initializable {
         creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
         buyButton.setVisible(false);
         gadgetSlotLabel.setText("Shield slots available: " + GameData.getPlayer().getShip().getShieldSlot());
-        //if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 6){
-            cloakLabel.setVisible(false);
-        //}
-        //if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 5){
-            targetLabel.setVisible(false);
-            autoLabel.setVisible(false);
-        //}
+        
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 4){
-            navigateLabel.setVisible(false);
+            reflectLabel.setVisible(false);
         }
     }
     @FXML
@@ -94,59 +83,29 @@ public class BuyShieldScreenController implements Initializable {
     }
     
     @FXML
-    private void onCargoAction(MouseEvent event){
+    private void onEnergyAction(MouseEvent event){
         buyButton.setVisible(true);
         currentPrice = 50;
-        currentItem = cargoLabel.getText();
+        currentItem = energyLabel.getText();
         gadgetLabel.setText("Shield Selected: " + currentItem);
         infoLabel.setText("Information: Energy shields are cheaper than a reflective shield. Shields protect your hull from damage.");
         priceLabel.setText("Price: " + currentPrice);
         
     }
     @FXML
-    private void onNavigateAction(MouseEvent event){
+    private void onReflectAction(MouseEvent event){
         buyButton.setVisible(true);
         currentPrice = 100;
-        currentItem = navigateLabel.getText();
+        currentItem = reflectLabel.getText();
         gadgetLabel.setText("Shield Selected: " + currentItem);
         infoLabel.setText("Information: Reflective shields are the best. Shields protect your hull from damage.");
         priceLabel.setText("Price: " + currentPrice);
         
     }
     
-    @FXML
-    private void onAutoAction(MouseEvent event){
-        buyButton.setVisible(true);
-        currentPrice = 150;
-        currentItem = autoLabel.getText();
-        gadgetLabel.setText("Gadget Selected: " + currentItem);
-        infoLabel.setText("Information: An auto-repair system helps your engineering functions.");
-        priceLabel.setText("Price: " + currentPrice);
-        
-    }
     
-    @FXML
-    private void onTargetingAction(MouseEvent event){
-        buyButton.setVisible(true);
-        currentPrice = 200;
-        currentItem = targetLabel.getText();
-        gadgetLabel.setText("Gadget Selected: " + currentItem);
-        infoLabel.setText("Information: A targeting system helps you handle your weaponry.");
-        priceLabel.setText("Price: " + currentPrice);
-        
-    }
     
-    @FXML
-    private void onCloakingAction(MouseEvent event){
-        buyButton.setVisible(true);
-        currentPrice = 250;
-        currentItem = cloakLabel.getText();
-        gadgetLabel.setText("Gadget Selected: " + currentItem);
-        infoLabel.setText("Information: A cloaking device is perhaps the most interesting gadget a trader can buy. It is very expensive, but it allows you to travel through space undetected, as long as you don't attack.");
-        priceLabel.setText("Price: " + currentPrice);
         
-    }
-    
     @FXML
     private void onBuyAction(ActionEvent event){
         if (GameData.getPlayer().getShip().getShieldSlot() < 1){

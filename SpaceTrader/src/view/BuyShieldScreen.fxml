@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" styleClass="background" stylesheets="@/css/OrbitScreen_1.css" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuyShieldScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/OrbitScreen_1.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.BuyShieldScreenController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="290.0" layoutY="77.0" opacity="0.38" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
       <Button layoutX="14.0" layoutY="361.0" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onBackAction" prefHeight="30.0" prefWidth="90.0" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0">
@@ -25,23 +25,11 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="cargoLabel" layoutX="385.0" layoutY="135.0" managed="true" onMouseClicked="#onCargoAction" text="energy shield" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="295.0">
+      <Label fx:id="energyLabel" layoutX="385.0" layoutY="135.0" managed="true" onMouseClicked="#onEnergyAction" text="energy shield" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="295.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label fx:id="navigateLabel" layoutX="385.0" layoutY="160.0" managed="true" onMouseClicked="#onNavigateAction" text="reflective shield" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="270.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <Label fx:id="autoLabel" layoutX="385.0" layoutY="185.0" managed="true" onMouseClicked="#onAutoAction" text="auto-repair system" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="245.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <Label fx:id="targetLabel" layoutX="385.0" layoutY="210.0" managed="true" onMouseClicked="#onTargetingAction" text="targeting system" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="220.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <Label fx:id="cloakLabel" layoutX="385.0" layoutY="235.0" managed="true" onMouseClicked="#onCloakingAction" text="cloaking device" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="195.0">
+      <Label fx:id="reflectLabel" layoutX="385.0" layoutY="160.0" managed="true" onMouseClicked="#onReflectAction" text="reflective shield" textFill="WHITE" visible="true" AnchorPane.bottomAnchor="270.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
@@ -49,7 +37,7 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="gadgetLabel" layoutX="30.0" layoutY="155.0" text="Shield selected: " textFill="WHITE" AnchorPane.bottomAnchor="278.0" AnchorPane.leftAnchor="30.0">
+      <Label fx:id="gadgetLabel" layoutX="30.0" layoutY="155.0" text="Current shield: " textFill="WHITE" AnchorPane.bottomAnchor="278.0" AnchorPane.leftAnchor="30.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>

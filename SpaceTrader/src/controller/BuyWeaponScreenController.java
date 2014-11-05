@@ -40,15 +40,12 @@ public class BuyWeaponScreenController implements Initializable {
     @FXML
     private Label priceLabel;
     @FXML
-    private Label cargoLabel;
+    private Label pulseLabel;
     @FXML
     private Label navigateLabel;
     @FXML
     private Label autoLabel;
-    @FXML
-    private Label targetLabel;
-    @FXML
-    private Label cloakLabel;
+    
     @FXML
     private Label creditsLabel;
     
@@ -67,10 +64,7 @@ public class BuyWeaponScreenController implements Initializable {
         creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
         buyButton.setVisible(false);
         gadgetSlotLabel.setText("Weapon slots available: " + GameData.getPlayer().getShip().getWeaponSlot());
-        //if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 6){
-            cloakLabel.setVisible(false);
-            targetLabel.setVisible(false);
-        //}
+        
         if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 5){
             autoLabel.setVisible(false);
         }
@@ -96,10 +90,10 @@ public class BuyWeaponScreenController implements Initializable {
     }
     
     @FXML
-    private void onCargoAction(MouseEvent event){
+    private void onPulseAction(MouseEvent event){
         buyButton.setVisible(true);
         currentPrice = 50;
-        currentItem = cargoLabel.getText();
+        currentItem = pulseLabel.getText();
         gadgetLabel.setText("Weapon Selected: " + currentItem);
         infoLabel.setText("Information: Two pulse lasers often do more damage than one beam laser, and are cheaper overall.");
         priceLabel.setText("Price: " + currentPrice);
@@ -127,27 +121,7 @@ public class BuyWeaponScreenController implements Initializable {
         
     }
     
-    @FXML
-    private void onTargetingAction(MouseEvent event){
-        buyButton.setVisible(true);
-        currentPrice = 200;
-        currentItem = targetLabel.getText();
-        gadgetLabel.setText("Gadget Selected: " + currentItem);
-        infoLabel.setText("Information: A targeting system helps you handle your weaponry.");
-        priceLabel.setText("Price: " + currentPrice);
-        
-    }
     
-    @FXML
-    private void onCloakingAction(MouseEvent event){
-        buyButton.setVisible(true);
-        currentPrice = 250;
-        currentItem = cloakLabel.getText();
-        gadgetLabel.setText("Gadget Selected: " + currentItem);
-        infoLabel.setText("Information: A cloaking device is perhaps the most interesting gadget a trader can buy. It is very expensive, but it allows you to travel through space undetected, as long as you don't attack.");
-        priceLabel.setText("Price: " + currentPrice);
-        
-    }
     
     @FXML
     private void onBuyAction(ActionEvent event){
