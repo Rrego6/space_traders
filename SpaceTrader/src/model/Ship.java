@@ -83,6 +83,20 @@ public enum Ship {
         return cargoHold;
     }
     
+    public int getGadgetSlot() {
+        return gadgetSlot;
+    }
+    
+    public void addGadgetSlot() {
+        gadgetSlot++;
+    }
+    
+    public void subtractGadgetSlot() {
+        if (!(gadgetSlot == 0)){
+            gadgetSlot--;
+        }
+    }
+     
     public int getFuel() {
         return fuel;
     }
