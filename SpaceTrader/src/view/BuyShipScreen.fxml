@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,23 +8,66 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuyShipScreenController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@/css/OrbitScreen_1.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuyShipScreenController">
    <children>
-      <Label layoutX="56.0" layoutY="36.0" text="Current Ship" />
-      <Label layoutX="45.0" layoutY="61.0" text="Name:" AnchorPane.leftAnchor="40.0" />
-      <Label layoutX="419.0" layoutY="36.0" text="BUYABLE SHIPS">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" layoutY="77.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" width="600.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label layoutX="54.0" layoutY="141.0" text="Current Ship" textFill="WHITE" AnchorPane.bottomAnchor="255.0" AnchorPane.leftAnchor="54.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label fx:id="fleaLabel" layoutX="439.0" layoutY="62.0" minWidth="70.0" text="FLEA" AnchorPane.rightAnchor="100.0" />
-      <Label fx:id="gnatLabel" layoutX="439.0" layoutY="79.0" minWidth="70.0" text="GNAT" AnchorPane.rightAnchor="100.0" />
-      <Label fx:id="fireflyLabel" layoutX="439.0" layoutY="96.0" minWidth="70.0" text="FIREFLY" AnchorPane.rightAnchor="100.0" />
-      <Label fx:id="mosquitoLabel" layoutX="439.0" layoutY="113.0" minWidth="70.0" text="MOSQUITO" AnchorPane.rightAnchor="100.0" />
-      <Label fx:id="shipName" layoutX="112.0" layoutY="61.0" text="Label" />
-      <Label layoutX="45.0" layoutY="78.0" text="Value Of:" AnchorPane.leftAnchor="40.0" />
-      <Label fx:id="shipValue" layoutX="112.0" layoutY="78.0" text="Label" />
-      <Button layoutX="37.0" layoutY="341.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
-      <Label layoutX="38.0" layoutY="122.0" text="Credits Available: " AnchorPane.leftAnchor="38.0" />
-      <Label fx:id="creditsLabel" layoutX="140.0" layoutY="122.0" text="Label" />
+      <Label layoutX="38.0" layoutY="166.0" text="Name:" textFill="WHITE" AnchorPane.bottomAnchor="230.0" AnchorPane.leftAnchor="38.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="417.0" layoutY="141.0" text="BUYABLE SHIPS" textFill="WHITE" AnchorPane.bottomAnchor="260.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="fleaLabel" layoutX="428.0" layoutY="167.0" minWidth="70.0" text="FLEA" textFill="WHITE" AnchorPane.bottomAnchor="225.0" AnchorPane.rightAnchor="102.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="gnatLabel" layoutX="428.0" layoutY="184.0" minWidth="70.0" text="GNAT" textFill="WHITE" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="102.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="fireflyLabel" layoutX="428.0" layoutY="201.0" minWidth="70.0" text="FIREFLY" textFill="WHITE" AnchorPane.bottomAnchor="175.0" AnchorPane.rightAnchor="102.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="mosquitoLabel" layoutX="426.0" layoutY="217.0" minWidth="70.0" text="MOSQUITO" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="98.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="shipName" layoutX="110.0" layoutY="166.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="230.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="38.0" layoutY="183.0" text="Value Of:" textFill="WHITE" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="38.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="shipValue" layoutX="110.0" layoutY="183.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="190.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="227.0" text="Credits Available: " textFill="WHITE" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="36.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="creditsLabel" layoutX="161.0" layoutY="227.0" text="Label" textFill="WHITE" AnchorPane.bottomAnchor="153.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button layoutX="37.0" layoutY="341.0" maxHeight="30.0" maxWidth="90.0" minHeight="30.0" minWidth="90.0" mnemonicParsing="false" onAction="#onBack" prefHeight="30.0" prefWidth="90.0" text="Back" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <FlowPane alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="63.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="titleBuyShip" contentDisplay="CENTER" text="Ship Yard" />
+         </children>
+      </FlowPane>
    </children>
 </AnchorPane>
