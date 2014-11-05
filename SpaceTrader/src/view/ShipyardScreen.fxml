@@ -35,12 +35,17 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="64.0" layoutY="10.0" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+      <Button layoutX="64.0" layoutY="10.0" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#onBuyWeaponAction" text="Buy Weapon" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
       <Button layoutX="74.0" layoutY="20.0" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#onBuyShip" text="Buy Ship" textFill="WHITE" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="199.0" layoutY="300.0" minHeight="30.0" minWidth="200.0" mnemonicParsing="false" onAction="#onBuyShieldAction" text="Buy Shield" textFill="WHITE" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

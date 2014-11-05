@@ -96,7 +96,35 @@ public enum Ship {
             gadgetSlot--;
         }
     }
-     
+    
+    public int getWeaponSlot() {
+        return weaponSlot;
+    }
+    
+    public void addWeaponSlot() {
+        weaponSlot++;
+    }
+    
+    public void subtractWeaponSlot() {
+        if (!(weaponSlot == 0)){
+            weaponSlot--;
+        }
+    }
+    
+    public int getShieldSlot() {
+        return shieldSlot;
+    }
+    
+    public void addShieldSlot() {
+        shieldSlot++;
+    }
+    
+    public void subtractShieldSlot() {
+        if (!(shieldSlot == 0)){
+            shieldSlot--;
+        }
+    }
+    
     public int getFuel() {
         return fuel;
     }

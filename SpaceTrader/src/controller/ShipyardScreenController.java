@@ -76,6 +76,40 @@ public class ShipyardScreenController implements Initializable {
     }
     
     @FXML
+    private void onBuyWeaponAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyWeaponScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void onBuyShieldAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyShieldScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
     private void onRefuelAction(ActionEvent event){
         GameData.getPlayer().getShip().refillFuel();
         CommonHelper.alertBox(GameData.getStage(), "  Your ship has been refueled!  ");
