@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -158,13 +159,26 @@ public class BuyGadgetScreenController implements Initializable {
         }
         else{
             //CommonHelper.alertBox(GameData.getStage(), "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  "); 
-            int response = JOptionPane.showConfirmDialog(null, "Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?");
-            if (response == JOptionPane.YES_OPTION) {
-                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
-                GameData.getPlayer().getShip().subtractGadgetSlot();
-                gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
-                creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
-            }
+            //int response = JOptionPane.showConfirmDialog(null, "Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?");
+            //if (response == JOptionPane.YES_OPTION) {
+            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  ", 
+                        new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) 
+                            {
+                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
+                                GameData.getPlayer().getShip().subtractGadgetSlot();
+                                gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
+                                creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
+                            }
+                        },
+                        null
+                    );
+                //GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
+                //GameData.getPlayer().getShip().subtractGadgetSlot();
+                //gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
+                //creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
+            //}
         }
     }
     

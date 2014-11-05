@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -8,16 +9,21 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuyShipScreenController">
    <children>
-      <Label layoutX="45.0" layoutY="44.0" text="Current Ship" />
-      <Label layoutX="45.0" layoutY="61.0" text="Name:" />
-      <Label layoutX="451.0" layoutY="44.0" text="BUYABLE SHIPS" />
-      <Label fx:id="fleaLabel" layoutX="451.0" layoutY="87.0" text="FLEA" />
-      <Label fx:id="gnatLabel" layoutX="449.0" layoutY="104.0" text="GNAT" />
-      <Label fx:id="fireflyLabel" layoutX="445.0" layoutY="121.0" text="FIREFLY" />
-      <Label fx:id="mosquitoLabel" layoutX="446.0" layoutY="138.0" text="MOSQUITO" />
+      <Label layoutX="56.0" layoutY="36.0" text="Current Ship" />
+      <Label layoutX="45.0" layoutY="61.0" text="Name:" AnchorPane.leftAnchor="40.0" />
+      <Label layoutX="419.0" layoutY="36.0" text="BUYABLE SHIPS">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="fleaLabel" layoutX="439.0" layoutY="62.0" minWidth="70.0" text="FLEA" AnchorPane.rightAnchor="100.0" />
+      <Label fx:id="gnatLabel" layoutX="439.0" layoutY="79.0" minWidth="70.0" text="GNAT" AnchorPane.rightAnchor="100.0" />
+      <Label fx:id="fireflyLabel" layoutX="439.0" layoutY="96.0" minWidth="70.0" text="FIREFLY" AnchorPane.rightAnchor="100.0" />
+      <Label fx:id="mosquitoLabel" layoutX="439.0" layoutY="113.0" minWidth="70.0" text="MOSQUITO" AnchorPane.rightAnchor="100.0" />
       <Label fx:id="shipName" layoutX="112.0" layoutY="61.0" text="Label" />
-      <Label layoutX="45.0" layoutY="78.0" text="Value Of:" />
+      <Label layoutX="45.0" layoutY="78.0" text="Value Of:" AnchorPane.leftAnchor="40.0" />
       <Label fx:id="shipValue" layoutX="112.0" layoutY="78.0" text="Label" />
       <Button layoutX="37.0" layoutY="341.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+      <Label layoutX="38.0" layoutY="122.0" text="Credits Available: " AnchorPane.leftAnchor="38.0" />
+      <Label fx:id="creditsLabel" layoutX="140.0" layoutY="122.0" text="Label" />
    </children>
 </AnchorPane>

@@ -45,6 +45,8 @@ public class BuyShipScreenController implements Initializable {
     private Label shipName;
     @FXML
     private Label shipValue;
+    @FXML
+    private Label creditsLabel;
     
     private Player player;
     private Ship currentShip;
@@ -63,6 +65,8 @@ public class BuyShipScreenController implements Initializable {
         fleaLabel.setOnMouseClicked(getShipLabelEvent(Ship.FLEA));
         fireflyLabel.setOnMouseClicked(getShipLabelEvent(Ship.FIREFLY));
         mosquitoLabel.setOnMouseClicked(getShipLabelEvent(Ship.MOSQUITO));
+        creditsLabel.setText(" " + GameData.getPlayer().getCredits());
+
     }    
     private void buyShip(Ship ship) {
         if(ship.getCost() > player.getCredits()) {
@@ -77,6 +81,8 @@ public class BuyShipScreenController implements Initializable {
             shipName.setText(ship.name());
             shipValue.setText(Integer.toUnsignedString(ship.getCost()));
             currentShip = ship;
+            creditsLabel.setText(" " + GameData.getPlayer().getCredits());
+
         }
     }
     
@@ -89,7 +95,7 @@ public class BuyShipScreenController implements Initializable {
                     CommonHelper.alertBox(GameData.stage, "Ship Already Owned");
                 }
                 else {
-                    CommonHelper.yesAndNoBox(GameData.stage, "Buy " + selectedShip.name() + "for " + Integer.toString(selectedShip.getCost()), 
+                    CommonHelper.yesAndNoBox(GameData.stage, "Buy " + selectedShip.name() + " for " + Integer.toString(selectedShip.getCost()), 
                         new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent event) 
