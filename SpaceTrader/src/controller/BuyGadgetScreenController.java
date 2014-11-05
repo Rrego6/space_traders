@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -148,11 +149,22 @@ public class BuyGadgetScreenController implements Initializable {
     
     @FXML
     private void onBuyAction(ActionEvent event){
-        if(GameData.getPlayer().getCredits() < currentPrice){
+        if (GameData.getPlayer().getShip().getGadgetSlot() < 1){
+            CommonHelper.alertBox(GameData.getStage(), "  You do not have enough gadget slots to buy " + currentItem + ".  ");
+ 
+        }
+        else if(GameData.getPlayer().getCredits() < currentPrice){
             CommonHelper.alertBox(GameData.getStage(), "  You do not have enough credits to buy " + currentItem + ".  ");
         }
         else{
-            CommonHelper.alertBox(GameData.getStage(), "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  "); 
+            //CommonHelper.alertBox(GameData.getStage(), "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  "); 
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?");
+            if (response == JOptionPane.YES_OPTION) {
+                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
+                GameData.getPlayer().getShip().subtractGadgetSlot();
+                gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
+                creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
+            }
         }
     }
     
