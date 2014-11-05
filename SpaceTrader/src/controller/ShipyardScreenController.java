@@ -36,9 +36,9 @@ public class ShipyardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    @FXML
-    private ListView<String> actionsListView;
-    private ObservableList actions = FXCollections.observableArrayList();
+    //@FXML
+   // private ListView<String> actionsListView;
+   // private ObservableList actions = FXCollections.observableArrayList();
     
     
     @FXML
@@ -78,8 +78,9 @@ public class ShipyardScreenController implements Initializable {
     @FXML
     private void onRefuelAction(ActionEvent event){
         GameData.getPlayer().getShip().refillFuel();
-        actions.add("Ship Refueled (current fuel: " + GameData.getPlayer().getShip().getFuel() + ")");
-        actionsListView.setItems(actions);
+        CommonHelper.alertBox(GameData.getStage(), "  Your ship has been refueled!  ");
+       // actions.add("Ship Refueled (current fuel: " + GameData.getPlayer().getShip().getFuel() + ")");
+        //actionsListView.setItems(actions);
         //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
     
