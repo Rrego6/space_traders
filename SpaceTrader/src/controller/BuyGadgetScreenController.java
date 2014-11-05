@@ -7,6 +7,7 @@
 package controller;
 
 import helper.GameData;
+import helper.CommonHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,6 +17,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -24,12 +28,52 @@ import javafx.scene.Scene;
  */
 public class BuyGadgetScreenController implements Initializable {
 
+    @FXML
+    private Label gadgetSlotLabel;
+    @FXML
+    private Button buyButton;
+    @FXML
+    private Label gadgetLabel;
+    @FXML
+    private Label infoLabel;
+    @FXML
+    private Label priceLabel;
+    @FXML
+    private Label cargoLabel;
+    @FXML
+    private Label navigateLabel;
+    @FXML
+    private Label autoLabel;
+    @FXML
+    private Label targetLabel;
+    @FXML
+    private Label cloakLabel;
+    @FXML
+    private Label creditsLabel;
+    
+    private String currentItem;
+    private int currentPrice;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        infoLabel.setText("Information: ");
+        priceLabel.setText("Price: ");
+        gadgetLabel.setText("Current Gadget: ");
+        creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
+        buyButton.setVisible(false);
+        gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
+        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 6){
+            cloakLabel.setVisible(false);
+        }
+        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 5){
+            targetLabel.setVisible(false);
+        }
+        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 4){
+            autoLabel.setVisible(false);
+        }
     }
     @FXML
     private void onBackAction(ActionEvent event) {
@@ -45,6 +89,70 @@ public class BuyGadgetScreenController implements Initializable {
         catch( IOException e)
         {
             e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void onCargoAction(MouseEvent event){
+        buyButton.setVisible(true);
+        currentPrice = 50;
+        currentItem = cargoLabel.getText();
+        gadgetLabel.setText("Gadget Selected: " + currentItem);
+        infoLabel.setText("Information: For a beginning trader, the most interesting gadget is 5 extra cargo bays. These are fairly cheap and allow you to carry more cargo. If there is more than one gadget slot on your ship, you may purchase more than one of these.");
+        priceLabel.setText("Price: " + currentPrice);
+        
+    }
+    @FXML
+    private void onNavigateAction(MouseEvent event){
+        buyButton.setVisible(true);
+        currentPrice = 100;
+        currentItem = navigateLabel.getText();
+        gadgetLabel.setText("Gadget Selected: " + currentItem);
+        infoLabel.setText("Information: A navigating system helps you piloting your ship.");
+        priceLabel.setText("Price: " + currentPrice);
+        
+    }
+    
+    @FXML
+    private void onAutoAction(MouseEvent event){
+        buyButton.setVisible(true);
+        currentPrice = 150;
+        currentItem = autoLabel.getText();
+        gadgetLabel.setText("Gadget Selected: " + currentItem);
+        infoLabel.setText("Information: An auto-repair system helps your engineering functions.");
+        priceLabel.setText("Price: " + currentPrice);
+        
+    }
+    
+    @FXML
+    private void onTargetingAction(MouseEvent event){
+        buyButton.setVisible(true);
+        currentPrice = 200;
+        currentItem = targetLabel.getText();
+        gadgetLabel.setText("Gadget Selected: " + currentItem);
+        infoLabel.setText("Information: A targeting system helps you handle your weaponry.");
+        priceLabel.setText("Price: " + currentPrice);
+        
+    }
+    
+    @FXML
+    private void onCloakingAction(MouseEvent event){
+        buyButton.setVisible(true);
+        currentPrice = 250;
+        currentItem = cloakLabel.getText();
+        gadgetLabel.setText("Gadget Selected: " + currentItem);
+        infoLabel.setText("Information: A cloaking device is perhaps the most interesting gadget a trader can buy. It is very expensive, but it allows you to travel through space undetected, as long as you don't attack.");
+        priceLabel.setText("Price: " + currentPrice);
+        
+    }
+    
+    @FXML
+    private void onBuyAction(ActionEvent event){
+        if(GameData.getPlayer().getCredits() < currentPrice){
+            CommonHelper.alertBox(GameData.getStage(), "  You do not have enough credits to buy " + currentItem + ".  ");
+        }
+        else{
+            CommonHelper.alertBox(GameData.getStage(), "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  "); 
         }
     }
     

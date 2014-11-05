@@ -80,7 +80,9 @@ public class Inventory{
     public int getMaxSpace() {
         return maxSpace;
     }
-    
+    public void increaseMaxSpace(int i){
+        maxSpace += 5;
+    }
     private void incrementNumGoods() {
         this.numGoods++;
     }

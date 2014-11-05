@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.BuyGadgetScreenController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuyGadgetScreenController">
    <children>
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBackAction" text="Back" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBackAction" text="Back" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" />
+      <Label fx:id="gadgetSlotLabel" layoutX="26.0" layoutY="61.0" text="Gadget slots available: " AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="31.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="377.0" layoutY="48.0" text="Gadgets for purchase:" AnchorPane.bottomAnchor="340.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="cargoLabel" layoutX="386.0" layoutY="132.0" managed="true" onMouseClicked="#onCargoAction" text="5 extra cargo bays" visible="true" AnchorPane.bottomAnchor="301.0" />
+      <Label fx:id="navigateLabel" layoutX="386.0" layoutY="157.0" managed="true" onMouseClicked="#onNavigateAction" text="navigating system" visible="true" AnchorPane.bottomAnchor="276.0" />
+      <Label fx:id="autoLabel" layoutX="386.0" layoutY="182.0" managed="true" onMouseClicked="#onAutoAction" text="auto-repair system" visible="true" AnchorPane.bottomAnchor="251.0" />
+      <Label fx:id="targetLabel" layoutX="386.0" layoutY="207.0" managed="true" onMouseClicked="#onTargetingAction" text="targeting system" visible="true" AnchorPane.bottomAnchor="226.0" />
+      <Label fx:id="cloakLabel" layoutX="386.0" layoutY="232.0" managed="true" onMouseClicked="#onCloakingAction" text="cloaking device" visible="true" AnchorPane.bottomAnchor="201.0" />
+      <Label fx:id="infoLabel" alignment="TOP_LEFT" layoutX="30.0" layoutY="215.0" prefHeight="97.0" prefWidth="272.0" text="INFO ON ITEM SELECTED kasjkajskajskjaksjkajskajskajksjakjskajskajskjask" wrapText="true" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="30.0" />
+      <Label fx:id="gadgetLabel" layoutX="30.0" layoutY="155.0" text="Gadget selected: " AnchorPane.bottomAnchor="278.0" AnchorPane.leftAnchor="30.0" />
+      <Label fx:id="priceLabel" layoutX="30.0" layoutY="185.0" text="Price:" AnchorPane.bottomAnchor="248.0" AnchorPane.leftAnchor="30.0" />
+      <Button fx:id="buyButton" layoutX="30.0" layoutY="317.0" managed="true" mnemonicParsing="false" onAction="#onBuyAction" text="Buy" visible="true" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="30.0" />
+      <Label layoutX="227.0" layoutY="31.0" text="Gadget Shop" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="creditsLabel" layoutX="31.0" layoutY="121.0" text="Credits available: " AnchorPane.bottomAnchor="310.0" AnchorPane.leftAnchor="31.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
