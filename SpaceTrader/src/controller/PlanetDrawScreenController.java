@@ -9,7 +9,6 @@ import helper.CommonHelper;
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,24 +19,21 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.*;
+import javafx.scene.paint.Color;
 import javax.swing.JOptionPane;
 import model.Inventory;
-import model.Planet;
 import model.SolarSystem;
-import model.TradeGood;
 import model.Universe;
 
-
-
 /**
+ * FXML Controller Class
  *
  * @author sarah
+ * @version 1.0
  */
 public class PlanetDrawScreenController implements Initializable {
-    
+
     @FXML
     private Canvas canvas;
     @FXML
@@ -50,82 +46,84 @@ public class PlanetDrawScreenController implements Initializable {
     private Label resourcesLabel;
     @FXML
     private Label planetInfoLabel;
-         
+
     private SolarSystem solarSystem;
     private Universe universe;
     private Inventory inventory;
-    
+
     @FXML
     private void onAcceptAction(ActionEvent event) {
         GameData.getPlayer().setCurrentLocation(solarSystem);
         if (GameData.getPlayer().getCurrentLocation() == null) {
-            JOptionPane.showMessageDialog(null, "Select a starting planet first.");
+            JOptionPane.showMessageDialog(null, "Select a starting"
+                + " planet first.");
         } else {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                    .getResource("/view/Orbit.fxml"));
                 Parent root = fxmlLoader.load();
-            
+
                 Scene scene = GameData.getScene();
                 scene.setRoot(root);
                 GameData.setScene(scene);
-            }
-        
-            catch( IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    
+
     @FXML
     private void onCancelAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/CharacterCreationScreen.fxml" ));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                .getResource("/view/CharacterCreationScreen.fxml"));
             Parent root = fxmlLoader.load();
-            
+
             Scene scene = GameData.getScene();
             scene.setRoot(root);
             GameData.setScene(scene);
-        }
-        
-        catch( IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void handleMouseClick(MouseEvent event) {
         System.out.print(event.getX());
-        System.out.println( " " + event.getY());
+        System.out.println(" " + event.getY());
 
         double x = event.getX();
         double y = event.getY();
-        handlePlanetClick(x,y);
+        handlePlanetClick(x, y);
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         universe = new Universe("Trader Universe");
         universe.addSolarSystem(CommonHelper.generatePlanets());
         GameData.setUniverse(universe);
-        //System.out.println( universe.toString() );
-        nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
-        locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
-        techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
-        resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
-        
+        nameLabel.setText("Name: " + GameData.getPlayer()
+            .getCurrentLocation().getName());
+        locationLabel.setText("Location: " + GameData.getPlayer()
+            .getCurrentLocation().getLocation());
+        techLabel.setText("Tech Level: " + GameData.getPlayer()
+            .getCurrentLocation().getTechLevel());
+        resourcesLabel.setText("Resources: " + GameData.getPlayer()
+            .getCurrentLocation().getResource());
+
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);
-        for( SolarSystem s : universe.getList() )
-        {
-            g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
+        for (SolarSystem s : universe.getList()) {
+            g2d.fillOval(s.getX(), s.getY(), GameData.PLANET_DIAMETER,
+                GameData.PLANET_DIAMETER);
         }
-        GameData.getPlayer().setCurrentLocation(universe.getList().get(CommonHelper.randInt(universe.getList().size())));
-        CommonHelper.alertBox( GameData.stage, "Location Selected: " + GameData.player.getCurrentLocation().getName() );
-        handlePlanetClick(GameData.getPlayer().getCurrentLocation().getX(), GameData.getPlayer().getCurrentLocation().getY());    
-    }    
+        GameData.getPlayer().setCurrentLocation(universe.getList()
+            .get(CommonHelper.randInt(universe.getList().size())));
+        CommonHelper.alertBox(GameData.stage, "Location Selected: "
+            + GameData.player.getCurrentLocation().getName());
+        handlePlanetClick(GameData.getPlayer().getCurrentLocation()
+            .getX(), GameData.getPlayer().getCurrentLocation().getY());
+    }
 
     private void handlePlanetClick(double x, double y) {
         nameLabel.setText("Name: ");
@@ -133,8 +131,8 @@ public class PlanetDrawScreenController implements Initializable {
         techLabel.setText("Tech Level: ");
         resourcesLabel.setText("Resources: ");
         planetInfoLabel.setText("Planet Information");
-        for( SolarSystem s : universe.getList() ) {
-            if (s.isHit(x, y) ) {
+        for (SolarSystem s : universe.getList()) {
+            if (s.isHit(x, y)) {
                 nameLabel.setText("Name: " + s.getName());
                 locationLabel.setText("Location: " + s.getLocation());
                 techLabel.setText("Tech Level: " + s.getTechLevel());
@@ -142,16 +140,17 @@ public class PlanetDrawScreenController implements Initializable {
                 planetInfoLabel.setText("Planet Information");
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);
-                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
+                g2d.fillOval(s.getX(), s.getY(), GameData.PLANET_DIAMETER,
+                    GameData.PLANET_DIAMETER);
                 solarSystem = s;
-               // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
-            }
-            else {
+            } else {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.WHITE);
-                g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
-               
+                g2d.fillOval(s.getX(), s.getY(), GameData.PLANET_DIAMETER,
+                    GameData.PLANET_DIAMETER);
+
             }
-        }    }
-    
+        }
+    }
+
 }

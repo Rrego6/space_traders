@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import helper.CommonHelper;
@@ -26,9 +25,11 @@ import javafx.scene.input.MouseEvent;
  * FXML Controller class
  *
  * @author Sarah
+ * @version 1.0
  */
 public class BuyShieldScreenController implements Initializable {
-@FXML
+
+    @FXML
     private Label gadgetSlotLabel;
     @FXML
     private Button buyButton;
@@ -42,13 +43,13 @@ public class BuyShieldScreenController implements Initializable {
     private Label energyLabel;
     @FXML
     private Label reflectLabel;
-    
+
     @FXML
     private Label creditsLabel;
-    
+
     private String currentItem;
     private int currentPrice;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -57,88 +58,89 @@ public class BuyShieldScreenController implements Initializable {
         infoLabel.setText("Information: ");
         priceLabel.setText("Price: ");
         gadgetLabel.setText("Current Shield: ");
-        creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
+        creditsLabel.setText("Credits available: " + GameData.getPlayer()
+            .getCredits());
         buyButton.setVisible(false);
-        gadgetSlotLabel.setText("Shield slots available: " + GameData.getPlayer().getShip().getShieldSlot());
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < 4){
+        gadgetSlotLabel.setText("Shield slots available: " + GameData
+            .getPlayer().getShip().getShieldSlot());
+
+        if (GameData.getPlayer().getCurrentLocation().getTechLevel() < 4) {
             reflectLabel.setVisible(false);
         }
     }
+
     @FXML
     private void onBackAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/ShipyardScreen.fxml" ));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/"
+                + "view/ShipyardScreen.fxml"));
             Parent root = fxmlLoader.load();
-        
+
             Scene scene = GameData.getScene();
             scene.setRoot(root);
             GameData.setScene(scene);
-        }
-        
-        catch( IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
-    private void onEnergyAction(MouseEvent event){
+    private void onEnergyAction(MouseEvent event) {
         buyButton.setVisible(true);
         currentPrice = 50;
         currentItem = energyLabel.getText();
         gadgetLabel.setText("Shield Selected: " + currentItem);
-        infoLabel.setText("Information: Energy shields are cheaper than a reflective shield. Shields protect your hull from damage.");
+        infoLabel.setText("Information: Energy shields are cheaper than a refle"
+            + "ctive shield. Shields protect your hull from damage.");
         priceLabel.setText("Price: " + currentPrice);
-        
+
     }
+
     @FXML
-    private void onReflectAction(MouseEvent event){
+    private void onReflectAction(MouseEvent event) {
         buyButton.setVisible(true);
         currentPrice = 100;
         currentItem = reflectLabel.getText();
         gadgetLabel.setText("Shield Selected: " + currentItem);
-        infoLabel.setText("Information: Reflective shields are the best. Shields protect your hull from damage.");
+        infoLabel.setText("Information: Reflective shields are the best. Shiel"
+            + "ds protect your hull from damage.");
         priceLabel.setText("Price: " + currentPrice);
-        
+
     }
-    
-    
-    
-        
+
     @FXML
-    private void onBuyAction(ActionEvent event){
-        if (GameData.getPlayer().getShip().getShieldSlot() < 1){
-            CommonHelper.alertBox(GameData.getStage(), "  You do not have enough shield slots to buy " + currentItem + ".  ");
- 
+    private void onBuyAction(ActionEvent event) {
+        if (GameData.getPlayer().getShip().getShieldSlot() < 1) {
+            CommonHelper.alertBox(GameData.getStage(), "  You do not have enou"
+                + "gh shield slots to buy " + currentItem + ".  ");
+
+        } else if (GameData.getPlayer().getCredits() < currentPrice) {
+            CommonHelper.alertBox(GameData.getStage(), "  You do not have enou"
+                + "gh credits to buy " + currentItem + ".  ");
+        } else {
+
+            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would "
+                + "like to buy " + currentItem + " for " + currentPrice
+                + " credits?  ",
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        GameData.getPlayer().setCredits(GameData
+                            .getPlayer().getCredits()
+                            - currentPrice);
+                        GameData.getPlayer().getShip()
+                        .subtractShieldSlot();
+                        gadgetSlotLabel.setText("Shield slots availab"
+                            + "le: " + GameData.getPlayer()
+                            .getShip().getShieldSlot());
+                        creditsLabel.setText("Credits available: "
+                            + GameData.getPlayer().getCredits());
+                    }
+                },
+                null
+            );
+
         }
-        else if(GameData.getPlayer().getCredits() < currentPrice){
-            CommonHelper.alertBox(GameData.getStage(), "  You do not have enough credits to buy " + currentItem + ".  ");
-        }
-        else{
-            //CommonHelper.alertBox(GameData.getStage(), "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  "); 
-            //int response = JOptionPane.showConfirmDialog(null, "Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?");
-            //if (response == JOptionPane.YES_OPTION) {
-            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would like to buy " + currentItem + " for " + currentPrice + " credits?  ", 
-                        new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) 
-                            {
-                                GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
-                                GameData.getPlayer().getShip().subtractShieldSlot();
-                                gadgetSlotLabel.setText("Shield slots available: " + GameData.getPlayer().getShip().getShieldSlot());
-                                creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
-                            }
-                        },
-                        null
-                    );
-                //GameData.getPlayer().setCredits(GameData.getPlayer().getCredits() - currentPrice);
-                //GameData.getPlayer().getShip().subtractGadgetSlot();
-                //gadgetSlotLabel.setText("Gadget slots available: " + GameData.getPlayer().getShip().getGadgetSlot());
-                //creditsLabel.setText("Credits available: " + GameData.getPlayer().getCredits());
-            //}
-        }
-    }  
-      
-    
+    }
+
 }

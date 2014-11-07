@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,18 +20,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javax.swing.JOptionPane;
 import model.TradeGood;
 
 /**
  * FXML Controller class
  *
- * @author Ambrose Cheung <cheungambrose30@gmail.com>
+ * @author Ambrose Cheung
+ * @version 1.0
  */
 public class MarketplaceController implements Initializable {
 
@@ -110,10 +104,12 @@ public class MarketplaceController implements Initializable {
     private int credits;
     private int cost;
     private int totalGoods;
-    
+
     private int techLevel;
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -123,436 +119,466 @@ public class MarketplaceController implements Initializable {
         tradeList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                int techLevel = GameData.getPlayer().getCurrentLocation().getTechLevel();
+                int techLvl = GameData.getPlayer().getCurrentLocation()
+                    .getTechLevel();
                 removedGood = tradeList.getSelectionModel().getSelectedItem();
                 goods.remove(removedGood);
-                if(removedGood.equals("Water (Sell)")) {
+                if (removedGood.equals("Water (Sell)")) {
                     numWater++;
                     totalGoods++;
                     pWaterLabel.setText(numWater + " Units of Water");
-                    cost += TradeGood.WATER.getCost( techLevel );
+                    cost += TradeGood.WATER.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Water (Buy)")) {
                     numBoughtWater--;
                     totalGoods--;
-                    cost -= TradeGood.WATER.getCost(techLevel);
+                    cost -= TradeGood.WATER.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Furs (Sell)")) {
+                } else if (removedGood.equals("Furs (Sell)")) {
                     numFurs++;
                     totalGoods++;
                     pFursLabel.setText(numFurs + " Units of Furs");
-                    cost += TradeGood.FURS.getCost( techLevel );
+                    cost += TradeGood.FURS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Furs (Buy)")) {
                     numBoughtFurs--;
                     totalGoods--;
-                    cost -= TradeGood.FURS.getCost( techLevel );
+                    cost -= TradeGood.FURS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Food (Sell)")) {
+                } else if (removedGood.equals("Food (Sell)")) {
                     numFood++;
                     totalGoods++;
                     pFoodLabel.setText(numFood + " Units of Food");
-                    cost += TradeGood.FOOD.getCost( techLevel );
+                    cost += TradeGood.FOOD.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Food (Buy)")) {
                     numBoughtFood--;
                     totalGoods--;
-                    cost -= TradeGood.FOOD.getCost( techLevel );
+                    cost -= TradeGood.FOOD.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Ore (Sell)")) {
+                } else if (removedGood.equals("Ore (Sell)")) {
                     numOre++;
                     totalGoods++;
                     pOreLabel.setText(numOre + " Units of Ore");
-                    cost += TradeGood.ORE.getCost( techLevel );
+                    cost += TradeGood.ORE.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Ore (Buy)")) {
                     numBoughtOre--;
                     totalGoods--;
-                    cost -= TradeGood.ORE.getCost( techLevel );
+                    cost -= TradeGood.ORE.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Games (Sell)")) {
+                } else if (removedGood.equals("Games (Sell)")) {
                     numGames++;
                     totalGoods++;
                     pGamesLabel.setText(numGames + " Units of Games");
-                    cost += TradeGood.GAMES.getCost( techLevel );
+                    cost += TradeGood.GAMES.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Games (Buy)")) {
                     numBoughtGames--;
                     totalGoods--;
-                    cost -= TradeGood.GAMES.getCost( techLevel );
+                    cost -= TradeGood.GAMES.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Firearms (Sell)")) {
+                } else if (removedGood.equals("Firearms (Sell)")) {
                     numFirearms++;
                     totalGoods++;
                     pFirearmsLabel.setText(numFirearms + " Units of Firearms");
-                    cost += TradeGood.FIREARMS.getCost( techLevel );
+                    cost += TradeGood.FIREARMS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Firearms (Buy)")) {
                     numBoughtFirearms--;
                     totalGoods--;
-                    cost -= TradeGood.FIREARMS.getCost( techLevel );
+                    cost -= TradeGood.FIREARMS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Medicine (Sell)")) {
+                } else if (removedGood.equals("Medicine (Sell)")) {
                     numMedicine++;
                     totalGoods++;
                     pMedicineLabel.setText(numMedicine + " Units of Medicine");
-                    cost += TradeGood.MEDICINE.getCost( techLevel );
+                    cost += TradeGood.MEDICINE.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Medicine (Buy)")) {
                     numBoughtMedicine--;
                     totalGoods--;
-                    cost -= TradeGood.MEDICINE.getCost( techLevel );
+                    cost -= TradeGood.MEDICINE.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Machines (Sell)")) {
+                } else if (removedGood.equals("Machines (Sell)")) {
                     numMachines++;
                     totalGoods++;
                     pMachinesLabel.setText(numMachines + " Units of Machines");
-                    cost += TradeGood.MACHINES.getCost( techLevel );
+                    cost += TradeGood.MACHINES.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Machines (Buy)")) {
                     numBoughtMachines--;
                     totalGoods--;
-                    cost -= TradeGood.MACHINES.getCost( techLevel );
+                    cost -= TradeGood.MACHINES.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Narcotics (Sell)")) {
+                } else if (removedGood.equals("Narcotics (Sell)")) {
                     numNarcotics++;
                     totalGoods++;
-                    pNarcoticsLabel.setText(numNarcotics + " Units of Narcotics");
-                    cost += TradeGood.NARCOTICS.getCost( techLevel );
+                    pNarcoticsLabel.setText(numNarcotics
+                        + " Units of Narcotics");
+                    cost += TradeGood.NARCOTICS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Narcotics (Buy)")) {
                     numBoughtNarcotics--;
                     totalGoods--;
-                    cost -= TradeGood.NARCOTICS.getCost( techLevel );
+                    cost -= TradeGood.NARCOTICS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } else if(removedGood.equals("Robots (Sell)")) {
+                } else if (removedGood.equals("Robots (Sell)")) {
                     numRobots++;
                     totalGoods++;
                     pRobotsLabel.setText(numRobots + " Units of Robots");
-                    cost += TradeGood.ROBOTS.getCost( techLevel );
+                    cost += TradeGood.ROBOTS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
                 } else if (removedGood.equals("Robots (Buy)")) {
                     numBoughtRobots--;
                     totalGoods--;
-                    cost -= TradeGood.ROBOTS.getCost( techLevel );
+                    cost -= TradeGood.ROBOTS.getCost(techLvl);
                     costLabel.setText("Cost of Transaction: " + cost);
-                } 
+                }
             }
         });
     }
 
     @FXML
     private void sellWater(MouseEvent event) {
-        if (numWater > 0 && pWaterLabel.isDisabled() == false) {
+        if (numWater > 0 && !pWaterLabel.isDisabled()) {
             goods.add("Water (Sell)");
             tradeList.setItems(goods);
             numWater--;
             totalGoods--;
             pWaterLabel.setText(numWater + " Units of Water");
-            cost -= TradeGood.WATER.getCost( techLevel );
+            cost -= TradeGood.WATER.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyWater(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mWaterLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mWaterLabel
+            .isDisabled()) {
             goods.add("Water (Buy)");
             tradeList.setItems(goods);
             numBoughtWater++;
             totalGoods++;
-            cost += TradeGood.WATER.getCost( techLevel );
+            cost += TradeGood.WATER.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellFurs(MouseEvent event) {
-        if (numFurs > 0 && pFursLabel.isDisabled() == false) {
+        if (numFurs > 0 && !pFursLabel.isDisabled()) {
             goods.add("Furs (Sell)");
             tradeList.setItems(goods);
             numFurs--;
             totalGoods--;
             pFursLabel.setText(numFurs + " Units of Furs");
-            cost -= TradeGood.FURS.getCost( techLevel );
+            cost -= TradeGood.FURS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyFurs(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFursLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mFursLabel.isDisabled()) {
             goods.add("Furs (Buy)");
             tradeList.setItems(goods);
             numBoughtFurs++;
             totalGoods++;
-            cost += TradeGood.FURS.getCost( techLevel );
+            cost += TradeGood.FURS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellFood(MouseEvent event) {
-        if (numFood > 0 && pFoodLabel.isDisabled() == false) {
+        if (numFood > 0 && !pFoodLabel.isDisabled()) {
             goods.add("Food (Sell)");
             tradeList.setItems(goods);
             numFood--;
             totalGoods--;
             pFoodLabel.setText(numFood + " Units of Food");
-            cost -= TradeGood.FOOD.getCost( techLevel );
+            cost -= TradeGood.FOOD.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyFood(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFoodLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mFoodLabel.isDisabled()) {
             goods.add("Food (Buy)");
             tradeList.setItems(goods);
             numBoughtFood++;
             totalGoods++;
-            cost += TradeGood.FOOD.getCost( techLevel );
+            cost += TradeGood.FOOD.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellOre(MouseEvent event) {
-        if (numOre > 0 && pOreLabel.isDisabled() == false) {
+        if (numOre > 0 && !pOreLabel.isDisabled()) {
             goods.add("Ore (Sell)");
             tradeList.setItems(goods);
             numOre--;
             totalGoods--;
             pOreLabel.setText(numOre + " Units of Ore");
-            cost -= TradeGood.ORE.getCost( techLevel );
+            cost -= TradeGood.ORE.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyOre(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mOreLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mOreLabel.isDisabled()) {
             goods.add("Ore (Buy)");
             tradeList.setItems(goods);
             numBoughtOre++;
             totalGoods++;
-            cost += TradeGood.ORE.getCost( techLevel );
+            cost += TradeGood.ORE.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellGames(MouseEvent event) {
-        if (numGames > 0 && pGamesLabel.isDisabled() == false) {
+        if (numGames > 0 && !pGamesLabel.isDisabled()) {
             goods.add("Games (Sell)");
             tradeList.setItems(goods);
             numGames--;
             totalGoods--;
             pGamesLabel.setText(numGames + " Units of Water");
-            cost -= TradeGood.GAMES.getCost( techLevel );
+            cost -= TradeGood.GAMES.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyGames(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mGamesLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mGamesLabel
+            .isDisabled()) {
             goods.add("Games (Buy)");
             tradeList.setItems(goods);
             numBoughtGames++;
             totalGoods++;
-            cost += TradeGood.GAMES.getCost( techLevel );
+            cost += TradeGood.GAMES.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellFirearms(MouseEvent event) {
-        if (numFirearms > 0 && pFirearmsLabel.isDisabled() == false) {
+        if (numFirearms > 0 && !pFirearmsLabel.isDisabled()) {
             goods.add("Firearms (Sell)");
             tradeList.setItems(goods);
             numFirearms--;
             totalGoods--;
             pFirearmsLabel.setText(numWater + " Units of Firearms");
-            cost -= TradeGood.FIREARMS.getCost( techLevel );
+            cost -= TradeGood.FIREARMS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyFirearms(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mFirearmsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mFirearmsLabel
+            .isDisabled()) {
             goods.add("Firearms (Buy)");
             tradeList.setItems(goods);
             numBoughtFirearms++;
             totalGoods++;
-            cost += TradeGood.FIREARMS.getCost( techLevel );
+            cost += TradeGood.FIREARMS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellMedicine(MouseEvent event) {
-        if (numMedicine > 0 && pMedicineLabel.isDisabled() == false) {
+        if (numMedicine > 0 && !pMedicineLabel.isDisabled()) {
             goods.add("Medicine (Sell)");
             tradeList.setItems(goods);
             numMedicine--;
             totalGoods--;
             pMedicineLabel.setText(numMedicine + " Units of Medicine");
-            cost -= TradeGood.MEDICINE.getCost( techLevel );
+            cost -= TradeGood.MEDICINE.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyMedicine(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mMedicineLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mMedicineLabel
+            .isDisabled()) {
             goods.add("Medicine (Buy)");
             tradeList.setItems(goods);
             numBoughtMedicine++;
             totalGoods++;
-            cost += TradeGood.MEDICINE.getCost( techLevel );
+            cost += TradeGood.MEDICINE.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellMachines(MouseEvent event) {
-        if (numMachines > 0 && pMachinesLabel.isDisabled() == false) {
+        if (numMachines > 0 && !pMachinesLabel.isDisabled()) {
             goods.add("Machines (Sell)");
             tradeList.setItems(goods);
             numMachines--;
             totalGoods--;
             pMachinesLabel.setText(numMachines + " Units of Machines");
-            cost -= TradeGood.MACHINES.getCost( techLevel );
+            cost -= TradeGood.MACHINES.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyMachines(MouseEvent event) {
-        if (credits > 0  && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mMachinesLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mMachinesLabel
+            .isDisabled()) {
             goods.add("Machines (Buy)");
             tradeList.setItems(goods);
             numBoughtMachines++;
             totalGoods++;
-            cost += TradeGood.MACHINES.getCost( techLevel );
+            cost += TradeGood.MACHINES.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellNarcotics(MouseEvent event) {
-        if (numNarcotics > 0 && pNarcoticsLabel.isDisabled() == false) {
+        if (numNarcotics > 0 && !pNarcoticsLabel.isDisabled()) {
             goods.add("Narcotics (Sell)");
             tradeList.setItems(goods);
             numNarcotics--;
             totalGoods--;
             pNarcoticsLabel.setText(numNarcotics + " Units of Narcotics");
-            cost -= TradeGood.NARCOTICS.getCost( techLevel );
+            cost -= TradeGood.NARCOTICS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyNarcotics(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mNarcoticsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mNarcoticsLabel
+            .isDisabled()) {
             goods.add("Narcotics (Buy)");
             tradeList.setItems(goods);
             numBoughtNarcotics++;
             totalGoods++;
-            cost += TradeGood.NARCOTICS.getCost( techLevel );
+            cost += TradeGood.NARCOTICS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void sellRobots(MouseEvent event) {
-        if (numRobots > 0  && pRobotsLabel.isDisabled() == false) {
+        if (numRobots > 0 && !pRobotsLabel.isDisabled()) {
             goods.add("Robots (Sell)");
             tradeList.setItems(goods);
             numRobots--;
             totalGoods--;
             pRobotsLabel.setText(numRobots + " Units of Robots");
-            cost -= TradeGood.ROBOTS.getCost( techLevel );
+            cost -= TradeGood.ROBOTS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void buyRobots(MouseEvent event) {
-        if (credits > 0 && totalGoods < GameData.getPlayer().getShip().getInventory().getMaxSpace() && mRobotsLabel.isDisabled() == false) {
+        if (credits > 0 && totalGoods < GameData.getPlayer().getShip()
+            .getInventory().getMaxSpace() && !mRobotsLabel
+            .isDisabled()) {
             goods.add("Robots (Buy)");
             tradeList.setItems(goods);
             numBoughtRobots++;
             totalGoods++;
-            cost += TradeGood.ROBOTS.getCost( techLevel );
+            cost += TradeGood.ROBOTS.getCost(techLevel);
             costLabel.setText("Cost of Transaction: " + cost);
         }
     }
-    
+
     @FXML
     private void onTradeAction(ActionEvent event) {
         if (goods.isEmpty()) {
             JOptionPane.showMessageDialog(null, "The trade window is empty.");
         } else if (cost > credits) {
-            JOptionPane.showMessageDialog(null, "You don't have enough credits.");
+            JOptionPane.showMessageDialog(null, "You don't have enough cred"
+                + "its.");
         } else {
-            int response = JOptionPane.showConfirmDialog(null, "Trade these goods?");
+            int response = JOptionPane.showConfirmDialog(null, "Trade these go"
+                + "ods?");
             if (response == JOptionPane.YES_OPTION) {
                 update();
                 reset();
             }
         }
     }
-    
+
     @FXML
     private void onCancelAction(ActionEvent event) {
         if (goods.isEmpty()) {
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                    .getResource("/view/Orbit.fxml"));
                 Parent root = fxmlLoader.load();
                 Scene scene = GameData.getScene();
                 scene.setRoot(root);
                 GameData.setScene(scene);
-            }
-            catch( IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            int response = JOptionPane.showConfirmDialog(null, "All goods in the trade window are untraded. Continue?");
+            int response = JOptionPane.showConfirmDialog(null, "All goods in t"
+                + "he trade window are untraded. Continue?");
             if (response == JOptionPane.YES_OPTION) {
                 try {
-                    FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/Orbit.fxml" ));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                        .getResource("/view/Orbit.fxml"));
                     Parent root = fxmlLoader.load();
                     Scene scene = GameData.getScene();
                     scene.setRoot(root);
                     GameData.setScene(scene);
-                }
-                catch( IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }
     }
-    
+
     private void update() {
         GameData.getPlayer().setCredits(credits - cost);
-        GameData.getPlayer().getShip().getInventory().setNumWater(numWater + numBoughtWater);
-        GameData.getPlayer().getShip().getInventory().setNumFurs(numFurs + numBoughtFurs);
-        GameData.getPlayer().getShip().getInventory().setNumFood(numFood + numBoughtFood);
-        GameData.getPlayer().getShip().getInventory().setNumOre(numOre + numBoughtOre);
-        GameData.getPlayer().getShip().getInventory().setNumGames(numGames + numBoughtGames);
-        GameData.getPlayer().getShip().getInventory().setNumFirearms(numFirearms + numBoughtFirearms);
-        GameData.getPlayer().getShip().getInventory().setNumMedicine(numMedicine + numBoughtMedicine);
-        GameData.getPlayer().getShip().getInventory().setNumMachines(numMachines + numBoughtMachines);
-        GameData.getPlayer().getShip().getInventory().setNumNarcotics(numNarcotics + numBoughtNarcotics);
-        GameData.getPlayer().getShip().getInventory().setNumRobots(numRobots + numBoughtRobots);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumWater(numWater + numBoughtWater);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumFurs(numFurs + numBoughtFurs);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumFood(numFood + numBoughtFood);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumOre(numOre + numBoughtOre);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumGames(numGames + numBoughtGames);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumFirearms(numFirearms + numBoughtFirearms);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumMedicine(numMedicine + numBoughtMedicine);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumMachines(numMachines + numBoughtMachines);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumNarcotics(numNarcotics + numBoughtNarcotics);
+        GameData.getPlayer().getShip().getInventory()
+            .setNumRobots(numRobots + numBoughtRobots);
         goods.clear();
     }
-    
+
     private void reset() {
         credits = GameData.getPlayer().getCredits();
         playerCredits.setText("Credits: " + credits);
@@ -563,11 +589,16 @@ public class MarketplaceController implements Initializable {
         numFood = GameData.getPlayer().getShip().getInventory().getNumFood();
         numOre = GameData.getPlayer().getShip().getInventory().getNumOre();
         numGames = GameData.getPlayer().getShip().getInventory().getNumGames();
-        numFirearms = GameData.getPlayer().getShip().getInventory().getNumFirearms();
-        numMedicine = GameData.getPlayer().getShip().getInventory().getNumMedicine();
-        numMachines = GameData.getPlayer().getShip().getInventory().getNumMachines();
-        numNarcotics = GameData.getPlayer().getShip().getInventory().getNumNarcotics();
-        numRobots = GameData.getPlayer().getShip().getInventory().getNumRobots();
+        numFirearms = GameData.getPlayer().getShip().getInventory()
+            .getNumFirearms();
+        numMedicine = GameData.getPlayer().getShip().getInventory()
+            .getNumMedicine();
+        numMachines = GameData.getPlayer().getShip().getInventory()
+            .getNumMachines();
+        numNarcotics = GameData.getPlayer().getShip().getInventory()
+            .getNumNarcotics();
+        numRobots = GameData.getPlayer().getShip().getInventory()
+            .getNumRobots();
         numBoughtWater = 0;
         numBoughtFurs = 0;
         numBoughtFood = 0;
@@ -578,128 +609,156 @@ public class MarketplaceController implements Initializable {
         numBoughtMachines = 0;
         numBoughtNarcotics = 0;
         numBoughtRobots = 0;
-        totalGoods = numWater + numFurs + numOre + numGames + numFirearms + numMedicine + numMachines + numNarcotics + numRobots;
-        
+        totalGoods = numWater + numFurs + numOre + numGames + numFirearms
+            + numMedicine + numMachines + numNarcotics + numRobots;
+
         techLevel = GameData.getPlayer().getCurrentLocation().getTechLevel();
 
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.WATER.getMTLU()) {
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.WATER.getMTLU()) {
             pWaterLabel.disableProperty();
         } else {
             pWaterLabel.setText(numWater + " Units of Water");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.WATER.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.WATER.getMTLP()) {
             mWaterLabel.disableProperty();
         } else {
-            mWaterLabel.setText("Water @ " + TradeGood.WATER.getCost( techLevel ));
+            mWaterLabel.setText("Water @ " + TradeGood.WATER
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FURS.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FURS.getMTLU()) {
             pFursLabel.disableProperty();
         } else {
             pFursLabel.setText(numFurs + " Units of Fur");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FURS.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FURS.getMTLP()) {
             mFursLabel.disableProperty();
         } else {
-            mFursLabel.setText("Furs @ " + TradeGood.FURS.getCost( techLevel ));
+            mFursLabel.setText("Furs @ " + TradeGood.FURS.getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FOOD.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FOOD.getMTLU()) {
             pFoodLabel.disableProperty();
         } else {
             pFoodLabel.setText(numFood + " Units of Food");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FOOD.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FOOD.getMTLP()) {
             mFoodLabel.disableProperty();
         } else {
-            mFoodLabel.setText("Food @ " + TradeGood.FOOD.getCost( techLevel ));
+            mFoodLabel.setText("Food @ " + TradeGood.FOOD.getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ORE.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.ORE.getMTLU()) {
             pOreLabel.disableProperty();
         } else {
             pOreLabel.setText(numOre + " Units of Ore");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ORE.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.ORE.getMTLP()) {
             mOreLabel.disableProperty();
         } else {
-            mOreLabel.setText("Ore @ " + TradeGood.ORE.getCost( techLevel ));
+            mOreLabel.setText("Ore @ " + TradeGood.ORE.getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.GAMES.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.GAMES.getMTLU()) {
             pGamesLabel.disableProperty();
         } else {
             pGamesLabel.setText(numGames + " Units of Games");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.GAMES.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.GAMES.getMTLP()) {
             mGamesLabel.disableProperty();
         } else {
-            mGamesLabel.setText("Games @ " + TradeGood.GAMES.getCost( techLevel ));
+            mGamesLabel.setText("Games @ " + TradeGood.GAMES
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FIREARMS.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FIREARMS.getMTLU()) {
             pFirearmsLabel.disableProperty();
         } else {
             pFirearmsLabel.setText(numFirearms + " Units of Firearms");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.FIREARMS.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.FIREARMS.getMTLP()) {
             mFirearmsLabel.disableProperty();
         } else {
-            mFirearmsLabel.setText("Firearms @ " + TradeGood.FIREARMS.getCost( techLevel ));
+            mFirearmsLabel.setText("Firearms @ " + TradeGood.FIREARMS
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MEDICINE.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.MEDICINE.getMTLU()) {
             pMedicineLabel.disableProperty();
         } else {
             pMedicineLabel.setText(numMedicine + " Units of Medicine");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MEDICINE.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.MEDICINE.getMTLP()) {
             mMedicineLabel.disableProperty();
         } else {
-            mMedicineLabel.setText("Medicine @ " + TradeGood.MEDICINE.getCost( techLevel ));
+            mMedicineLabel.setText("Medicine @ " + TradeGood.MEDICINE
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MACHINES.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.MACHINES.getMTLU()) {
             pMachinesLabel.disableProperty();
         } else {
             pMachinesLabel.setText(numMachines + " Units of Machines");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.MACHINES.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.MACHINES.getMTLP()) {
             mMachinesLabel.disableProperty();
         } else {
-            mMachinesLabel.setText("Machines @ " + TradeGood.MACHINES.getCost( techLevel ));
+            mMachinesLabel.setText("Machines @ " + TradeGood.MACHINES
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.NARCOTICS.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.NARCOTICS.getMTLU()) {
             pNarcoticsLabel.disableProperty();
         } else {
             pNarcoticsLabel.setText(numNarcotics + " Units of Narcotics");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.NARCOTICS.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.NARCOTICS.getMTLP()) {
             mNarcoticsLabel.disableProperty();
         } else {
-            mNarcoticsLabel.setText("Narcotics @ " + TradeGood.NARCOTICS.getCost( techLevel ));
+            mNarcoticsLabel.setText("Narcotics @ " + TradeGood.NARCOTICS
+                .getCost(techLevel));
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ROBOTS.getMTLU()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.ROBOTS.getMTLU()) {
             pRobotsLabel.disableProperty();
         } else {
             pRobotsLabel.setText(numRobots + " Units of Robots");
         }
-        
-        if(GameData.getPlayer().getCurrentLocation().getTechLevel() < TradeGood.ROBOTS.getMTLP()) {
+
+        if (GameData.getPlayer().getCurrentLocation()
+            .getTechLevel() < TradeGood.ROBOTS.getMTLP()) {
             mRobotsLabel.disableProperty();
         } else {
-            mRobotsLabel.setText("Robots @ " + TradeGood.ROBOTS.getCost( techLevel ));
+            mRobotsLabel.setText("Robots @ " + TradeGood.ROBOTS
+                .getCost(techLevel));
         }
     }
 }

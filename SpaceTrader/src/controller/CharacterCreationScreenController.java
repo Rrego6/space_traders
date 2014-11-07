@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import helper.CommonHelper;
@@ -18,19 +17,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.control.TextField;
-import javax.swing.JOptionPane;
+import javafx.scene.shape.Rectangle;
 import model.Player;
-import model.Universe;
 
 /**
  * FXML Controller class
  *
  * @author Raoul
+ * @version 1.0
  */
 public class CharacterCreationScreenController implements Initializable {
-    
+
     @FXML
     private TextField nameField;
     @FXML
@@ -48,21 +46,20 @@ public class CharacterCreationScreenController implements Initializable {
     @FXML
     private Rectangle pilotBar, traderBar, investorBar, fighterBar, engineerBar;
 
-    int spLeft = 15;
-    int pilotSP = 0;
-    int fighterSP = 0;
-    int traderSP = 0;
-    int engineerSP = 0;
-    int investorSP = 0;
-    
-    String spLeftText;
-    String pilotSPText;
-    String fighterSPText;
-    String traderSPText;
-    String engineerSPText;
-    String investorSPText;
-    
-    
+    protected int spLeft = 15;
+    protected int pilotSP = 0;
+    protected int fighterSP = 0;
+    protected int traderSP = 0;
+    protected int engineerSP = 0;
+    protected int investorSP = 0;
+
+    protected String spLeftText;
+    protected String pilotSPText;
+    protected String fighterSPText;
+    protected String traderSPText;
+    protected String engineerSPText;
+    protected String investorSPText;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         spLeftText = spRemainingLabel.getText();
@@ -71,159 +68,141 @@ public class CharacterCreationScreenController implements Initializable {
         traderSPText = traderLabel.getText();
         engineerSPText = engineerLabel.getText();
         investorSPText = investorLabel.getText();
-    
-        spRemainingLabel.setText( spLeftText + " " + spLeft );
-        pilotLabel.setText( pilotSPText + " " + pilotSP );
-        fighterLabel.setText( fighterSPText + " " + fighterSP );
-        traderLabel.setText( traderSPText + " " + traderSP );
-        engineerLabel.setText( engineerSPText + " " + engineerSP );
-        investorLabel.setText( investorSPText + " " + investorSP );
-    }    
 
+        spRemainingLabel.setText(spLeftText + " " + spLeft);
+        pilotLabel.setText(pilotSPText + " " + pilotSP);
+        fighterLabel.setText(fighterSPText + " " + fighterSP);
+        traderLabel.setText(traderSPText + " " + traderSP);
+        engineerLabel.setText(engineerSPText + " " + engineerSP);
+        investorLabel.setText(investorSPText + " " + investorSP);
+    }
 
     @FXML
     private void onDecPilotSkill(ActionEvent event) {
-        if( pilotSP > 0 )
-        {
-            pilotLabel.setText( pilotSPText + " " + --pilotSP );
-            pilotBar.setWidth(20*pilotSP);
-            spRemainingLabel.setText( spLeftText + " " + ++spLeft );
+        if (pilotSP > 0) {
+            pilotLabel.setText(pilotSPText + " " + --pilotSP);
+            pilotBar.setWidth(20 * pilotSP);
+            spRemainingLabel.setText(spLeftText + " " + ++spLeft);
         }
     }
 
     @FXML
     private void onIncPilotSkill(ActionEvent event) {
-        if( spLeft > 0 )
-        {
-            pilotLabel.setText( pilotSPText + " " + ++pilotSP );
-            spRemainingLabel.setText( spLeftText + " " + --spLeft );
-            pilotBar.setWidth(20*pilotSP);
+        if (spLeft > 0) {
+            pilotLabel.setText(pilotSPText + " " + ++pilotSP);
+            spRemainingLabel.setText(spLeftText + " " + --spLeft);
+            pilotBar.setWidth(20 * pilotSP);
         }
     }
 
     @FXML
     private void onDecFighterSkill(ActionEvent event) {
-        if( fighterSP > 0)
-        {
-            fighterLabel.setText( fighterSPText + " " + --fighterSP);
-            fighterBar.setWidth(20*fighterSP);
-            spRemainingLabel.setText( spLeftText + " " + ++spLeft );
+        if (fighterSP > 0) {
+            fighterLabel.setText(fighterSPText + " " + --fighterSP);
+            fighterBar.setWidth(20 * fighterSP);
+            spRemainingLabel.setText(spLeftText + " " + ++spLeft);
         }
     }
 
     @FXML
     private void onIncFighterSkill(ActionEvent event) {
-        if(spLeft > 0)
-        {
-            fighterLabel.setText( fighterSPText + " " + ++fighterSP);
-            fighterBar.setWidth(20*fighterSP);
-            spRemainingLabel.setText( spLeftText + " " + --spLeft );
+        if (spLeft > 0) {
+            fighterLabel.setText(fighterSPText + " " + ++fighterSP);
+            fighterBar.setWidth(20 * fighterSP);
+            spRemainingLabel.setText(spLeftText + " " + --spLeft);
         }
     }
 
     @FXML
     private void onDecTraderSkill(ActionEvent event) {
-        if(traderSP>0)
-        {
-            traderLabel.setText( traderSPText + " " + --traderSP );
-            traderBar.setWidth(20*traderSP);
-            spRemainingLabel.setText( spLeftText + " " + ++spLeft );
+        if (traderSP > 0) {
+            traderLabel.setText(traderSPText + " " + --traderSP);
+            traderBar.setWidth(20 * traderSP);
+            spRemainingLabel.setText(spLeftText + " " + ++spLeft);
         }
     }
 
     @FXML
     private void onIncTraderSkill(ActionEvent event) {
-        if(spLeft>0)
-        {
-            traderLabel.setText( traderSPText + " " + ++traderSP );
-            traderBar.setWidth(20*traderSP);
-            spRemainingLabel.setText( spLeftText + " " + --spLeft );
+        if (spLeft > 0) {
+            traderLabel.setText(traderSPText + " " + ++traderSP);
+            traderBar.setWidth(20 * traderSP);
+            spRemainingLabel.setText(spLeftText + " " + --spLeft);
         }
     }
 
     @FXML
     private void onDecEngineerSkill(ActionEvent event) {
-        if(engineerSP>0)
-        {
-            engineerLabel.setText( engineerSPText + " " + --engineerSP );
-            engineerBar.setWidth(20*engineerSP);
-            spRemainingLabel.setText( spLeftText + " " + ++spLeft );
+        if (engineerSP > 0) {
+            engineerLabel.setText(engineerSPText + " " + --engineerSP);
+            engineerBar.setWidth(20 * engineerSP);
+            spRemainingLabel.setText(spLeftText + " " + ++spLeft);
         }
     }
 
     @FXML
     private void onIncEngineerSkill(ActionEvent event) {
-        if(spLeft>0)
-        {
-            engineerLabel.setText( engineerSPText + " " + ++engineerSP );
-            engineerBar.setWidth(20*engineerSP);
-            spRemainingLabel.setText( spLeftText + " " + --spLeft );
+        if (spLeft > 0) {
+            engineerLabel.setText(engineerSPText + " " + ++engineerSP);
+            engineerBar.setWidth(20 * engineerSP);
+            spRemainingLabel.setText(spLeftText + " " + --spLeft);
         }
     }
 
     @FXML
     private void onDecInvestorSkill(ActionEvent event) {
-        if(investorSP > 0)
-        {
-            investorLabel.setText( investorSPText + " " + --investorSP );
-            investorBar.setWidth(20*investorSP);
-            spRemainingLabel.setText( spLeftText + " " + ++spLeft );
+        if (investorSP > 0) {
+            investorLabel.setText(investorSPText + " " + --investorSP);
+            investorBar.setWidth(20 * investorSP);
+            spRemainingLabel.setText(spLeftText + " " + ++spLeft);
         }
     }
 
     @FXML
     private void onIncInvestorSkill(ActionEvent event) {
-        if(spLeft > 0)
-        {
-            investorLabel.setText( investorSPText + " " + ++investorSP );
-            investorBar.setWidth(20*investorSP);
-            spRemainingLabel.setText( spLeftText + " " + --spLeft );
+        if (spLeft > 0) {
+            investorLabel.setText(investorSPText + " " + ++investorSP);
+            investorBar.setWidth(20 * investorSP);
+            spRemainingLabel.setText(spLeftText + " " + --spLeft);
         }
     }
 
     @FXML
     private void onCancelAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vie"
+                + "w/WelcomeScreen.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = GameData.getScene();
             scene.setRoot(root);
             GameData.setScene(scene);
-        }
-        catch( IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
     private void onAcceptAction(ActionEvent event) {
-        if( nameField.getText().isEmpty() )
-        {
-            CommonHelper.alertBox(GameData.stage, "Name cannot be blank." );
+        if (nameField.getText().isEmpty()) {
+            CommonHelper.alertBox(GameData.stage, "Name cannot be blank.");
             nameField.requestFocus();
-        }
-        else if( spLeft > 0 )
-        {
+        } else if (spLeft > 0) {
             CommonHelper.alertBox(GameData.stage, "Allocate All Stats.");
-        }
-        else
-        {
-            Player player = new Player( nameField.getText(), pilotSP, fighterSP, traderSP, engineerSP, investorSP );
-           // JOptionPane.showMessageDialog( null, "Created Player: " + player.toString() );
+        } else {
+            Player player = new Player(nameField.getText(), pilotSP, fighterSP,
+                traderSP, engineerSP, investorSP);
             GameData.setPlayer(player);
-               
+
             try {
-                FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/StarChart.fxml" ));
-                Parent root = fxmlLoader.load(); 
-                           
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                    .getResource("/view/StarChart.fxml"));
+                Parent root = fxmlLoader.load();
+
                 Scene scene = GameData.getScene();
-                scene.setRoot( root );
-                GameData.setScene( scene );
-                               
-            }
-            catch( Exception e )
-            {
+                scene.setRoot(root);
+                GameData.setScene(scene);
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
