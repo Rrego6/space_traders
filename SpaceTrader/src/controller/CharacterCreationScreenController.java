@@ -184,10 +184,10 @@ public class CharacterCreationScreenController implements Initializable {
     @FXML
     private void onAcceptAction(ActionEvent event) {
         if (nameField.getText().isEmpty()) {
-            CommonHelper.alertBox(GameData.stage, "Name cannot be blank.");
+            CommonHelper.alertBox(GameData.getStage(), "Name cannot be blank.");
             nameField.requestFocus();
         } else if (spLeft > 0) {
-            CommonHelper.alertBox(GameData.stage, "Allocate All Stats.");
+            CommonHelper.alertBox(GameData.getStage(), "Allocate All Stats.");
         } else {
             Player player = new Player(nameField.getText(), pilotSP, fighterSP,
                 traderSP, engineerSP, investorSP);

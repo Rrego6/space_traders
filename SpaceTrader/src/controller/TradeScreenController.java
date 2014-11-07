@@ -64,9 +64,10 @@ public class TradeScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        currentCreditsLabel.setText(GameData.player.toString());
+        currentCreditsLabel.setText(GameData.getPlayer().toString());
 
-        Inventory playerInventory = GameData.player.getShip().getInventory();
+        Inventory playerInventory = GameData.getPlayer().getShip()
+            .getInventory();
         Inventory planetInventory = new Inventory(100);
 
         initInventoryListView(playerInventory);

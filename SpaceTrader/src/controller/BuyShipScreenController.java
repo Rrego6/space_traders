@@ -91,9 +91,10 @@ public class BuyShipScreenController implements Initializable {
             public void handle(MouseEvent event) {
                 Ship selectedShip = ship;
                 if (selectedShip == currentShip) {
-                    CommonHelper.alertBox(GameData.stage, "Ship Already Owned");
+                    CommonHelper.alertBox(GameData.getStage(), "Ship Alre"
+                        + "ady Owned");
                 } else {
-                    CommonHelper.yesAndNoBox(GameData.stage, "Buy "
+                    CommonHelper.yesAndNoBox(GameData.getStage(), "Buy "
                         + selectedShip.name() + " for "
                         + Integer.toString(selectedShip.getCost()),
                         new EventHandler<ActionEvent>() {

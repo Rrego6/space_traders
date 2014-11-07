@@ -138,7 +138,8 @@ public class BuyWeaponScreenController implements Initializable {
             CommonHelper.alertBox(GameData.getStage(), "  You do not have enoug"
                 + "h credits to buy " + currentItem + ".  ");
         } else {
-            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would "
+            CommonHelper.yesAndNoBox(GameData.getStage(), "  Are you "
+                + "sure you would "
                 + "like to buy " + currentItem + " for " + currentPrice + " cre"
                 + "dits?  ",
                 new EventHandler<ActionEvent>() {

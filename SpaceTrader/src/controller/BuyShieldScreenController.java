@@ -119,7 +119,8 @@ public class BuyShieldScreenController implements Initializable {
                 + "gh credits to buy " + currentItem + ".  ");
         } else {
 
-            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would "
+            CommonHelper.yesAndNoBox(GameData.getStage(), "  Are you sur"
+                + "e you would "
                 + "like to buy " + currentItem + " for " + currentPrice
                 + " credits?  ",
                 new EventHandler<ActionEvent>() {

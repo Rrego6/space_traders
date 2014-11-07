@@ -3,115 +3,128 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author Sarah
+ * @version 1.0
  */
-
 public class OriginalTradeGood {
+
     private String name;
-    private int MTLP;
-    private int MTLU;
-    private int TTP;
+    private int mtlp;
+    private int mtlu;
+    private int ttp;
     private int basePrice;
-    private int IPL;
-    private int VAR;
-    private String IE;
-    private String CR;
-    private String ER;
-    private int MTL;
-    private int MTH;
-    
+    private int ipl;
+    private int var;
+    private String ie;
+    private String cr;
+    private String er;
+    private int mtl;
+    private int mth;
+
     private int quantity;
-    
+
     /**
+     * sets the list of trade goods
      *
-     * @param name
-     * @param MTLP
-     * @param MTLU
-     * @param TTP
-     * @param basePrice
-     * @param IPL
-     * @param VAR
-     * @param IE
-     * @param CR
-     * @param ER
-     * @param MTL
-     * @param MTH
+     * @param name the name
+     * @param mtlp the mtlp
+     * @param mtlu the mtly
+     * @param ttp the ttp
+     * @param basePrice the base price
+     * @param ipl the ipl
+     * @param var the var
+     * @param ie the ie
+     * @param cr the cr
+     * @param er the er
+     * @param mtl the mtl
+     * @param mth the mth
      */
-    public OriginalTradeGood(String name, int MTLP, int MTLU, int TTP, int basePrice, int IPL, int VAR, String IE, String CR, String ER, int MTL, int MTH){
+    public OriginalTradeGood(String name, int mtlp, int mtlu, int ttp,
+        int basePrice, int ipl, int var, String ie, String cr, String er,
+        int mtl, int mth) {
         this.name = name;
-        this.MTLP = MTLP;
-        this.MTLU = MTLU;
-        this.TTP = TTP;
+        this.mtlp = mtlp;
+        this.mtlu = mtlu;
+        this.ttp = ttp;
         this.basePrice = basePrice;
-        this.IPL = IPL;
-        this.VAR = VAR;
-        this.IE = IE;
-        this.CR = CR;
-        this.ER = ER;
-        this.MTL = MTL;
-        this.MTH = MTH;   
+        this.ipl = ipl;
+        this.var = var;
+        this.ie = ie;
+        this.cr = cr;
+        this.er = er;
+        this.mtl = mtl;
+        this.mth = mth;
     }
 
     /**
+     * gets the cost
      *
-     * @return
+     * @return cost the cost
      */
     public int getCost() {
-        int cost = (basePrice + (IPL * (TTP - MTLP)) + VAR); //by formula  (base price) + (the IPL * (Planet Tech Level - MTLP)) + (variance).
+        int cost = (basePrice + (ipl * (ttp - mtlp)) + var);
         return cost;
     }
 
     /**
+     * returns the string of name
      *
-     * @return
+     * @return the string of the name
      */
     public String getName() {
         return this.toString();
     }
-    
+
     /**
+     * sets the name
      *
-     * @param name
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
+     * gets the quantity
      *
-     * @return
+     * @return the quantity
      */
     public int getQuantity() {
         return this.quantity;
     }
-    
+
     /**
+     * adds the int to the trade goods
      *
-     * @param a
+     * @param a the int to add
      */
     public void add(int a) {
         this.quantity += a;
     }
-    
+
     /**
+     * removes the int from the trade goods
      *
-     * @param a
+     * @param a the int to remove
      */
     public void remove(int a) {
         this.quantity -= a;
     }
-    
+
+    /**
+     * gets the inventory
+     *
+     * @return the string of the inventory
+     */
     @Override
-    public String toString()
-    {
-        return "{ Name: " + name + " MTLP: " + MTLP + " MTLU: " + MTLU + " TTP: " + TTP + " basePrice: " + basePrice + " IPL: " + IPL + " VAR: " + VAR + " IE: " + IE + " CR: " + CR +  " ER: "+ ER + " MTL: " + MTL +  " MTH: " + MTH + " }";
+    public String toString() {
+        return "{ Name: " + name + " MTLP: " + mtlp + " MTLU: " + mtlu
+            + " TTP: " + ttp + " basePrice: " + basePrice + " IPL: " + ipl
+            + " VAR: " + var + " IE: " + ie + " CR: " + cr + " ER: " + er
+            + " MTL: " + mtl + " MTH: " + mth + " }";
     }
 }

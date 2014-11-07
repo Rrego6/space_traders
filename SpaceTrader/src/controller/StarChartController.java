@@ -68,8 +68,8 @@ public class StarChartController implements Initializable {
             GameData.setUniverse(universe);
             GameData.getPlayer().setCurrentLocation(universe.getList()
                 .get(CommonHelper.randInt(universe.getList().size())));
-            CommonHelper.alertBox(GameData.stage, "Location Selected: "
-                + GameData.player.getCurrentLocation().getName());
+            CommonHelper.alertBox(GameData.getStage(), "Location Selected: "
+                + GameData.getPlayer().getCurrentLocation().getName());
         }
         GraphicsContext g2d = canvas.getGraphicsContext2D();
         g2d.setFill(Color.WHITE);

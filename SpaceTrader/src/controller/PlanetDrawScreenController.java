@@ -119,8 +119,8 @@ public class PlanetDrawScreenController implements Initializable {
         }
         GameData.getPlayer().setCurrentLocation(universe.getList()
             .get(CommonHelper.randInt(universe.getList().size())));
-        CommonHelper.alertBox(GameData.stage, "Location Selected: "
-            + GameData.player.getCurrentLocation().getName());
+        CommonHelper.alertBox(GameData.getStage(), "Location Selected: "
+            + GameData.getPlayer().getCurrentLocation().getName());
         handlePlanetClick(GameData.getPlayer().getCurrentLocation()
             .getX(), GameData.getPlayer().getCurrentLocation().getY());
     }

@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
-import helper.GameData;
 import helper.CommonHelper;
+import helper.GameData;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -65,10 +64,10 @@ public class BuyGadgetScreenController implements Initializable {
         priceLabel.setText("Price: ");
         gadgetLabel.setText("Current Gadget: ");
         creditsLabel.setText("Credits available: " + GameData.getPlayer()
-                .getCredits());
+            .getCredits());
         buyButton.setVisible(false);
         gadgetSlotLabel.setText("Gadget slots available: " + GameData
-                .getPlayer().getShip().getGadgetSlot());
+            .getPlayer().getShip().getGadgetSlot());
         if (GameData.getPlayer().getCurrentLocation().getTechLevel() < 6) {
             cloakLabel.setVisible(false);
         }
@@ -79,11 +78,12 @@ public class BuyGadgetScreenController implements Initializable {
             autoLabel.setVisible(false);
         }
     }
+
     @FXML
     private void onBackAction(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader =  new FXMLLoader(getClass().getResource("/"
-                    + "view/ShipyardScreen.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/"
+                + "view/ShipyardScreen.fxml"));
             Parent root = fxmlLoader.load();
 
             Scene scene = GameData.getScene();
@@ -101,13 +101,14 @@ public class BuyGadgetScreenController implements Initializable {
         currentItem = cargoLabel.getText();
         gadgetLabel.setText("Gadget Selected: " + currentItem);
         infoLabel.setText("Information: For a beginning trader, the most inter"
-                + "esting gadget is 5 extra cargo bays. These are fairly cheap"
-                + " and allow you to carry more cargo. If there is more than "
-                + "one gadget slot on your ship, you may purchase more than on"
-                + "e of these.");
+            + "esting gadget is 5 extra cargo bays. These are fairly cheap"
+            + " and allow you to carry more cargo. If there is more than "
+            + "one gadget slot on your ship, you may purchase more than on"
+            + "e of these.");
         priceLabel.setText("Price: " + currentPrice);
 
     }
+
     @FXML
     private void onNavigateAction(MouseEvent event) {
         buyButton.setVisible(true);
@@ -115,7 +116,7 @@ public class BuyGadgetScreenController implements Initializable {
         currentItem = navigateLabel.getText();
         gadgetLabel.setText("Gadget Selected: " + currentItem);
         infoLabel.setText("Information: A navigating system helps you piloting "
-                + "your ship.");
+            + "your ship.");
         priceLabel.setText("Price: " + currentPrice);
 
     }
@@ -127,7 +128,7 @@ public class BuyGadgetScreenController implements Initializable {
         currentItem = autoLabel.getText();
         gadgetLabel.setText("Gadget Selected: " + currentItem);
         infoLabel.setText("Information: An auto-repair system helps your engin"
-                + "eering functions.");
+            + "eering functions.");
         priceLabel.setText("Price: " + currentPrice);
 
     }
@@ -139,7 +140,7 @@ public class BuyGadgetScreenController implements Initializable {
         currentItem = targetLabel.getText();
         gadgetLabel.setText("Gadget Selected: " + currentItem);
         infoLabel.setText("Information: A targeting system helps you handle you"
-                + "r weaponry.");
+            + "r weaponry.");
         priceLabel.setText("Price: " + currentPrice);
 
     }
@@ -151,9 +152,9 @@ public class BuyGadgetScreenController implements Initializable {
         currentItem = cloakLabel.getText();
         gadgetLabel.setText("Gadget Selected: " + currentItem);
         infoLabel.setText("Information: A cloaking device is perhaps the most "
-                + "interesting gadget a trader can buy. It is very expensive, "
-                + "but it allows you to travel through space undetected, as lo"
-                + "ng as you don't attack.");
+            + "interesting gadget a trader can buy. It is very expensive, "
+            + "but it allows you to travel through space undetected, as lo"
+            + "ng as you don't attack.");
         priceLabel.setText("Price: " + currentPrice);
 
     }
@@ -162,32 +163,33 @@ public class BuyGadgetScreenController implements Initializable {
     private void onBuyAction(ActionEvent event) {
         if (GameData.getPlayer().getShip().getGadgetSlot() < 1) {
             CommonHelper.alertBox(GameData.getStage(), "  You do not have enou"
-                    + "gh gadget slots to buy " + currentItem + ".  ");
+                + "gh gadget slots to buy " + currentItem + ".  ");
 
         } else if (GameData.getPlayer().getCredits() < currentPrice) {
             CommonHelper.alertBox(GameData.getStage(), "  You do not have enoug"
-                    + "h credits to buy " + currentItem + ".  ");
+                + "h credits to buy " + currentItem + ".  ");
         } else {
 
-            CommonHelper.yesAndNoBox(GameData.stage, "  Are you sure you would "
-                    + "like to buy " + currentItem + " for " + currentPrice
-                    + " credits?  ",
-                        new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            GameData.getPlayer().setCredits(GameData
-                                        .getPlayer().getCredits()
-                                        - currentPrice);
-                            GameData.getPlayer().getShip()
-                                        .subtractGadgetSlot();
-                            gadgetSlotLabel.setText("Gadget slots availa"
-                                        + "ble: " + GameData.getPlayer()
-                                        .getShip().getGadgetSlot());
-                            creditsLabel.setText("Credits available: "
-                                        + GameData.getPlayer().getCredits());
-                        }
-                    },
-                        null
+            CommonHelper.yesAndNoBox(GameData.getStage(), "  Are you "
+                + "sure you would "
+                + "like to buy " + currentItem + " for " + currentPrice
+                + " credits?  ",
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        GameData.getPlayer().setCredits(GameData
+                            .getPlayer().getCredits()
+                            - currentPrice);
+                        GameData.getPlayer().getShip()
+                        .subtractGadgetSlot();
+                        gadgetSlotLabel.setText("Gadget slots availa"
+                            + "ble: " + GameData.getPlayer()
+                            .getShip().getGadgetSlot());
+                        creditsLabel.setText("Credits available: "
+                            + GameData.getPlayer().getCredits());
+                    }
+                },
+                null
             );
         }
     }
