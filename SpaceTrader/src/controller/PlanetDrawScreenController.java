@@ -49,6 +49,8 @@ public class PlanetDrawScreenController implements Initializable {
     @FXML
     private Label resourcesLabel;
     @FXML
+    private Label politicsLabel;
+    @FXML
     private Label planetInfoLabel;
          
     private SolarSystem solarSystem;
@@ -132,6 +134,7 @@ public class PlanetDrawScreenController implements Initializable {
         locationLabel.setText("Location: ");
         techLabel.setText("Tech Level: ");
         resourcesLabel.setText("Resources: ");
+        politicsLabel.setText("Political System: ");
         planetInfoLabel.setText("Planet Information");
         for( SolarSystem s : universe.getList() ) {
             if (s.isHit(x, y) ) {
@@ -139,6 +142,7 @@ public class PlanetDrawScreenController implements Initializable {
                 locationLabel.setText("Location: " + s.getLocation());
                 techLabel.setText("Tech Level: " + s.getTechLevel());
                 resourcesLabel.setText("Resources: " + s.getResource());
+                politicsLabel.setText("Political System: " + s.getPolitics());
                 planetInfoLabel.setText("Planet Information");
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);

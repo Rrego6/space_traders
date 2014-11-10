@@ -83,6 +83,48 @@ public enum Ship {
         return cargoHold;
     }
     
+    public int getGadgetSlot() {
+        return gadgetSlot;
+    }
+    
+    public void addGadgetSlot() {
+        gadgetSlot++;
+    }
+    
+    public void subtractGadgetSlot() {
+        if (!(gadgetSlot == 0)){
+            gadgetSlot--;
+        }
+    }
+    
+    public int getWeaponSlot() {
+        return weaponSlot;
+    }
+    
+    public void addWeaponSlot() {
+        weaponSlot++;
+    }
+    
+    public void subtractWeaponSlot() {
+        if (!(weaponSlot == 0)){
+            weaponSlot--;
+        }
+    }
+    
+    public int getShieldSlot() {
+        return shieldSlot;
+    }
+    
+    public void addShieldSlot() {
+        shieldSlot++;
+    }
+    
+    public void subtractShieldSlot() {
+        if (!(shieldSlot == 0)){
+            shieldSlot--;
+        }
+    }
+    
     public int getFuel() {
         return fuel;
     }

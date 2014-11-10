@@ -39,10 +39,10 @@ public class ShipyardScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    @FXML
-    private ListView<String> actionsListView;
-    private ObservableList actions = FXCollections.observableArrayList();
-    private String selection;    
+    //@FXML
+   // private ListView<String> actionsListView;
+   // private ObservableList actions = FXCollections.observableArrayList();
+    
     
     @FXML
     private void onBackAction(ActionEvent event) {
@@ -62,10 +62,62 @@ public class ShipyardScreenController implements Initializable {
     }
     
     @FXML
+    private void handleBuyGadgetAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyGadgetScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void onBuyWeaponAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyWeaponScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    private void onBuyShieldAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/BuyShieldScreen.fxml" ));
+            Parent root = fxmlLoader.load();
+        
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        }
+        
+        catch( IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
     private void onRefuelAction(ActionEvent event){
         GameData.getPlayer().getShip().refillFuel();
-        actions.add("Ship Refueled (current fuel: " + GameData.getPlayer().getShip().getFuel() + ")");
-        actionsListView.setItems(actions);
+        CommonHelper.alertBox(GameData.getStage(), "  Your ship has been refueled!  ");
+       // actions.add("Ship Refueled (current fuel: " + GameData.getPlayer().getShip().getFuel() + ")");
+        //actionsListView.setItems(actions);
         //fuelContent.setText("Fuel Content: " + GameData.getPlayer().getShip().getFuel());   
     }
     

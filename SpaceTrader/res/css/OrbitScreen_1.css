@@ -33,7 +33,7 @@ and open the template in the editor.
     -fx-background-color: linear-gradient(rgb(97,84,106), rgb(48,41,52));
 }
 
-#titleShipyard {
+#titleShipyard, #titleBuyShip, #titleBuyGadget {
     -fx-font-size: 40pt;
     -fx-font-weight: bold;
     -fx-text-alignment: center;

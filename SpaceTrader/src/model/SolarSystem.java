@@ -30,10 +30,11 @@ public class SolarSystem {
 
     private int techLevel;
     private int resource;
+    private int politics;
     
     private ArrayList<Planet> planets;
     
-    public SolarSystem(String name, Point coord, int techLevel, int resource) {
+    public SolarSystem(String name, Point coord, int techLevel, int resource, int politics) {
         this.name = name;
         this.coordTopLeft = coord;
         this.techLevel = techLevel;
@@ -42,6 +43,7 @@ public class SolarSystem {
                 (int)(coord.getX() + (.5) * GameData.PLANET_DIAMETER),
                 (int)(coord.getY() + (.5) * GameData.PLANET_DIAMETER)
         );
+        this.politics = politics;
     }
     
     public SolarSystem(String name) {
@@ -49,7 +51,8 @@ public class SolarSystem {
                 name,
                 genPoint(),
                 CommonHelper.randInt(8),
-                CommonHelper.randInt(13)
+                CommonHelper.randInt(13),
+                CommonHelper.randInt(5)
         );
         planets = new ArrayList<>();
         planets.add( new Planet( name ) );
@@ -115,6 +118,11 @@ public class SolarSystem {
     public void setResource(int resource) {
         this.resource = resource;
     }
+    
+    public void setPolitics(int politics) {
+        this.politics = politics;
+    }
+    
     /*@param:planet object.
     @return: none,adds the planet object to the planets list.
     */ 
@@ -144,6 +152,10 @@ public class SolarSystem {
     */ 
     public int getResource() { //getter method
         return resource;
+    }
+    
+    public int getPolitics() {
+        return politics;
     }
     
     public String getLocation(){

@@ -27,6 +27,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import model.MsgEventPair;
 import model.SolarSystem;
 import model.TradeGood;
 
@@ -47,6 +48,8 @@ public class CommonHelper {
     public static void alertBox(Stage primaryStage, String msg) {
         alertBox(primaryStage, msg, null);
     }
+
+    //USES DELEGATION BY EVENTHELPERS
     public static void alertBox(Stage primaryStage, String msg, EventHandler<ActionEvent> onCloseandOk) {
         FXMLLoader fxmlLoader =  new FXMLLoader( CommonHelper.class.getResource( "/view/AlertPopup.fxml" ));
         Parent root;
@@ -121,6 +124,8 @@ public class CommonHelper {
         catch(IOException e ) {
             e.printStackTrace();
         }
+    }
+    public void miscOptionPane(Stage primaryStage, String msg, MsgEventPair[] buttonOptions, EventHandler<ActionEvent> onClose) {
         
     }
     /*@param:none.
@@ -216,8 +221,10 @@ public class CommonHelper {
       return goodsList;
    }
    
+    //Delegation
+    //http://en.wikipedia.org/wiki/Delegation_pattern#Java_examples
     /**
-     *
+     * Generates a random int
      * @param maxInt
      * @return
      */

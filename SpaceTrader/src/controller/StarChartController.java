@@ -46,6 +46,8 @@ public class StarChartController implements Initializable {
     @FXML
     private Label resourcesLabel;
     @FXML
+    private Label politicsLabel;
+    @FXML
     private Label planetInfoLabel;
     @FXML
     private Label distanceLabel;
@@ -88,6 +90,7 @@ public class StarChartController implements Initializable {
         locationLabel.setText("Location: " + GameData.getPlayer().getCurrentLocation().getLocation());
         techLabel.setText("Tech Level: " + GameData.getPlayer().getCurrentLocation().getTechLevel());
         resourcesLabel.setText("Resources: " + GameData.getPlayer().getCurrentLocation().getResource());
+        politicsLabel.setText("Political System: " + GameData.getPlayer().getCurrentLocation().getPolitics());
     }    
     
     @FXML
@@ -106,6 +109,7 @@ public class StarChartController implements Initializable {
                 locationLabel.setText("Location: " + s.getLocation());
                 techLabel.setText("Tech Level: " + s.getTechLevel());
                 resourcesLabel.setText("Resources: " + s.getResource());
+                politicsLabel.setText("Political System: " + s.getPolitics());
                 distanceLabel.setText("Distance: " + s.getDistance() + " parsecs");
                 planetInfoLabel.setText("Planet Information");
                 GraphicsContext g2d = canvas.getGraphicsContext2D();

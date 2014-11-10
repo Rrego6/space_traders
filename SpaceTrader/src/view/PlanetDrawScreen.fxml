@@ -51,6 +51,14 @@
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin></Label>
+                  <Label id="resourcesLabel" fx:id="politicsLabel" styleClass="planetInfoLabel" text="Political System: ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </left>
