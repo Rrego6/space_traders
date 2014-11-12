@@ -73,6 +73,10 @@ public class SolarSystem {
         return genPoint;
     }
     
+    public static boolean isNearOtherPointsTest(Point genPoint) {
+        return isNearOtherPoints(genPoint);
+    }
+    
     /**
      * Checks if currentPoint is near any other planets
      * @param genPoint
@@ -89,7 +93,7 @@ public class SolarSystem {
     }
 
     /**
-     * @param name of the soalarsystem, String.
+     * @param name of the solarsystem, String.
     */
     public void setName(String name) {
         this.name = name;

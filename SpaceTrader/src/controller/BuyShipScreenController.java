@@ -49,6 +49,10 @@ public class BuyShipScreenController implements Initializable {
     private Player player;
     private Ship currentShip;
  
+    public void testBuyShip(Ship ship) {
+        buyShip(ship);
+    }
+    
     /**
      * Initializes the controller class.
      */

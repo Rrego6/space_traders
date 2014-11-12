@@ -100,6 +100,10 @@ public class Universe {
         return solarsystems;
     }
     
+    public int getSize() {
+        return solarsystems.size();
+    }
+    
     @Override
     public String toString()
     {
