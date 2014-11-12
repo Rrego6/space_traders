@@ -123,7 +123,7 @@ public class StarChartControllerTest extends Application {
                 ex.printStackTrace();
             }
         
-//            assertEquals(testedSystem, testedController.selectedSystem);
+//            assertEquals(testedSystem, testedController.getSelectedSystem());
             
             try {
                 testedMethod.invoke(testedController, falseMouseEvent);
@@ -134,7 +134,7 @@ public class StarChartControllerTest extends Application {
             } catch (InvocationTargetException ex) {
                 Logger.getLogger(StarChartControllerTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        assertThat(testedSystem, is(not(testedController.selectedSystem)));
+        assertThat(testedSystem, is(not(testedController.getSelectedSystem())));
         Platform.exit();
     }
 

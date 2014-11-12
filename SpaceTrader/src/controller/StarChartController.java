@@ -53,7 +53,7 @@ public class StarChartController implements Initializable {
     private Universe universe;
     private SolarSystem solarSystem;
     
-    public SolarSystem selectedSystem;
+    private SolarSystem selectedSystem;
     /**
      * Initializes the controller class.
      *
@@ -717,5 +717,12 @@ public class StarChartController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    /**
+     * return selected system
+     * @return selected System
+     */
+    public SolarSystem getSelectedSystem() {
+        return selectedSystem;
     }
 }

@@ -40,14 +40,14 @@
     <module name="IllegalImport"/>
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
-    <module name="AvoidHidingCauseException"/>
+    <!-- <module name="AvoidHidingCauseException"/>
     <module name="ConfusingConditionCheck"/>
     <module name="ForbidReturnInFinalBlockCheck"/>
     <module name="ReturnNullInsteadOfBoolean"/>
     <module name="MultipleVariableDeclarationsExtended"/>
     <module name="MultipleStringLiteralsExtended"/>
     <module name="OverridableMethodInConstructor"/>
-    <module name="SimpleAccessorNameNotation"/>
+    <module name="SimpleAccessorNameNotation"/> -->
     <module name="GenericWhitespace"/>
     <module name="NoWhitespaceAfter"/>
     <module name="NoWhitespaceBefore"/>
@@ -79,5 +79,5 @@
     <module name="UpperEll"/>
     <module name="OuterTypeFilename"/>
   </module>
-  <module name="StrictDuplicateCode"/>
+  <!--<module name="StrictDuplicateCode"/>-->
 </module>
