@@ -37,7 +37,7 @@ import org.junit.Test;
  * JUNIT TESTING
  * @author Ivan
  */
-public class IsNearOtherPointsJUnitTest {
+public class UniverseJUnitTest {
     
     Universe main;
     SolarSystem a;
