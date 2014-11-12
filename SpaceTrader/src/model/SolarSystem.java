@@ -60,7 +60,7 @@ public class SolarSystem {
      * Generate unique point
      * @return a unique Point
      */
-    private static Point genPoint() {
+    public static Point genPoint() {
         Point genPoint = new Point( CommonHelper.randInt( GameData.GAME_WIDTH ),
                 CommonHelper.randInt( GameData.GAME_HEIGHT ));
 

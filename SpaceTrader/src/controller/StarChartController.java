@@ -53,6 +53,8 @@ public class StarChartController implements Initializable {
     private Label fuelLabel;
     private Universe universe;
     private SolarSystem solarSystem;
+    
+    public SolarSystem selectedSystem;
     /**
      * Initializes the controller class.
      * @param url
@@ -82,6 +84,7 @@ public class StarChartController implements Initializable {
                 g2d.setFill(Color.WHITE);
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER );
             }
+
         }
         fuelLabel.setText("Fuel in Ship: " + GameData.getPlayer().getShip().getFuel());
         nameLabel.setText("Name: " + GameData.getPlayer().getCurrentLocation().getName());
@@ -111,10 +114,11 @@ public class StarChartController implements Initializable {
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 g2d.setFill(Color.RED);
                 g2d.fillOval(s.getX(),s.getY(), GameData.PLANET_DIAMETER, GameData.PLANET_DIAMETER);
-                solarSystem = s;
+                selectedSystem = s;
                // JOptionPane.showMessageDialog(null, "You clicked planet " + s.getName() + " at coordinates " + s.getX() + ", " + s.getY());
             }
             else {
+                //selectedSystem = null;
                 GraphicsContext g2d = canvas.getGraphicsContext2D();
                 if(s.getName().equals(GameData.getPlayer().getCurrentLocation().getName())) {
                     g2d.setFill(Color.GREEN);
