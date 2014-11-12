@@ -8,6 +8,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.IllegalArgumentException;
 
 /**
  *
@@ -72,8 +73,12 @@ public class Universe {
      * @param name
      */
      
-    public void setName(String name) { //setter mathod. 
-        this.name = name;
+    public void setName(String name) throws Exception { //setter mathod. 
+        if (name == null) {
+            throw new IllegalArgumentException();
+        } else {
+            this.name = name;
+        }
     }
     /*@param:none.
     @return: name variable value.

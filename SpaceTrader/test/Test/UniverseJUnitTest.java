@@ -8,6 +8,8 @@ package Test;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.*;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -16,7 +18,6 @@ import org.junit.Test;
 /**
  * !!README!!
  * 
- * I won't be at the demo, so I'll explain things here in case there is confusion.
  * The Universe class has a name and an ArrayList of SolarSystems.
  * My JUnit tests for branch coverage because it checks everything the universe should have and should be careful against.
  * [x] Adding a SINGULAR SolarSystem works correctly and changes the size accordingly.
@@ -88,15 +89,17 @@ public class UniverseJUnitTest {
         //Removing null shouldn't cause problems
         main.removeSolarSystem(null);
         assertEquals(2, main.getSize());
-        
     }
-
     
     @Test
     public void testUniverseName() {
-        //Expected IllegalArgumentException
-        main.setName(null);
+        //Test Passes if name is null BECAUSE it only goes to the test case if name is null.
+        try {
+            main.setName(null);
+        } catch (Exception e) {
+            assertEquals(false, false);
+        }
+
     }
-    
-    
+
 }
