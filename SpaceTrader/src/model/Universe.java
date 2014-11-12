@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package model;
 
 import java.util.ArrayList;
@@ -12,102 +11,89 @@ import java.util.List;
 /**
  *
  * @author Ivan
+ * @version 1.0
  */
 public class Universe {
-    
+
     private String name;
     private ArrayList<SolarSystem> solarsystems;
-    
+
     /**
+     * makes the universe
      *
-     * @param name
+     * @param name the name of the universe
      */
     public Universe(String name) {
         this.name = name;
         solarsystems = new ArrayList<>();
     }
-    /*@param:List of solarSystems.
-    @return: none. add the list of solarSystems to the universe.
-    */ 
 
     /**
+     * adds the solar system
      *
-     * @param list
+     * @param list the list
      */
-     
-    public void addSolarSystem( List<SolarSystem> list )
-    {
-        solarsystems.addAll( list );
-        
-    /*@param:solarSystem object.
-    @return: none. add a solarSystems to the list of solarSystem.
-    */     
+    public void addSolarSystem(List<SolarSystem> list) {
+        solarsystems.addAll(list);
+
     }
 
     /**
+     * adds the solar system
      *
-     * @param a
+     * @param a a solar system
      */
     public void addSolarSystem(SolarSystem a) {
         solarsystems.add(a);
     }
-    /*@param: solarSystem object.
-    @return: none. remove the solarSystem object from the solarSystem list.
-    */ 
 
     /**
+     * removes the solar system
      *
-     * @param a
+     * @param a solar system to remove
      */
-     
     public void removeSolarSystem(SolarSystem a) {
         solarsystems.remove(a);
     }
-    /*@param:name of the universe, String.
-    @return: none. set the name variable.
-    */ 
 
     /**
+     * sets the name
      *
-     * @param name
+     * @param name the name
      */
-     
-    public void setName(String name) { //setter mathod. 
+    public void setName(String name) { //setter mathod.
         this.name = name;
     }
-    /*@param:none.
-    @return: name variable value.
-    */ 
 
     /**
+     * gets the name
      *
-     * @return
+     * @return name
      */
-     
     public String getName() {  //getter method.
         return name;
     }
-    /*@param:none.
-    @return: solarSystem valriable value.
-    */ 
 
     /**
+     * returns the solar system
      *
-     * @return
+     * @return the solar system
      */
-     
     public ArrayList<SolarSystem> getList() {  //getter method.
         return solarsystems;
     }
-    
+
+    /**
+     * gets the string
+     *
+     * @return the string
+     */
     @Override
-    public String toString()
-    {
+    public String toString() {
         String string = new String();
-        for( SolarSystem solarSystem : solarsystems )
-        {
-            string += (solarSystem + "," );
+        for (SolarSystem solarSystem : solarsystems) {
+            string += (solarSystem + ",");
         }
-        return "Universe: " + name + " " +string;
+        return "Universe: " + name + " " + string;
     }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import helper.GameData;
@@ -21,25 +20,25 @@ import javafx.scene.Scene;
  * FXML Controller class
  *
  * @author Raoul
+ * @version 1.0
  */
 public class ControlsScreenController implements Initializable {
 
     @FXML
-    private void handleBackButtonAction(ActionEvent event )
-    {
+    private void handleBackButtonAction(ActionEvent event) {
         try {
-        FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource( "/view/WelcomeScreen.fxml" ));
-        Parent root = fxmlLoader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vie"
+                + "w/WelcomeScreen.fxml"));
+            Parent root = fxmlLoader.load();
 
-        Scene scene = GameData.getScene();
-        scene.setRoot(root);
-        GameData.setScene(scene);
-        }
-        catch( IOException e)
-        {
+            Scene scene = GameData.getScene();
+            scene.setRoot(root);
+            GameData.setScene(scene);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

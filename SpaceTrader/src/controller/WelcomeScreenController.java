@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import helper.GameData;
@@ -20,88 +19,78 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 /**
+ * FXML Controller Class
  *
  * @author Raoul
+ * @version 1.0
  */
 public class WelcomeScreenController implements Initializable {
-    
+
     @FXML
-    private void handleControlsButtonAction(ActionEvent event)
-    {
-        try
-        {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/ControlsScreen.fxml"));
+    private void handleControlsButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                .getResource("/view/ControlsScreen.fxml"));
             Parent root = fxmlLoader.load();
-            //ControlsScreenController controller = (ControlsScreenController) fxmlLoader.getController();
             Scene scene = GameData.getScene();
             scene.setRoot(root);
             GameData.setScene(scene);
             //controller.setScene(scene);
-            
-            
-        }
-        catch (IOException e)
-        {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
-    private void handleNewGameButtonAction(ActionEvent event )
-    {
-        try
-        {
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/CharacterCreationScreen.fxml"));
+    private void handleNewGameButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                .getResource("/view/CharacterCreationScreen.fxml"));
             Parent root = fxmlLoader.load();
-            
-            //CharacterCreationScreenController controller = (CharacterCreationScreenController) fxmlLoader.getController();
+
             //Scene scene = getScene();
             Scene scene = GameData.getScene();
             scene.setRoot(root);
             GameData.setScene(scene);
             //controller.setScene(scene);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
     private void handleLoadGameButtonAction(ActionEvent event) {
-        
-        try
-        {
+
+        try {
             GameData.loadData();
-            FXMLLoader fxmlLoader =  new FXMLLoader( getClass().getResource("/view/Orbit.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass()
+                .getResource("/view/Orbit.fxml"));
             Parent root = fxmlLoader.load();
-           
+
             Scene scene = GameData.getScene();
-            
+
             scene.setRoot(root);
             GameData.setScene(scene);
             System.out.println(GameData.getPlayer().getName());
-            
-        }
-        catch (IOException e)
-        {
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    @FXML 
+    @FXML
     private Button loadGameBtn;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         File f = new File("res/txt/GameDataPlayer.json");
         System.out.println(f.length());
-        if(!f.exists()) { 
+        if (!f.exists()) {
             loadGameBtn.setVisible(false);
-        }
-        else if(f.length() < 10){
+        } else if (f.length() < 10) {
             loadGameBtn.setVisible(false);
-        }
-        else{
+        } else {
             loadGameBtn.setVisible(true);
         }
-    }   
+    }
 }

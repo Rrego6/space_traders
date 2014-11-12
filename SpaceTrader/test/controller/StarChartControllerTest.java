@@ -122,8 +122,8 @@ public class StarChartControllerTest extends Application {
             } catch (InvocationTargetException ex) {
                 ex.printStackTrace();
             }
-
-            //assertEquals(testedSystem, testedController.selectedSystem);
+        
+//            assertEquals(testedSystem, testedController.selectedSystem);
             
             try {
                 testedMethod.invoke(testedController, falseMouseEvent);

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import java.net.URL;
@@ -17,10 +16,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 /**
+ * FXML Controller Class
  *
  * @author Raoul
+ * @version 1.0
  */
 public class YesAndNoPopupController implements Initializable {
+
     @FXML
     private AnchorPane body;
     @FXML
@@ -29,23 +31,40 @@ public class YesAndNoPopupController implements Initializable {
     private Button yesButton;
     @FXML
     private Button noButton;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
-    
+
+    /**
+     * sets text label.
+     *
+     * @param s input string
+     */
     public void setLabelText(String s) {
         label.setText(s);
         label.autosize();
     }
-    
-    public void setYesButtonAction( EventHandler<ActionEvent> event) {
+
+    /**
+     * action taken when yes button clicked.
+     *
+     * @param event input string
+     */
+    public void setYesButtonAction(EventHandler<ActionEvent> event) {
         yesButton.setOnAction(event);
     }
-    public void setNoButtonAction(  EventHandler<ActionEvent> event ) {
+
+    /**
+     * action taken when no button clicked.
+     *
+     * @param event input string
+     */
+    public void setNoButtonAction(EventHandler<ActionEvent> event) {
         noButton.setOnAction(event);
     }
 }
